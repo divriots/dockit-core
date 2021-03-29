@@ -1,0 +1,40 @@
+{
+  "packages": {
+    "dir": "",
+    "menu": [
+      "readme",
+      [
+        "System-UI",
+        [
+          "systemui-showcases"
+        ]
+      ],
+      [
+        "TailwindCSS",
+        [
+          "tailwind-showcases"
+        ]
+      ],
+      [
+        "Components",
+        [
+          "space",
+          "props",
+          "playground",
+          "showcases",
+          "caption",
+          "box",
+          "text"
+        ]
+      ],
+      [
+        "Layouts",
+        [
+          "mdx-layout-core",
+          "mdx-layout-css",
+          "mdx-layout-tailwind"
+        ]
+      ]
+    ]
+  }
+}

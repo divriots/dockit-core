@@ -1,0 +1,15 @@
+{
+  "name": "@divriots/dockit-core",
+  "version": "0.0.44",
+  "description": "",
+  "license": "ISC",
+  "type": "module",
+  "homepage": "{{ homepage }}",
+  "scripts": {
+    "serve": "dsd-cli serve wzPn6NO54tDJlBxCtjGx --open"
+  },
+  "devDependencies": {
+    "dsd-cli": "latest"
+  },
+  "dependencies": {}
+}
