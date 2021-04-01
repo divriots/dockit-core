@@ -5,35 +5,24 @@
       "readme",
       [
         "System-UI",
-        [
-          "systemui-showcases"
-        ]
+        []
       ],
       [
         "TailwindCSS",
-        [
-          "tailwind-showcases"
-        ]
+        []
       ],
       [
         "Components",
         [
-          "space",
-          "props",
-          "playground",
-          "showcases",
-          "caption",
           "box",
-          "text"
+          "caption",
+          "text",
+          "showcases"
         ]
       ],
       [
         "Layouts",
-        [
-          "mdx-layout-core",
-          "mdx-layout-css",
-          "mdx-layout-tailwind"
-        ]
+        []
       ]
     ]
   }
