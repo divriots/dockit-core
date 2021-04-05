@@ -17,24 +17,18 @@ export const opacity = () => {
   ];
 
   return /*html*/ `
-    <div>
-      <dockit-showcases
-        data-showcase-classes=${classes.join(',')}
-        data-component-class='box'
-      />
-    </div>
-  `;
+  <dockit-showcases
+    component-class="box"
+    showcase-classes="${classes.join(' ')}"
+  ></dockit-showcases>`;
 };
 
 export const fontSize = () => {
   const classes = ['xs', 'sm', 'base', 'lg', 'xl', 'xxl', 'xxxl'];
 
   return /*html*/ `
-    <div>
-      <dockit-showcases
-        data-component-type="text"
-        data-showcase-classes=${classes.join(',')}
-      />
-    </div>
-  `;
+    <dockit-showcases
+      component-type="text"
+      showcase-classes="${classes.join(' ')}"
+    ></dockit-showcases>`;
 };

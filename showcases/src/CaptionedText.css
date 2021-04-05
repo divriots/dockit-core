@@ -1,0 +1,6 @@
+.dockit-captioned-text-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+}

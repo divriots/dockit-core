@@ -1,5 +1,5 @@
 import '../index.js';
-import './story.css';
+import './box-stories.css';
 
 export default {
   parameters: {
@@ -7,26 +7,14 @@ export default {
   },
 };
 
-export const box = () => `
-<div>
-  <dockit-box checkeredBackground class="boxStory"/>
-</div>
-`;
+export const box = () =>
+  /*html*/ `<dockit-box checkeredBackground class-name="boxStory"></dockit-box>`;
 
-export const box_background = () => `
-<div>
-  <dockit-box checkeredBackground class="boxStory boxStoryBackground"/>
-</div>
-`;
+export const box_background = () =>
+  /*html*/ `<dockit-box checkeredBackground class-name="boxStory boxStoryBackground"></dockit-box>`;
 
-export const box_background_opacity = () => `
-<div>
-  <dockit-box checkeredBackground class="boxStory boxStoryBackground boxStoryOpacity"/>
-</div>
-`;
+export const box_background_opacity = () =>
+  /*html*/ `<dockit-box checkeredBackground class-name="boxStory boxStoryBackground boxStoryOpacity"></dockit-box>`;
 
-export const box_background_roundness = () => `
-<div>
-  <dockit-box checkeredBackground class="boxStory boxStoryBackground boxStoryRoundness"/>
-</div>
-`;
+export const box_background_roundness = () =>
+  /*html*/ `<dockit-box checkeredBackground class-name="boxStory boxStoryBackground boxStoryRoundness"></dockit-box>`;

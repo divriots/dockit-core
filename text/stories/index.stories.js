@@ -6,14 +6,6 @@ export default {
   },
 };
 
-export const long_text = () => `
-<div>
-  <dockit-text useLongText/>
-</div>
-`;
+export const long_text = () => /*html*/ `<dockit-text long-text></dockit-text>`;
 
-export const short_text = () => `
-<div>
-  <dockit-text />
-</div>
-`;
+export const short_text = () => /*html*/ `<dockit-text></dockit-text>`;

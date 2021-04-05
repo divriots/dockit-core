@@ -6,8 +6,5 @@ export default {
   },
 };
 
-export const caption = () => `
-<div>
-  <dockit-caption data-text="test caption"/>
-</div>
-`;
+export const caption = () =>
+  /*html*/ `<dockit-caption text="test caption"></dockit-caption>`;
