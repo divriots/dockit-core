@@ -1,14 +1,6 @@
-import './CaptionedBox.css';
+import styles from './CaptionedBox.module.css';
 import '~/box';
 import '~/caption';
-
-const template = document.createElement('template');
-
-const boxHtml = /*html*/ `
-<div class="dockit-captioned-box-container">
-  <dockit-box checkeredBackground $boxAttributes></dockit-box>
-  <dockit-caption $captionAttributes></dockit-caption>
-</div>`;
 
 export class CaptionedBox extends HTMLElement {
   connectedCallback() {
@@ -16,18 +8,10 @@ export class CaptionedBox extends HTMLElement {
     const captionWidth = this.getAttribute('caption-width');
     const componentClass = this.getAttribute('class-name');
 
-    template.innerHTML = boxHtml
-      .replace(
-        '$boxAttributes',
-        `class-name="${showcaseClass} ${componentClass}"`
-      )
-      .replace(
-        '$captionAttributes',
-        `text="${showcaseClass}" width="${captionWidth}"`
-      );
-
-    this.appendChild(template.content.cloneNode(true));
+    this.innerHTML = /*html*/ `
+<div class="${styles.container}">
+  <dockit-box checkeredBackground class-name="${showcaseClass} ${componentClass}"></dockit-box>
+  <dockit-caption text="${showcaseClass}" width="${captionWidth}"></dockit-caption>
+</div>`;
   }
 }
-
-customElements.define('dockit-captioned-box', CaptionedBox);

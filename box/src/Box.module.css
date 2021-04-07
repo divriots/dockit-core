@@ -1,4 +1,8 @@
-#dockit-box-checkered {
+.wrapper {
+  position: relative;
+}
+
+#checkered {
   opacity: 1;
   background-color: #000000;
   background-image: linear-gradient(
@@ -15,7 +19,4 @@
   top: 0px;
   z-index: -1;
   box-shadow: none;
-}
-#dockit-box-wrapper {
-  position: relative;
 }

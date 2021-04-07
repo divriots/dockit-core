@@ -1,44 +1,29 @@
 import copyTextToClipboard from 'copy-to-clipboard';
-import './Caption.css';
-
-const template = document.createElement('template');
-
-template.innerHTML = /*html*/ `
-  <div id="dockit-caption-wrapper">
-    <div id="dockit-caption-text"></div>
-    <div id="dockit-caption-tooltip">Copy</div>
-  </div>
-`;
+import styles from './Caption.module.css';
 
 export class Caption extends HTMLElement {
-  constructor() {
-    super();
-    this.appendChild(template.content.cloneNode(true));
-  }
-
   copy() {
     const text = this.getAttribute('text');
     copyTextToClipboard(text);
-    this.querySelector('#dockit-caption-tooltip').textContent = 'Copied';
-    setTimeout(
-      () =>
-        (this.querySelector('#dockit-caption-tooltip').textContent = 'Copy'),
-      2000
-    );
+
+    const tooltip = this.querySelector(`.${styles.tooltip}`);
+    tooltip.textContent = 'Copied';
+    setTimeout(() => (tooltip.textContent = 'Copy'), 2000);
   }
 
   connectedCallback() {
     this.onclick = this.copy;
 
-    const text = this.getAttribute('text');
-    const textElement = this.querySelector('#dockit-caption-text');
-    textElement.textContent = text;
-
     const width = this.getAttribute('width');
-    if (width) textElement.style = `width:${width}`;
+    const widthStyle = width ? `style="width:${width};"` : '';
 
-    const setWidth = this.getAttribute('width');
-    if (setWidth)
-      this.querySelector('#dockit-caption-wrapper').style = `width:${setWidth}`;
+    const text = this.getAttribute('text');
+
+    this.innerHTML = /*html*/ `
+  <div class="${styles.wrapper}">
+    <div ${widthStyle} class="${styles.text}">${text}</div>
+    <div class="${styles.tooltip}">Copy</div>
+  </div>
+`;
   }
 }

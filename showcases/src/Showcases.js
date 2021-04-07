@@ -1,53 +1,40 @@
-import './Showcases.css';
-import './CaptionedBox';
-import './CaptionedText';
+import styles from './Showcases.module.css';
+import './DockitCaptionedBox';
+import './DockitCaptionedText';
 
-const template = document.createElement('template');
-
-template.innerHTML = /*html*/ `<div></div>`;
-
-const componentTemplate = document.createElement('template');
-const boxHtml = /*html*/ `<dockit-captioned-box $attributes></dockit-captioned-box>`;
-const textHtml = /*html*/ `<dockit-captioned-text $attributes></dockit-captioned-text>`;
-
-class Showcases extends HTMLElement {
-  constructor() {
-    super();
-    this.appendChild(template.content.cloneNode(true));
-  }
-
+export class Showcases extends HTMLElement {
   connectedCallback() {
     const type = this.getAttribute('component-type') || 'box';
-    const componentHtml = type === 'box' ? boxHtml : textHtml;
-    const container = this.querySelector('div');
-
-    if (type === 'box')
-      container.className = 'dockit-showcases-boxes-container';
-    else container.className = 'dockit-showcases-texts-container';
+    const showcaseComponent =
+      type === 'box' ? 'dockit-captioned-box' : 'dockit-captioned-text';
 
     const componentClass = this.getAttribute('component-class');
+    const showcaseClasses = this.getAttribute('showcase-classes')
+      .split(' ')
+      .filter((c) => !!c);
+
     const useLongText =
       this.hasAttribute('long-text') &&
       this.getAttribute('long-text') !== 'false';
 
-    const classes = this.getAttribute('showcase-classes')
-      .split(' ')
-      .filter((c) => !!c);
-
-    const longestClassName = classes.reduce(
+    const longestClassName = showcaseClasses.reduce(
       (max, e) => Math.max(e.length, max),
       0
     );
     const captionWidth = `${longestClassName / 2}rem`;
 
-    classes.forEach((cls) => {
-      componentTemplate.innerHTML = componentHtml.replace(
-        '$attributes',
-        `class-name="${componentClass}" showcase-class="${cls}" long-text="${useLongText}" caption-width="${captionWidth}"`
-      );
-      container.appendChild(componentTemplate.content.cloneNode(true));
-    });
+    const showcaseComponents = showcaseClasses.reduce(
+      (acc, cls) => /*html*/ `${acc}
+        <${showcaseComponent}
+          class-name="${componentClass}"
+          showcase-class="${cls}"
+          long-text="${useLongText}"
+          caption-width="${captionWidth}"
+        ></${showcaseComponent}>`,
+      ''
+    );
+
+    const containerClass = type === 'box' ? styles.boxes : styles.texts;
+    this.innerHTML = /*html*/ `<div class="${containerClass}">${showcaseComponents}</div>`;
   }
 }
-
-customElements.define('dockit-showcases', Showcases);

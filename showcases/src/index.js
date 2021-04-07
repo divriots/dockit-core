@@ -1,3 +1,3 @@
-export * from './Showcases.js';
-export * from './CaptionedText.js';
-export * from './CaptionedBox.js';
+export * from './DockitShowcases.js';
+export * from './DockitCaptionedText.js';
+export * from './DockitCaptionedBox.js';

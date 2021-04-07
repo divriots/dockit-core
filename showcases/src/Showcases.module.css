@@ -1,10 +1,10 @@
-.dockit-showcases-boxes-container {
+.boxes {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.dockit-showcases-texts-container {
+.text {
   display: flex;
   flex-direction: column;
 }
