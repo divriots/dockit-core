@@ -9,7 +9,9 @@
       ],
       [
         "TailwindCSS",
-        []
+        [
+          "tailwind-showcases"
+        ]
       ],
       [
         "Components",
@@ -17,7 +19,8 @@
           "box",
           "caption",
           "text",
-          "showcases"
+          "showcases",
+          "space"
         ]
       ],
       [
