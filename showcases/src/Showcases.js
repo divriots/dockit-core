@@ -9,14 +9,12 @@ export class Showcases extends HTMLElement {
       type === 'box' ? 'dockit-captioned-box' : 'dockit-captioned-text';
 
     const componentClass = this.getAttribute('component-class');
+    const checkeredBackground = this.getAttribute('checkered-background');
     const showcaseClasses = this.getAttribute('showcase-classes')
       .split(' ')
       .filter((c) => !!c);
 
-    const useLongText =
-      this.hasAttribute('long-text') &&
-      this.getAttribute('long-text') !== 'false';
-
+    const useLongText = this.getAttribute('long-text');
     const longestClassName = showcaseClasses.reduce(
       (max, e) => Math.max(e.length, max),
       0
@@ -30,6 +28,7 @@ export class Showcases extends HTMLElement {
           showcase-class="${cls}"
           long-text="${useLongText}"
           caption-width="${captionWidth}"
+          checkered-background="${checkeredBackground}"
         ></${showcaseComponent}>`,
       ''
     );

@@ -10,9 +10,9 @@ export class Text extends HTMLElement {
   applyClasses() {}
 
   connectedCallback() {
+    const lt = this.getAttribute('long-text');
     const useLongText =
-      this.hasAttribute('long-text') &&
-      this.getAttribute('long-text') !== 'false';
+      this.hasAttribute('long-text') && lt !== 'false' && lt !== 'null';
 
     this.innerHTML = useLongText ? longText : shortText;
   }

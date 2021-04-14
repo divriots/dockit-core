@@ -46,7 +46,8 @@ export const border_width = () => html`<dockit-tailwind-showcases
 export const border_color = () => html`<dockit-tailwind-showcases
   .theme=${twTheme}
   showcase-key="borderColor"
-  component-class="h-24 w-24 bg-gray-50 border-4 rounded"
+  checkered-background="false"
+  component-class="h-24 w-24 border-4 rounded"
 ></dockit-tailwind-showcases>`;
 
 export const font_family = () => html`<dockit-tailwind-showcases
@@ -72,6 +73,7 @@ export const letter_spacing = () => html`<dockit-tailwind-showcases
 export const line_height = () => html`<dockit-tailwind-showcases
   .theme=${twTheme}
   showcase-key="lineHeight"
+  long-text
   componentProps={{ useLongText: true }}
 ></dockit-tailwind-showcases>`;
 
