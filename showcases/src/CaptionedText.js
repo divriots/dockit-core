@@ -6,9 +6,7 @@ export class CaptionedText extends HTMLElement {
   connectedCallback() {
     const showcaseClass = this.getAttribute('showcase-class');
     const captionWidth = this.getAttribute('caption-width');
-    const useLongText =
-      this.hasAttribute('long-text') &&
-      this.getAttribute('long-text') !== 'false';
+    const useLongText = this.getAttribute('long-text');
 
     this.innerHTML = /*html*/ `
 <div class="${styles.container}">

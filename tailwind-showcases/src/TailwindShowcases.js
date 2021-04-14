@@ -101,13 +101,18 @@ export class TailwindShowcases extends HTMLElement {
     const { classes, componentType } = classNames[showcaseKey];
 
     const componentClass = this.getAttribute('component-class');
+    const useLongText = this.getAttribute('long-text');
+    const checkeredBackground = this.getAttribute('checkered-background');
 
     this.innerHTML =
-      this.innerHTML /*html*/ +
+      this.innerHTML +
+      /*html*/
       `<dockit-showcases
           component-class="${componentClass}"
           showcase-classes="${classes.join(' ')}"
           component-type="${componentType}"
+          long-text="${useLongText}"
+          checkered-background="${checkeredBackground}"
       ></dockit-showcases>`;
   }
 }
