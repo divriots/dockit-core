@@ -5,7 +5,7 @@ export const getZIndexHtml = (theme) => {
   const cells = classes
     .map(
       (cls, i) => /*html*/ `
-    <div class="${cls} shadow-2xl"
+    <div class="${cls}"
       style="
         height: 6rem;
         min-width: 8rem;
@@ -15,13 +15,13 @@ export const getZIndexHtml = (theme) => {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid #FFFFFF;
-        background-color: #3F51B5;
+        border: 1px solid #FFF;
+        background-color: #6366F1;
         border-radius: 0.375rem;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
       "
     >
-      <div style="color:#FFFFFF;">${cls}</div>
+      <div style="color:#FFF;">${cls}</div>
     </div>`
     )
     .join(' ');
