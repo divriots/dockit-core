@@ -8,6 +8,7 @@ export class Box extends HTMLElement {
       !this.hasAttribute('checkered-background'); // enable checkered background by default
 
     const className = this.getAttribute('class-name') || '';
+    const style = this.getAttribute('showcase-style') || '';
 
     this.innerHTML = /*html*/ `
       <div class="${styles.wrapper}">
@@ -16,7 +17,7 @@ export class Box extends HTMLElement {
             ? `<div id="${styles.checkered}" class="${className}"></div>`
             : ''
         }
-        <div class="${className}"></div>
+        <div class="${className}" style="${style}"></div>
       </div>
       `;
   }

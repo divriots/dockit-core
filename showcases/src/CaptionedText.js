@@ -5,13 +5,16 @@ import '~/text';
 export class CaptionedText extends HTMLElement {
   connectedCallback() {
     const showcaseClass = this.getAttribute('showcase-class');
+    const showcaseStyle = this.getAttribute('showcase-style');
     const captionWidth = this.getAttribute('caption-width');
     const useLongText = this.getAttribute('long-text');
 
     this.innerHTML = /*html*/ `
 <div class="${styles.container}">
-  <dockit-caption text="${showcaseClass}" width="${captionWidth}"></dockit-caption>
-  <dockit-text long-text="${useLongText}" class="${showcaseClass}"></dockit-text>
+  <dockit-caption text="${
+    showcaseClass || showcaseStyle
+  }" width="${captionWidth}"></dockit-caption>
+  <dockit-text long-text="${useLongText}" class="${showcaseClass}" style="${showcaseStyle}"></dockit-text>
 </div>`;
   }
 }

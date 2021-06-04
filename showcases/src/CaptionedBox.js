@@ -5,15 +5,22 @@ import '~/caption';
 export class CaptionedBox extends HTMLElement {
   connectedCallback() {
     const showcaseClass = this.getAttribute('showcase-class');
+    const showcaseStyle = this.getAttribute('showcase-style');
     const captionWidth = this.getAttribute('caption-width');
     const componentClass = this.getAttribute('class-name');
     const checkeredBackground = this.getAttribute('checkered-background');
 
     this.innerHTML = /*html*/ `
 <div class="${styles.container}">
-  <dockit-box checkered-background="${checkeredBackground}" class-name="${showcaseClass} ${componentClass}">
+  <dockit-box
+    checkered-background="${checkeredBackground}"
+    class-name="${showcaseClass} ${componentClass}"
+    showcase-style="${showcaseStyle}"
+  >
   </dockit-box>
-  <dockit-caption text="${showcaseClass}" width="${captionWidth}">
+  <dockit-caption text="${
+    showcaseClass || showcaseStyle
+  }" width="${captionWidth}">
   </dockit-caption>
 </div>`;
   }

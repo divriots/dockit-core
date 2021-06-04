@@ -10,22 +10,30 @@ export class Showcases extends HTMLElement {
 
     const componentClass = this.getAttribute('component-class');
     const checkeredBackground = this.getAttribute('checkered-background');
-    const showcaseClasses = this.getAttribute('showcase-classes')
-      .split(' ')
-      .filter((c) => !!c);
+
+    const showcaseClasses = this.getAttribute('showcase-classes');
+    const showcaseStyles = this.getAttribute('showcase-styles');
+
+    const showcaseAttr = showcaseClasses ? 'showcase-class' : 'showcase-style';
+    const separator = !!showcaseClasses ? ' ' : ';';
+
+    const showcases = (showcaseClasses || showcaseStyles)
+      .split(separator)
+      .filter((c) => !!c)
+      .map((c) => c.trim());
 
     const useLongText = this.getAttribute('long-text');
-    const longestClassName = showcaseClasses.reduce(
+    const longestName = showcases.reduce(
       (max, e) => Math.max(e.length, max),
       0
     );
-    const captionWidth = `${longestClassName / 2}rem`;
+    const captionWidth = `${longestName / 2}rem`;
 
-    const showcaseComponents = showcaseClasses.reduce(
-      (acc, cls) => /*html*/ `${acc}
+    const showcaseComponents = showcases.reduce(
+      (acc, showcase) => /*html*/ `${acc}
         <${showcaseComponent}
           class-name="${componentClass}"
-          showcase-class="${cls}"
+          ${showcaseAttr}="${showcase}"
           long-text="${useLongText}"
           caption-width="${captionWidth}"
           checkered-background="${checkeredBackground}"
