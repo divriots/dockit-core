@@ -1,0 +1,77 @@
+:root {
+  --z-index-drawer: 700;
+  --z-index-dialog: 800;
+  --z-index-dropdown: 900;
+  --z-index-toast: 950;
+  --z-index-tooltip: 1000;
+
+  --transition-x-slow: 1000ms;
+  --transition-slow: 500ms;
+  --transition-medium: 250ms;
+  --transition-fast: 150ms;
+  --transition-x-fast: 50ms;
+
+  --border-radius-small: 0.125rem;
+  --border-radius-medium: 0.25rem;
+  --border-radius-large: 0.5rem;
+  --border-radius-x-large: 1rem;
+  --border-radius-circle: 50%;
+  --border-radius-pill: 9999px;
+
+  --shadow-x-small: 0 1px 0 #0d131e0d;
+  --shadow-small: 0 1px 2px #0d131e1a;
+  --shadow-medium: 0 2px 4px #0d131e1a;
+  --shadow-large: 0 2px 8px #0d131e1a;
+  --shadow-x-large: 0 4px 16px #0d131e1a;
+  --shadow-outline: 0 0 0 3px var(--color-focus-outline);
+
+  --color-white: #ffffff;
+  --color-primary: #3082ce;
+  --color-gray-300: #cbd5e0;
+  --color-focus-outline: #4299e14c;
+
+  --spacing-xxx-small: 0.125rem;
+  --spacing-xx-small: 0.25rem;
+  --spacing-x-small: 0.5rem;
+  --spacing-small: 0.75rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 1.25rem;
+  --spacing-x-large: 1.75rem;
+  --spacing-xx-large: 2.25rem;
+  --spacing-xxx-large: 3rem;
+  --spacing-xxxx-large: 4.5rem;
+
+  --line-height-dense: 1.4;
+  --line-height-normal: 1.8;
+  --line-height-loose: 2.2;
+
+  --letter-spacing-dense: -0.015em;
+  --letter-spacing-normal: normal;
+  --letter-spacing-loose: 0.075em;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
+
+  --font-size-xx-small: 0.625rem;
+  --font-size-x-small: 0.75rem;
+  --font-size-small: 0.875rem;
+  --font-size-medium: 1rem;
+  --font-size-large: 1.25rem;
+  --font-size-x-large: 1.5rem;
+  --font-size-xx-large: 2.25rem;
+  --font-size-xxx-large: 3rem;
+  --font-size-xxxx-large: 4.5rem;
+
+  --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  --font-family-serif: Georgia, 'Times New Roman', serif;
+  --font-family-mono: Menlo, Monaco, 'Courier New', monospace;
+
+  --color-white: #ffffff;
+  --color-primary: #3082ce;
+  --color-gray-300: #cbd5e0;
+  --color-focus-outline: #4299e14c;
+}

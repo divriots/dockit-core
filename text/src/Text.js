@@ -3,12 +3,6 @@ const longText =
 const shortText = 'The quick brown fox jumps over the lazy dog.';
 
 export class Text extends HTMLElement {
-  constructor() {
-    super();
-  }
-
-  applyClasses() {}
-
   connectedCallback() {
     const lt = this.getAttribute('long-text');
     const useLongText =
