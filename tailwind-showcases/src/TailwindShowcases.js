@@ -69,6 +69,11 @@ const getClassNames = (suffixes) => ({
 });
 
 export class TailwindShowcases extends HTMLElement {
+  constructor() {
+    super();
+    this.theme = {};
+  }
+
   connectedCallback() {
     const partialTheme = this.theme;
     const { theme } = resolveConfig({ theme: partialTheme });

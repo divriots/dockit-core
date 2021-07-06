@@ -1,8 +1,13 @@
 export class Space extends HTMLElement {
+  constructor() {
+    super();
+    this.scale = [];
+  }
   connectedCallback() {
-    const scaleValues = (Array.isArray(this.scale)
-      ? this.scale.map((s, i) => [i, s])
-      : Object.keys(this.scale).map((k) => [k, this.scale[k]])
+    const scaleValues = (
+      Array.isArray(this.scale)
+        ? this.scale.map((s, i) => [i, s])
+        : Object.keys(this.scale).map((k) => [k, this.scale[k]])
     ).map(([k, v]) => [k, typeof v === 'number' ? `${v}px` : v]);
 
     const cells = scaleValues
