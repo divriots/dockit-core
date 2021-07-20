@@ -1,6 +1,7 @@
 import styles from './CaptionedText.module.css';
 import '~/caption';
 import '~/text';
+import { getCaption } from './caption-helper';
 
 export class CaptionedText extends HTMLElement {
   connectedCallback() {
@@ -11,9 +12,10 @@ export class CaptionedText extends HTMLElement {
 
     this.innerHTML = /*html*/ `
 <div class="${styles.container}">
-  <dockit-caption text="${
-    showcaseClass || showcaseStyle
-  }" width="${captionWidth}"></dockit-caption>
+  <dockit-caption
+    text="${getCaption(showcaseClass, showcaseStyle)}"
+    width="${captionWidth}"
+  ></dockit-caption>
   <dockit-text long-text="${useLongText}" class="${showcaseClass}" style="${showcaseStyle}"></dockit-text>
 </div>`;
   }

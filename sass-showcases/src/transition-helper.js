@@ -1,18 +1,21 @@
 import styles from './transition-box.module.scss';
 
-setTimeout(() => {
-  const boxes = document.querySelectorAll('.transitionBox');
-  boxes.forEach((box) =>
-    box.addEventListener('click', () => {
-      if (box.className.includes('clicked'))
-        box.className = box.className.replace(' clicked', '');
-      else box.className = `${box.className} clicked`;
-    })
-  );
-}, 300);
+export const getTransitionsHtml = (props) => {
+  setTimeout(() => {
+    const boxes = document.querySelectorAll('.transitionBox');
 
-export const getTransitionsHtml = (props) => /*html*/ `
-  <div class="${styles.wrapper}">
+    boxes.forEach((box) =>
+      box.addEventListener('click', () => {
+        console.log('!!!! clicked');
+        if (box.className.includes('clicked'))
+          box.className = box.className.replace(' clicked', '');
+        else box.className = `${box.className} clicked`;
+      })
+    );
+  }, 300);
+
+  return /*html*/ `
+<div class="${styles.wrapper}">
   <style>
     .clicked { margin-left: 20rem; }
   </style>
@@ -28,4 +31,5 @@ export const getTransitionsHtml = (props) => /*html*/ `
       </div>`
     )
     .join('\n')}
-  </div>`;
+</div>`;
+};
