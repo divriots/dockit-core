@@ -1,6 +1,7 @@
 import styles from './Showcases.module.css';
 import './DockitCaptionedBox';
 import './DockitCaptionedText';
+import { getCaption } from './caption-helper';
 
 export class Showcases extends HTMLElement {
   connectedCallback() {
@@ -23,11 +24,13 @@ export class Showcases extends HTMLElement {
       .map((c) => c.trim());
 
     const useLongText = this.getAttribute('long-text');
-    const longestName = showcases.reduce(
-      (max, e) => Math.max(e.length, max),
-      0
-    );
-    const captionWidth = `${longestName / 2}rem`;
+    const longestName = showcases
+      .map((val) =>
+        getCaption(!!showcaseClasses && val, !!showcaseStyles && val)
+      )
+      .reduce((max, e) => Math.max(e.length, max), 0);
+
+    const captionWidth = `${1 + longestName / 2.7}rem`;
 
     const showcaseComponents = showcases.reduce(
       (acc, showcase) => /*html*/ `${acc}

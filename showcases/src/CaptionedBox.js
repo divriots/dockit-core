@@ -1,6 +1,7 @@
 import styles from './CaptionedBox.module.css';
 import '~/box';
 import '~/caption';
+import { getCaption } from './caption-helper';
 
 export class CaptionedBox extends HTMLElement {
   connectedCallback() {
@@ -16,12 +17,11 @@ export class CaptionedBox extends HTMLElement {
     checkered-background="${checkeredBackground}"
     class-name="${showcaseClass} ${componentClass}"
     showcase-style="${showcaseStyle}"
-  >
-  </dockit-box>
-  <dockit-caption text="${
-    showcaseClass || showcaseStyle
-  }" width="${captionWidth}">
-  </dockit-caption>
+  ></dockit-box>
+  <dockit-caption
+    text="${getCaption(showcaseClass, showcaseStyle)}"
+    width="${captionWidth}"
+  ></dockit-caption>
 </div>`;
   }
 }
