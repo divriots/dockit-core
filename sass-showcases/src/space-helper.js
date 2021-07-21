@@ -4,7 +4,7 @@ export const getScaleHtml = (props) => {
       ([name, value]) => /*html*/ `
         <tr>
           <td>
-            <code>var(${name})</code>
+            <code>${name}</code>
           </td>
           <td>
             <code>${value}</code>
