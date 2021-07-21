@@ -5,5 +5,5 @@ export const getCaption = (showcaseClass, showcaseStyle) => {
 
 export const getValue = (style) => {
   const [_, val] = style.split(':');
-  return (val || '').trim();
+  return (val || '').trim().replace(/var\(|\)/gi, '');
 };
