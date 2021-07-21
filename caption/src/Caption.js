@@ -21,7 +21,7 @@ export class Caption extends HTMLElement {
 
     this.innerHTML = /*html*/ `
   <div class="${styles.wrapper}">
-    <div ${widthStyle} class="${styles.text}">${text}</div>
+    <pre ${widthStyle} class="${styles.text}">${text}</pre>
     <div class="${styles.tooltip}">Copy</div>
   </div>
 `;
