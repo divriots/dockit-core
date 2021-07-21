@@ -30,7 +30,7 @@ export class Showcases extends HTMLElement {
       )
       .reduce((max, e) => Math.max(e.length, max), 0);
 
-    const captionWidth = `${1 + longestName / 2.5}rem`;
+    const captionWidth = `${1 + longestName / 2}rem`;
 
     const showcaseComponents = showcases.reduce(
       (acc, showcase) => /*html*/ `${acc}
