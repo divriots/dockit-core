@@ -6,8 +6,13 @@ import { getTransitionsHtml } from './transition-helper';
 
 export class SassShowcases extends HTMLElement {
   connectedCallback() {
-    const prefix = this.getAttribute('css-props-prefix');
-    const props = getCssCustomProps(prefix);
+    const prefix = this.getAttribute('css-props-prefix') || '';
+
+    const names = new Set(
+      (this.getAttribute('css-props-names') || '').split(',')
+    );
+
+    const props = getCssCustomProps(prefix, names);
 
     const styleKey = this.getAttribute('style-key');
     const componentType = this.getAttribute('component-type') || 'box';
@@ -22,7 +27,7 @@ export class SassShowcases extends HTMLElement {
       return;
     }
 
-    if (prefix.includes('spacing')) {
+    if (prefix.includes('spacing') && !prefix.includes('letter-spacing')) {
       this.innerHTML = getScaleHtml(props);
       return;
     }

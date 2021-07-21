@@ -30,5 +30,8 @@ const getAllCSSCustomProps = () => {
   return uniqBy(allProps, ([name]) => name);
 };
 
-export const getCssCustomProps = (prefix = '') =>
-  getAllCSSCustomProps().filter(([name]) => name.startsWith(prefix));
+export const getCssCustomProps = (prefix = '', names = new Set()) =>
+  getAllCSSCustomProps().filter(([name]) => {
+    if (prefix) return name.startsWith(prefix);
+    return names.has(name);
+  });

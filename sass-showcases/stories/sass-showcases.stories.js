@@ -3,8 +3,14 @@ import './sass-showcases.css';
 import './tokens.scss';
 import { html } from 'lit-html';
 
-export const background_color = () => html`<dockit-sass-showcases
+export const background_color_by_prefix = () => html`<dockit-sass-showcases
   css-props-prefix="--color"
+  component-class="box"
+  style-key="background-color"
+></dockit-sass-showcases>`;
+
+export const background_color_by_names = () => html`<dockit-sass-showcases
+  css-props-names="--color-white,--color-primary,--color-gray-300,--color-focus-outline"
   component-class="box"
   style-key="background-color"
 ></dockit-sass-showcases>`;
@@ -32,6 +38,12 @@ export const shadow = () => html`<dockit-sass-showcases
 
 export const spacing = () => html`<dockit-sass-showcases
   css-props-prefix="--spacing"
+></dockit-sass-showcases>`;
+
+export const letter_spacing = () => html`<dockit-sass-showcases
+  css-props-prefix="--letter-spacing"
+  component-type="text"
+  style-key="letter-spacing"
 ></dockit-sass-showcases>`;
 
 export const line_height = () => html`<dockit-sass-showcases
