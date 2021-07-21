@@ -48,6 +48,7 @@ export class SassShowcases extends HTMLElement {
           component-type="${componentType}"
           long-text="${useLongText}"
           checkered-background="${checkeredBackground}"
-      ></dockit-showcases>`;
+      >
+      </dockit-showcases>`;
   }
 }
