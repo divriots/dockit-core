@@ -6,7 +6,6 @@ export const getTransitionsHtml = (props) => {
 
     boxes.forEach((box) =>
       box.addEventListener('click', () => {
-        console.log('!!!! clicked');
         if (box.className.includes('clicked'))
           box.className = box.className.replace(' clicked', '');
         else box.className = `${box.className} clicked`;
