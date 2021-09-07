@@ -34,7 +34,7 @@ html[theme='dark'] h3,
 html[theme='dark'] h4,
 html[theme='dark'] h5,
 html[theme='dark'] h6 {
-  color: var(--heading-color-dark);
+  color: #FAFAFA;
 }
 
 blockquote {
