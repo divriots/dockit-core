@@ -1,7 +1,7 @@
 import '../index';
 import './sass-showcases.css';
 import './tokens.scss';
-import { html } from 'lit-html';
+import { html } from 'lit';
 
 export const background_color_by_prefix = () => html`<dockit-sass-showcases
   css-props-prefix="--color"
