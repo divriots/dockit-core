@@ -1,5 +1,5 @@
 import '../index';
-import { html } from 'lit-html';
+import { html } from 'lit';
 
 export const space_numbers_array_scale = () => html`<dockit-space
   .scale=${[0, 1, 8, 16, 24, 32, 64, 128]}

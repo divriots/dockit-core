@@ -1,7 +1,7 @@
 import '../index';
 import 'twind/shim';
 import twTheme from 'tailwindcss/defaultTheme.js';
-import { html } from 'lit-html';
+import { html } from 'lit';
 
 export const bg_color = () => html`<dockit-tailwind-showcases
   showcase-key="backgroundColor"
