@@ -1,5 +1,4 @@
 import '../index';
-import 'twind/shim';
 import twTheme from 'tailwindcss/defaultTheme.js';
 import { html } from 'lit';
 
