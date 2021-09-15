@@ -1,14 +1,18 @@
 {
   "name": "@divriots/dockit-core",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "",
   "license": "ISC",
   "type": "module",
   "homepage": "{{ homepage }}",
   "scripts": {
-    "serve": "dsd-cli serve 4BeMe20hqOWTkdUL2NuJ --open"
+    "serve": "npx backlight@latest serve 4BeMe20hqOWTkdUL2NuJ --open"
   },
   "devDependencies": {
-    "dsd-cli": "latest"
+    "tailwindcss": "latest",
+    "copy-to-clipboard": "latest",
+    "lodash": "latest",
+    "lit-html": "latest",
+    "twind": "latest"
   }
 }
