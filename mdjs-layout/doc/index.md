@@ -18,7 +18,7 @@ These are the three components in the package in hierarchical order (starting to
 
 ```js script
 import { html } from 'lit';
-import '../mdjs-layout.js';
+import '../src/mdjs-layout/mdjs-layout.js';
 
 // A copy of a preview-story from rendered docs index.md from Simba
 const demoContent = `
