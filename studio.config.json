@@ -31,7 +31,9 @@
       ],
       [
         "Layouts",
-        []
+        [
+          "mdjs-layout"
+        ]
       ]
     ]
   }
