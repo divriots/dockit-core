@@ -21,20 +21,9 @@
       ],
       [
         "Components",
-        [
-          "box",
-          "caption",
-          "text",
-          "showcases",
-          "space"
-        ]
+        ["box", "caption", "text", "showcases", "space", "mdjs-theme-switch"]
       ],
-      [
-        "Layouts",
-        [
-          "mdjs-layout"
-        ]
-      ]
+      ["Layouts", ["mdjs-layout", "mdjs-layout-controls"]]
     ]
   }
 }
