@@ -1,4 +1,4 @@
-export default `
+export default /* css */ `
   html {
     display: block;
     font-family: 'Inter var', ui-sans-serif, system-ui, -apple-system,
