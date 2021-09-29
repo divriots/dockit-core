@@ -1,7 +1,11 @@
 import { html, LitElement } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import '../mdjs-layout-controls/mdjs-layout-controls.js';
-import './mdjs-styles.css';
+import '../../mdjs-layout-controls/mdjs-layout-controls.js';
+import styles from './mdjs-styles.css.js';
+
+const sheet = new CSSStyleSheet();
+sheet.replaceSync(styles);
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
 
 export class MdjsLayout extends LitElement {
   static get properties() {

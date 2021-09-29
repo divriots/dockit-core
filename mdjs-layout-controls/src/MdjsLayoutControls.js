@@ -1,7 +1,7 @@
 import { LitElement, css, html } from 'lit';
 import deepmerge from 'deepmerge';
 import { isPlainObject } from 'is-plain-object';
-import '../mdjs-theme-switch/mdjs-theme-switch.js';
+import '../../mdjs-theme-switch/mdjs-theme-switch.js';
 
 export class MdjsLayoutControls extends LitElement {
   static get properties() {
