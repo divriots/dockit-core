@@ -20,6 +20,11 @@ template.innerHTML = `
 
 export class MdjsThemeSwitch extends ThemeToggler {
   _localStorageKey = 'mdjs-color-scheme-dark';
+  _cssPropNames = {
+    background: '--mdjs-theme-bg',
+    color: '--mdjs-theme-color',
+    fill: '--mdjs-theme-fill',
+  };
 
   get switchBtn() {
     return this.shadowRoot.querySelector('simba-switch');
@@ -31,6 +36,27 @@ export class MdjsThemeSwitch extends ThemeToggler {
     // Ensure the switch button is synced to our theme prop after it has rendered
     requestAnimationFrame(() => {
       this.switchBtn.checked = this.theme === 'dark';
+    });
+  }
+
+  setupThemeTransition() {
+    // TODO: remove this override when we no longer need double animation
+    // frame. This is needed because of how we load CSSStyleSheet in mdjs-layout
+    // which will actually take 2 render frames to load fully...
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.documentElement.style.setProperty(
+          this._cssPropNames.background,
+          `background 0.3s ease-in-out`
+        );
+
+        ['color', 'fill'].forEach((prop) => {
+          document.documentElement.style.setProperty(
+            this._cssPropNames[prop],
+            `${prop} 0.6s ease-in-out`
+          );
+        });
+      });
     });
   }
 

@@ -1,3 +1,3 @@
-import { MdjsLayout } from './MdjsLayout.js';
+import { MdjsLayout } from './src/MdjsLayout.js';
 
 customElements.define('mdjs-layout', MdjsLayout);
