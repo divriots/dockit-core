@@ -4,7 +4,7 @@ import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';
 import { getTransitionsHtml } from './transition-helper';
 
-export class SassShowcases extends HTMLElement {
+export class CssShowcases extends HTMLElement {
   connectedCallback() {
     const prefix = this.getAttribute('css-props-prefix') || '';
 
