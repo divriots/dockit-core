@@ -5,11 +5,10 @@ export const getZIndexHtml = (props) => {
     <div
       style="
         z-index: var(${name});
-        height: 6rem;
-        min-width: 8rem;
-        margin-left: -6rem;
-        padding: 2rem;
-        margin-top: ${4 * i}rem;
+        height: 8rem;
+        width: 11rem;
+        margin-left: -9rem;
+        margin-top: ${6 * i}rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -26,7 +25,7 @@ export const getZIndexHtml = (props) => {
     .join(' ');
 
   return /*html*/ `
-    <div style="display:flex;flex-direction:row;justify-content:center;">
+    <div style="display:flex;flex-direction:row;justify-content:center;margin-left:9rem;">
       ${cells}
     </div>
   `;
