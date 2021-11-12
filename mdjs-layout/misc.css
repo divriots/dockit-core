@@ -1,0 +1,74 @@
+mdjs-layout [slot='logo'] > :first-child {
+  width: auto;
+  height: 3em;
+}
+
+.prose {
+  max-width: unset;
+}
+
+.prose ol,
+.prose ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.preview-story {
+  border: 1px solid #374151;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.preview-story .story_padded {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding: 15px;
+}
+
+.preview-story details {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-top: 1px solid #374151;
+  overflow: hidden;
+}
+
+.preview-story summary {
+  background-color: #e5e7eb;
+  cursor: pointer;
+  padding: 5px 20px;
+}
+
+.preview-story summary:hover {
+  background-color: #d1d5db;
+}
+
+.preview-story pre {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 15px;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark .preview-story,
+html.dark .preview-story details {
+  border-color: #404040;
+}
+
+html.dark .preview-story summary {
+  background-color: #262626;
+}
+
+/* workaround selector specificity issue between Prism theme and tailwind typography */
+.prose .preview-story pre,
+html.dark .prose .preview-story pre {
+  background-color: #1e1e1e;
+}

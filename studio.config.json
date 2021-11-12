@@ -3,27 +3,12 @@
     "dir": "",
     "menu": [
       "readme",
-      [
-        "System-UI",
-        []
-      ],
-      [
-        "TailwindCSS",
-        [
-          "tailwind-showcases"
-        ]
-      ],
-      [
-        "Sass",
-        [
-          "css-showcases"
-        ]
-      ],
-      [
-        "Components",
-        ["box", "caption", "text", "showcases", "space", "mdjs-theme-switch"]
-      ],
-      ["Layouts", ["mdjs-layout", "mdjs-layout-controls"]]
+      ["System-UI", []],
+      ["TailwindCSS", ["tailwind-showcases"]],
+      ["Sass", ["css-showcases"]],
+      ["Components", ["box", "caption", "text", "showcases", "space"]],
+      ["Layouts", ["mdjs-layout"]],
+      ["Infra", ["doc-layout"]]
     ]
   }
 }

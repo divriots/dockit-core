@@ -1,1 +1,1 @@
-export * from './src/MdjsLayout.js';
+export { breakpoints } from './src/breakpoints';
