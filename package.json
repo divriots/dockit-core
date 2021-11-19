@@ -19,7 +19,6 @@
     "tailwindcss": "^2.2.15"
   },
   "devDependencies": {
-    "lit": "^2.0.0-rc.4",
-    "twind": "^0.16.16"
+    "lit": "^2.0.0-rc.4"
   }
 }
