@@ -15,7 +15,7 @@ mdjs-layout [slot='logo'] > :first-child {
 }
 
 .preview-story {
-  border: 1px solid #374151;
+  border: 1px solid #404040;
   border-radius: 6px;
   margin-bottom: 15px;
 }
@@ -29,18 +29,18 @@ mdjs-layout [slot='logo'] > :first-child {
 .preview-story details {
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
-  border-top: 1px solid #374151;
+  border-top: 1px solid #404040;
   overflow: hidden;
 }
 
 .preview-story summary {
-  background-color: #e5e7eb;
+  background-color: #e5e5e5;
   cursor: pointer;
   padding: 5px 20px;
 }
 
 .preview-story summary:hover {
-  background-color: #d1d5db;
+  background-color: #d4d4d4;
 }
 
 .preview-story pre {
@@ -68,7 +68,7 @@ html.dark .preview-story summary {
 }
 
 /* workaround selector specificity issue between Prism theme and tailwind typography */
-.prose .preview-story pre,
-html.dark .prose .preview-story pre {
+.prose pre,
+html.dark .dark\:prose-light pre {
   background-color: #1e1e1e;
 }
