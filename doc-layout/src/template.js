@@ -1,7 +1,7 @@
 import '@divriots/dockit-core/mdjs-layout/load-all';
 import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { logoSvg } from './logo.svg.js';
+import logoSvg from './logo.svg?raw';
 
 export const docLayoutTemplate = (content, context) => html`
   <style>
@@ -25,7 +25,9 @@ export const docLayoutTemplate = (content, context) => html`
       }
     }}"
   >
-    <div class="logo" slot="logo" aria-label="dockit-core">${logoSvg}</div>
+    <div class="logo" slot="logo" aria-label="dockit-core">
+      ${unsafeHTML(logoSvg)}
+    </div>
     <div class="prose dark:prose-light">${unsafeHTML(content)}</div>
   </mdjs-layout>
 `;
