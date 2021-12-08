@@ -69,6 +69,6 @@ html.dark .preview-story summary {
 
 /* workaround selector specificity issue between Prism theme and tailwind typography */
 .prose pre,
-html.dark .dark\:prose-light pre {
+html.dark .dark\:prose-dark pre {
   background-color: #1e1e1e;
 }

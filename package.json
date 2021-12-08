@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "@stencil/core": "^2.10.0",
-    "@tailwindcss/typography": "^0.4.1",
     "lit": "^2.0.0",
     "twind": "^0.16.16"
   }
