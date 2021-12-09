@@ -1,9 +1,9 @@
 # mdjs-layout
 
-This project itself serves as an example of how to use `<mdjs-layout>`, so we recommend to start with it.
-Left navigation, logo, default styles and so on are all present thanks to it.
+This project itself serves as an example of how to use `<mdjs-layout>`, so we recommend to learn from it.
+Left navigation, logo, default styles, etc... that you see around are all powered by it.
 
-These are the main files to check:
+The main files to check are:
 
 - `mdjs.config.js` which configures the global template for all Markdown files
 - `doc-layout/src/template.js` contains the global template itself, all necessary imports and the code specific to this project which gives it a unique touch
@@ -18,21 +18,25 @@ In `dockit-core` we use `html` from Lit to define the layout template and `unsaf
 But Lit is not required and actually it's up to you and may depend on what you already have in your Design System.
 We recommend to reuse whatever you already have or pick up something like Lit among the technologies which Backlight supports.
 
-Feel free to adapt these examples for your own project even if used outside of Backlight, it's not complex and most likely will fit you project nicely with the provided defaults.
+Feel free to adapt these examples for your own project even if used outside of Backlight, it's not complex and most likely will fit your project nicely with the provided defaults.
 
 ## Content
 
 The `<mdjs-layout>` is designed to be the main and only root element on the page.
-We recommend importing `@divriots/dockit-core/mdjs-layout/load-all` and using the following setup to inject the content in the default slot and have `light/dark` mode support out-of-the-box:
+We recommend to use the following setup to define the element, import styles, inject the content in the default slot and have `light/dark` mode support out-of-the-box:
 
 ```js
 // mdjs.config.js
-import '@divriots/dockit-core/mdjs-layout/load-all';
+import '@divriots/dockit-core/mdjs-layout/define.js';
+import { styles } from '@divriots/dockit-core/mdjs-layout';
 import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 export default {
   layout: (content, context) => html`
+    <style>
+      ${unsafeHTML(styles)}
+    </style>
     <mdjs-layout
       @color-scheme-change="${(event) => {
         if (event.detail.colorScheme === 'dark') {
@@ -42,15 +46,13 @@ export default {
         }
       }}"
     >
-      ...
       <div class="prose dark:prose-dark">${unsafeHTML(content)}</div>
-      ...
     </mdjs-layout>
   `,
 };
 ```
 
-The `@color-scheme-change` handler adds a class `dark` manually on the `<html>` based on the initial state of the component (or user configuration) and is required for `prose dark:prose-dark` ([Tailwind-based typography classes](https://github.com/tailwindlabs/tailwindcss-typography)) to switch styles correctly when light/dark mode is switched.
+The `@color-scheme-change` handler manually adds a class `dark` on the `<html>` based on the initial state of the component (or user configuration) and is required for `prose dark:prose-dark` ([Tailwind-based typography classes](https://github.com/tailwindlabs/tailwindcss-typography)) to switch styles correctly when light/dark mode is switched.
 
 Optionally you can get rid of `prose dark:prose-dark` and force a specific theme by manually adding `dark` to the body.
 Or you can implement your own light/dark theme, thanks to the fact that the content is located in Light DOM.
@@ -65,11 +67,11 @@ The size will be set automatically and we recommend not to change it.
 
 ```js
 // mdjs.config.js
-import '@divriots/dockit-core/mdjs-layout/load-all';
 import { html } from 'lit';
 
 export default {
   layout: (content, context) => html`
+    ...
     <mdjs-layout>
       ...
       <div slot="logo"><svg>...</svg></div>
@@ -91,7 +93,7 @@ import { html } from 'lit';
 
 export default {
   layout: (content, context) =>
-    html`<mdjs-layout .context="${context}">...</mdjs-layout>`,
+    html`...<mdjs-layout .context="${context}">...</mdjs-layout>`,
 };
 ```
 
@@ -186,9 +188,9 @@ The general approach is to first style the light mode and then use `html.dark` s
 ### Content theme
 
 Content is part of the Light DOM and can be styled directly.
-When importing `@divriots/dockit-core/mdjs-layout/load-all` you include `normalize` styles, styles for the content typography (including light/dark modes), Prism theme for the code highlighting, code block styles (including live demo wrappers based on MDJS stories), and some other styles for various things.
-It's not required to `load-all`, but if you decide not to do that, then all of the above need to be styled by you yourself or included manually from another source.
-We recommened checking the content of `load-all` to learn more about the default setup.
+The `styles` imported from `@divriots/dockit-core/mdjs-layout` include `normalize` styles, styles for the content typography (including light/dark modes), Prism theme for the code highlighting, code block styles (including live demo wrappers based on MDJS stories), and some other styles for various things.
+As such `styles` is quite opinionated, but it is mostly composed of other individual libraries which you can import separately and adjust to your own needs.
+We recommened checking the content of `styles` to learn more about the default setup.
 
 ### Shell theme
 
@@ -203,7 +205,7 @@ For the sake of themeing and flexibility, we provide a few CSS custom properties
 - `--mdjs-layout-navigation-link-color` - left navigation link color for each item
 - `--mdjs-layout-navigation-current-link-color` - left navigation link color for the currently open page
 
-This is useful if you decide to load completely different styles and change the appearance of the light/dark mode instead of relying on the default setup from `@divriots/dockit-core/mdjs-layout/load-all`.
+This is useful if you decide to load completely different styles and change the appearance of the light/dark mode instead of relying on the default `styles` from `@divriots/dockit-core/mdjs-layout`.
 
 Make sure to define and test each of them for light and dark modes, e.g. using the following approach:
 
@@ -215,6 +217,7 @@ export default {
   layout: (content, context) =>
     html`
       <style>
+        /* ... */
         html {
           --mdjs-layout-bg: #ffffff;
         }

@@ -1,11 +1,12 @@
-import '@divriots/dockit-core/mdjs-layout/load-all';
+import '@divriots/dockit-core/mdjs-layout/define.js';
+import { styles } from '@divriots/dockit-core/mdjs-layout';
 import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import logoSvg from './logo.svg?raw';
 
 export const docLayoutTemplate = (content, context) => html`
   <style>
-    .logo {
+    ${unsafeHTML(styles)} .logo {
       color: #f8c307;
     }
     .preview-story .story_padded {
