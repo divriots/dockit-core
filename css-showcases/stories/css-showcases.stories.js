@@ -33,6 +33,14 @@ export const mode_transition = () => html`<dockit-css-showcases
   mode="transition"
 ></dockit-css-showcases>`;
 
+export const easing = () => html`<dockit-css-showcases
+  css-props-prefix="--ease"
+></dockit-css-showcases>`;
+
+export const animation = () => html`<dockit-css-showcases
+  css-props-prefix="--animation"
+></dockit-css-showcases>`;
+
 export const border_radius = () => html`<dockit-css-showcases
   css-props-prefix="--border-radius"
   component-class="box wide"

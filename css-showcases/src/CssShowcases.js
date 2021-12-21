@@ -18,8 +18,28 @@ export class CssShowcases extends HTMLElement {
     const styleKey = this.getAttribute('style-key');
     const componentType = this.getAttribute('component-type') || 'box';
 
-    if (prefix.includes('transition') || mode === 'transition') {
-      this.innerHTML = getTransitionsHtml(props);
+    if (
+      prefix.includes('transition') ||
+      prefix.includes('time') ||
+      prefix.includes('ease') ||
+      prefix.includes('animation') ||
+      mode === 'time' ||
+      mode === 'ease' ||
+      mode === 'animation'
+    ) {
+      let _mode =
+        mode != '' && mode != 'transition'
+          ? mode
+          : prefix.includes('time') ||
+            prefix.includes('transition') ||
+            mode === 'transition'
+          ? 'time'
+          : prefix.includes('ease')
+          ? 'ease'
+          : prefix.includes('animation')
+          ? 'animation'
+          : null;
+      this.innerHTML = getTransitionsHtml(props, _mode);
       return;
     }
 

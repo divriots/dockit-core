@@ -23,6 +23,66 @@
   --time-fast: 150ms;
   --time-x-fast: 50ms;
 
+  --ease: cubic-bezier(0.25, 0, 0.5, 1);
+  --ease-in: cubic-bezier(0.25, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.75, 1);
+  --ease-in-out: cubic-bezier(0.1, 0, 0.9, 1);
+  --ease-elastic: cubic-bezier(0.5, 0.75, 0.75, 1.25);
+  --ease-squish: cubic-bezier(0.5, -0.1, 0.1, 1.5);
+  --ease-step: steps(2);
+
+  --animation-spin: spin 2s linear infinite;
+  --animation-ping: ping 5s var(--ease-out) infinite;
+  --animation-blink: blink 1s var(--ease-out) infinite;
+  --animation-float: float 3s var(--ease-out) infinite;
+  --animation-bounce: bounce 2s var(--ease-squish) infinite;
+  --animation-pulse: pulse 2s var(--ease-out) infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  @keyframes ping {
+    90%,
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  @keyframes float {
+    50% {
+      transform: translateY(-25%);
+    }
+  }
+  @keyframes bounce {
+    25% {
+      transform: translateY(-20%);
+    }
+    40% {
+      transform: translateY(-3%);
+    }
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes pulse {
+    50% {
+      transform: scale(0.9, 0.9);
+    }
+  }
+
   --border-radius-small: 0.125rem;
   --border-radius-medium: 0.25rem;
   --border-radius-large: 0.5rem;
