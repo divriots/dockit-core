@@ -7,6 +7,7 @@ import { getTransitionsHtml } from './transition-helper';
 export class CssShowcases extends HTMLElement {
   connectedCallback() {
     const prefix = this.getAttribute('css-props-prefix') || '';
+    const mode = this.getAttribute('mode') || '';
 
     const names = new Set(
       (this.getAttribute('css-props-names') || '').split(',')
@@ -17,17 +18,20 @@ export class CssShowcases extends HTMLElement {
     const styleKey = this.getAttribute('style-key');
     const componentType = this.getAttribute('component-type') || 'box';
 
-    if (prefix.includes('transition')) {
+    if (prefix.includes('transition') || mode === 'transition') {
       this.innerHTML = getTransitionsHtml(props);
       return;
     }
 
-    if (prefix.includes('z-index')) {
+    if (prefix.includes('z-index') || mode === 'z-index') {
       this.innerHTML = getZIndexHtml(props);
       return;
     }
 
-    if (prefix.includes('spacing') && !prefix.includes('letter-spacing')) {
+    if (
+      (prefix.includes('spacing') && !prefix.includes('letter-spacing')) ||
+      mode === 'scale'
+    ) {
       this.innerHTML = getScaleHtml(props);
       return;
     }

@@ -5,11 +5,23 @@
   --z-index-toast: 950;
   --z-index-tooltip: 1000;
 
+  --layer-drawer: 700;
+  --layer-dialog: 800;
+  --layer-dropdown: 900;
+  --layer-toast: 950;
+  --layer-tooltip: 1000;
+
   --transition-x-slow: 1000ms;
   --transition-slow: 500ms;
   --transition-medium: 250ms;
   --transition-fast: 150ms;
   --transition-x-fast: 50ms;
+
+  --time-x-slow: 1000ms;
+  --time-slow: 500ms;
+  --time-medium: 250ms;
+  --time-fast: 150ms;
+  --time-x-fast: 50ms;
 
   --border-radius-small: 0.125rem;
   --border-radius-medium: 0.25rem;
@@ -40,6 +52,17 @@
   --spacing-xx-large: 2.25rem;
   --spacing-xxx-large: 3rem;
   --spacing-xxxx-large: 4.5rem;
+
+  --sizes-xxx-small: 0.125rem;
+  --sizes-xx-small: 0.25rem;
+  --sizes-x-small: 0.5rem;
+  --sizes-small: 0.75rem;
+  --sizes-medium: 1rem;
+  --sizes-large: 1.25rem;
+  --sizes-x-large: 1.75rem;
+  --sizes-xx-large: 2.25rem;
+  --sizes-xxx-large: 3rem;
+  --sizes-xxxx-large: 4.5rem;
 
   --line-height-dense: 1.4;
   --line-height-normal: 1.8;
