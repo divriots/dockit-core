@@ -24,13 +24,17 @@ export const mode_z_index = () => html`<dockit-css-showcases
   mode="z-index"
 ></dockit-css-showcases>`;
 
-export const transition = () => html`<dockit-css-showcases
-  css-props-prefix="--transition"
+export const time = () => html`<dockit-css-showcases
+  css-props-prefix="--time"
 ></dockit-css-showcases>`;
 
-export const mode_transition = () => html`<dockit-css-showcases
-  css-props-prefix="--time"
-  mode="transition"
+export const mode_time = () => html`<dockit-css-showcases
+  css-props-prefix="--duration"
+  mode="time"
+></dockit-css-showcases>`;
+
+export const transition_deprecated = () => html`<dockit-css-showcases
+  css-props-prefix="--transition"
 ></dockit-css-showcases>`;
 
 export const easing = () => html`<dockit-css-showcases

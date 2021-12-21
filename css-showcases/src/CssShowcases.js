@@ -3,6 +3,7 @@ import { getCssCustomProps } from './css-props';
 import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';
 import { getTransitionsHtml } from './transition-helper';
+import styles from './alerts.module.scss';
 
 export class CssShowcases extends HTMLElement {
   connectedCallback() {
@@ -28,18 +29,25 @@ export class CssShowcases extends HTMLElement {
       mode === 'animation'
     ) {
       let _mode =
-        mode != '' && mode != 'transition'
+        mode != ''
           ? mode
-          : prefix.includes('time') ||
-            prefix.includes('transition') ||
-            mode === 'transition'
+          : prefix.includes('time') || prefix.includes('transition')
           ? 'time'
           : prefix.includes('ease')
           ? 'ease'
           : prefix.includes('animation')
           ? 'animation'
           : null;
-      this.innerHTML = getTransitionsHtml(props, _mode);
+      this.innerHTML = getTransitionsHtml(
+        props,
+        _mode,
+        prefix.includes('transition')
+      );
+      if (prefix.includes('transition'))
+        this.innerHTML =
+          this.innerHTML +
+          /*html*/
+          `<p class="${styles.warn}"><code>--transition</code> CSS Custom Props prefix is deprecated.<br>Use <code>--time</code> prefix instead, or use <code>&lt;dockit-css-showcases mode="time" css-props-prefix="--transition"/></code> elements to explicitely set the rendering mode.</p>`;
       return;
     }
 
@@ -64,6 +72,7 @@ export class CssShowcases extends HTMLElement {
       .join(' ');
 
     this.innerHTML =
+      this.warningHTML +
       this.innerHTML +
       /*html*/
       `<dockit-showcases
