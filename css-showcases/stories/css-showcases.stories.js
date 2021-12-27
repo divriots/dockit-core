@@ -19,8 +19,30 @@ export const z_index = () => html`<dockit-css-showcases
   css-props-prefix="--z-index"
 ></dockit-css-showcases>`;
 
-export const transition = () => html`<dockit-css-showcases
+export const mode_z_index = () => html`<dockit-css-showcases
+  css-props-prefix="--layer"
+  mode="z-index"
+></dockit-css-showcases>`;
+
+export const time = () => html`<dockit-css-showcases
+  css-props-prefix="--time"
+></dockit-css-showcases>`;
+
+export const mode_time = () => html`<dockit-css-showcases
+  css-props-prefix="--duration"
+  mode="time"
+></dockit-css-showcases>`;
+
+export const transition_deprecated = () => html`<dockit-css-showcases
   css-props-prefix="--transition"
+></dockit-css-showcases>`;
+
+export const easing = () => html`<dockit-css-showcases
+  css-props-prefix="--ease"
+></dockit-css-showcases>`;
+
+export const animation = () => html`<dockit-css-showcases
+  css-props-prefix="--animation"
 ></dockit-css-showcases>`;
 
 export const border_radius = () => html`<dockit-css-showcases
@@ -38,6 +60,11 @@ export const shadow = () => html`<dockit-css-showcases
 
 export const spacing = () => html`<dockit-css-showcases
   css-props-prefix="--spacing"
+></dockit-css-showcases>`;
+
+export const mode_scale = () => html`<dockit-css-showcases
+  css-props-prefix="--sizes"
+  mode="scale"
 ></dockit-css-showcases>`;
 
 export const letter_spacing = () => html`<dockit-css-showcases
