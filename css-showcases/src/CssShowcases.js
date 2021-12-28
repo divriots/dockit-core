@@ -72,7 +72,6 @@ export class CssShowcases extends HTMLElement {
       .join(' ');
 
     this.innerHTML =
-      this.warningHTML +
       this.innerHTML +
       /*html*/
       `<dockit-showcases
