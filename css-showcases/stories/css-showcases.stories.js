@@ -97,3 +97,7 @@ export const font_family = () => html`<dockit-css-showcases
   component-type="text"
   style-key="font-family"
 ></dockit-css-showcases>`;
+
+export const regex_css_prefix = () => html`<dockit-css-showcases
+  css-props-prefix="--spacing-[x]{1,3}-"
+></dockit-css-showcases>`;
