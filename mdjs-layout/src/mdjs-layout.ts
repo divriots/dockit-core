@@ -20,7 +20,8 @@ export class MdjsLayout extends HTMLElement {
   context: any;
 
   private _isNavigationShown: boolean = false;
-  private _colorScheme: ColorScheme = getInitialColorScheme();
+  private _colorScheme: ColorScheme =
+    this.initialColorScheme || getInitialColorScheme();
 
   private $colorSchemeToggle: HTMLElement;
   private $navigationToggle?: HTMLElement;
@@ -213,6 +214,30 @@ export class MdjsLayout extends HTMLElement {
     this.renderIsNavigationShown();
   }
 
+  private get initialColorScheme(): ColorScheme | null {
+    return this.getAttribute('initial-color-scheme') as ColorScheme | null;
+  }
+
+  private set initialColorScheme(value: ColorScheme | null | undefined) {
+    if (!value) {
+      this.removeAttribute('initial-color-scheme');
+    } else {
+      this.setAttribute('initial-color-scheme', value);
+    }
+  }
+
+  private get disableColorSchemeChange() {
+    return this.hasAttribute('disable-color-scheme-change');
+  }
+
+  private set disableColorSchemeChange(value) {
+    if (value) {
+      this.setAttribute('disable-color-scheme-change', '');
+    } else {
+      this.removeAttribute('disable-color-scheme-change');
+    }
+  }
+
   private get colorScheme(): ColorScheme {
     return this._colorScheme;
   }
@@ -243,10 +268,16 @@ export class MdjsLayout extends HTMLElement {
               <slot name="topbar"></slot>
             </div>
             <div class="buttons-container">
-              <button
-                class="color-scheme-toggle"
-                aria-live="polite"
-              ></button>
+              ${
+                this.disableColorSchemeChange
+                  ? ''
+                  : /* html */ `
+                  <button
+                    class="color-scheme-toggle"
+                    aria-live="polite"
+                  ></button>
+                `
+              }
               ${
                 this.hasNavigation
                   ? /*html*/ `

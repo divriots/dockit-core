@@ -183,6 +183,20 @@ export default {
 As seen in the example above, the `dark` class on the `<html>` is useful for styling anything in light/dark modes, and not only for `prose dark:prose-dark` to work correctly.
 The general approach is to first style the light mode and then use `html.dark` selector to style the dark mode.
 
+### Configuring mdjs-layout theme
+
+You can set an initial theme to the mdjs-layout component through an attribute.
+
+```html
+<mdjs-layout initial-color-scheme="dark"></mdjs-layout>
+```
+
+You can also disable color scheme changing, e.g. when your design system has only 1 setting.
+
+```html
+<mdjs-layout disable-color-scheme-change></mdjs-layout>
+```
+
 ## Custom themeing
 
 ### Content theme
