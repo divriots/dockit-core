@@ -46,15 +46,15 @@ export default {
         }
       }}"
     >
-      <div class="prose dark:prose-dark">${unsafeHTML(content)}</div>
+      <div class="prose dark:prose-invert">${unsafeHTML(content)}</div>
     </mdjs-layout>
   `,
 };
 ```
 
-The `@color-scheme-change` handler manually adds a class `dark` on the `<html>` based on the initial state of the component (or user configuration) and is required for `prose dark:prose-dark` ([Tailwind-based typography classes](https://github.com/tailwindlabs/tailwindcss-typography)) to switch styles correctly when light/dark mode is switched.
+The `@color-scheme-change` handler manually adds a class `dark` on the `<html>` based on the initial state of the component (or user configuration) and is required for `prose dark:prose-invert` ([Tailwind-based typography classes](https://github.com/tailwindlabs/tailwindcss-typography)) to switch styles correctly when light/dark mode is switched.
 
-Optionally you can get rid of `prose dark:prose-dark` and force a specific theme by manually adding `dark` to the body.
+Optionally you can get rid of `prose dark:prose-invert` and force a specific theme by manually adding `dark` to the body.
 Or you can implement your own light/dark theme, thanks to the fact that the content is located in Light DOM.
 
 If you plan to use `<mdjs-layout>` without Backlight/`mdjs.config.js`, then just put your content in the default slot by any means you have, but keep in mind that if the content is rendered dynamically, then it must come from a trusted source, because scripts inside it might be executed depending on the means you choose to render.
@@ -173,14 +173,14 @@ export default {
       }}"
     >
       ...
-      <div class="prose dark:prose-dark">${unsafeHTML(content)}</div>
+      <div class="prose dark:prose-invert">${unsafeHTML(content)}</div>
       ...
     </mdjs-layout>
   `,
 };
 ```
 
-As seen in the example above, the `dark` class on the `<html>` is useful for styling anything in light/dark modes, and not only for `prose dark:prose-dark` to work correctly.
+As seen in the example above, the `dark` class on the `<html>` is useful for styling anything in light/dark modes, and not only for `prose dark:prose-invert` to work correctly.
 The general approach is to first style the light mode and then use `html.dark` selector to style the dark mode.
 
 ### Configuring mdjs-layout theme
@@ -202,7 +202,7 @@ You can also disable color scheme changing, e.g. when your design system has onl
 ### Content theme
 
 Content is part of the Light DOM and can be styled directly.
-The `styles` imported from `@divriots/dockit-core/mdjs-layout` include `normalize` styles, styles for the content typography (including light/dark modes), Prism theme for the code highlighting, code block styles (including live demo wrappers based on MDJS stories), and some other styles for various things.
+The `styles` imported from `@divriots/dockit-core/mdjs-layout` include styles for the content typography (including light/dark modes), Prism theme for the code highlighting, code block styles (including live demo wrappers based on MDJS stories), and some other styles for various things.
 As such `styles` is quite opinionated, but it is mostly composed of other individual libraries which you can import separately and adjust to your own needs.
 We recommened checking the content of `styles` to learn more about the default setup.
 

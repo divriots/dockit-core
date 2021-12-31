@@ -29,6 +29,6 @@ export const docLayoutTemplate = (content, context) => html`
     <div class="logo" slot="logo" aria-label="dockit-core">
       ${unsafeHTML(logoSvg)}
     </div>
-    <div class="prose dark:prose-dark">${unsafeHTML(content)}</div>
+    <div class="prose dark:prose-invert">${unsafeHTML(content)}</div>
   </mdjs-layout>
 `;
