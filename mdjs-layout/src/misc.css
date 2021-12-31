@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
 mdjs-layout [slot='logo'] > :first-child {
   width: auto;
   height: 3em;
@@ -7,11 +13,29 @@ mdjs-layout [slot='logo'] > :first-child {
   max-width: unset;
 }
 
-.prose ol,
-.prose ul {
-  list-style: none;
-  margin: 0;
+/* copied from typography styles */
+/* double-class is due to a specificity war with the Prism theme */
+.prose.prose :where(pre):not(:where([class~='not-prose'] *)) {
+  font-weight: 400;
+  font-size: 0.875em;
+  line-height: 1.7142857;
+  margin-top: 1.7142857em;
+  margin-bottom: 1.7142857em;
+  padding-top: 0.8571429em;
+  padding-right: 1.1428571em;
+  padding-bottom: 0.8571429em;
+  padding-left: 1.1428571em;
+}
+
+/* copied from typography styles */
+/* double-class is due to a specificity war with the Prism theme */
+.prose.prose :where(pre code):not(:where([class~='not-prose'] *)) {
   padding: 0;
+  font-weight: inherit;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
 }
 
 .preview-story {
@@ -43,7 +67,8 @@ mdjs-layout [slot='logo'] > :first-child {
   background-color: #d4d4d4;
 }
 
-.preview-story pre {
+/* double-class is due to a specificity war with typography and Prism theme */
+.preview-story.preview-story pre {
   border: 0;
   border-radius: 0;
   margin: 0;
@@ -65,10 +90,4 @@ html.dark .preview-story details {
 
 html.dark .preview-story summary {
   background-color: #262626;
-}
-
-/* workaround selector specificity issue between Prism theme and tailwind typography */
-.prose pre,
-html.dark .dark\:prose-dark pre {
-  background-color: #1e1e1e;
 }
