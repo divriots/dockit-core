@@ -91,3 +91,38 @@ html.dark .preview-story details {
 html.dark .preview-story summary {
   background-color: #262626;
 }
+
+api-viewer,
+api-docs,
+api-demo {
+  --ave-border-radius: 6px;
+  --ave-tab-indicator-size: 6px;
+
+  --ave-primary-color: #e5e5e5;
+  --ave-accent-color: #000000;
+  --ave-border-color: #404040;
+  --ave-header-background: #e5e5e5;
+  --ave-header-color: #404040;
+  --ave-item-color: #404040;
+  --ave-label-color: #404040;
+  --ave-link-color: #171717;
+  --ave-link-hover-color: #171717;
+  --ave-tab-color: #404040;
+  --ave-tab-selected-color: #737373;
+}
+
+html.dark api-viewer,
+html.dark api-docs,
+html.dark api-demo {
+  --ave-primary-color: #262626;
+  --ave-accent-color: #ffffff;
+  --ave-border-color: #404040;
+  --ave-header-background: #262626;
+  --ave-header-color: #d4d4d4;
+  --ave-item-color: #d4d4d4;
+  --ave-label-color: #a3a3a3;
+  --ave-link-color: #ffffff;
+  --ave-link-hover-color: #ffffff;
+  --ave-tab-color: #d4d4d4;
+  --ave-tab-selected-color: #a3a3a3;
+}
