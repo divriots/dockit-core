@@ -23,7 +23,7 @@ export class MdjsLayout extends HTMLElement {
   private _colorScheme: ColorScheme =
     this.initialColorScheme || getInitialColorScheme();
 
-  private $colorSchemeToggle: HTMLElement;
+  private $colorSchemeToggle?: HTMLElement;
   private $navigationToggle?: HTMLElement;
   private $navigationWrapper?: HTMLElement;
   private listenerRemovers: Function[] = [];
@@ -67,17 +67,19 @@ export class MdjsLayout extends HTMLElement {
   }
 
   private setupEvents() {
-    const colorSchemeToggleClickListener = () => this.toggleColorScheme();
-    this.$colorSchemeToggle.addEventListener(
-      'click',
-      colorSchemeToggleClickListener
-    );
-    this.listenerRemovers.push(() => {
-      this.$colorSchemeToggle.removeEventListener(
+    if (this.$colorSchemeToggle) {
+      const colorSchemeToggleClickListener = () => this.toggleColorScheme();
+      this.$colorSchemeToggle.addEventListener(
         'click',
         colorSchemeToggleClickListener
       );
-    });
+      this.listenerRemovers.push(() => {
+        this.$colorSchemeToggle.removeEventListener(
+          'click',
+          colorSchemeToggleClickListener
+        );
+      });
+    }
 
     if (this.$navigationToggle) {
       const navigationToggleClickListener = () => this.toggleNavigation();
@@ -123,12 +125,16 @@ export class MdjsLayout extends HTMLElement {
 
   private renderColorScheme() {
     this.setAttribute('data-color-scheme', this.colorScheme);
-    this.$colorSchemeToggle.setAttribute(
-      'aria-label',
-      `Press to activate ${this.colorScheme === 'dark' ? 'light' : 'dark'} mode`
-    );
-    this.$colorSchemeToggle.innerText =
-      this.colorScheme === 'dark' ? '🌙' : '☀';
+    if (this.$colorSchemeToggle) {
+      this.$colorSchemeToggle.setAttribute(
+        'aria-label',
+        `Press to activate ${
+          this.colorScheme === 'dark' ? 'light' : 'dark'
+        } mode`
+      );
+      this.$colorSchemeToggle.innerText =
+        this.colorScheme === 'dark' ? '🌙' : '☀';
+    }
   }
 
   private renderHasNavigation() {
