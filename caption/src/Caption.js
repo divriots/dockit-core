@@ -1,12 +1,17 @@
 import copyTextToClipboard from 'copy-to-clipboard';
-import styles from './Caption.module.css';
+import captionStyles from './Caption.css';
 
 export class Caption extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
   copy() {
     const text = this.getAttribute('text');
     copyTextToClipboard(text);
 
-    const tooltip = this.querySelector(`.${styles.tooltip}`);
+    const tooltip = this.shadowRoot.querySelector(`.tooltip`);
     tooltip.textContent = 'Copied';
     setTimeout(() => (tooltip.textContent = 'Copy'), 2000);
   }
@@ -19,11 +24,12 @@ export class Caption extends HTMLElement {
 
     const text = this.getAttribute('text');
 
-    this.innerHTML = /*html*/ `
-  <div class="${styles.wrapper}">
-    <pre ${widthStyle} class="${styles.text}">${text}</pre>
-    <div class="${styles.tooltip}">Copy</div>
-  </div>
-`;
+    this.shadowRoot.innerHTML = /*html*/ `
+      <style>${captionStyles}</style>
+      <div class="wrapper">
+        <pre ${widthStyle} class="text">${text}</pre>
+        <div class="tooltip">Copy</div>
+      </div>
+    `;
   }
 }
