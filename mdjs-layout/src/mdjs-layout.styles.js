@@ -283,6 +283,8 @@ export const mdjsLayoutStyles = /*css*/ `
       var(--private--mdjs-layout-header-height) + 2 *
         var(--private--mdjs-layout-spacer)
     );
+    position: relative;
+    z-index: 1;
   }
 
   .content {
