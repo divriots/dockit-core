@@ -43,7 +43,7 @@ export class CssShowcases extends HTMLElement {
         _mode,
         prefix.includes('transition')
       );
-      if (prefix.includes('transition'))
+      if (prefix.includes('transition') && !this.hasAttribute('mode'))
         this.innerHTML =
           this.innerHTML +
           /*html*/
