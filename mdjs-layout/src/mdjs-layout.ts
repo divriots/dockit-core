@@ -325,7 +325,9 @@ export class MdjsLayout extends HTMLElement {
                                         this.relativeUrl(item.page.url)
                                       )}"
                                       aria-current="${
-                                        location.href.endsWith(item.page.url)
+                                        location.href.endsWith(
+                                          '/' + item.page.url
+                                        )
                                           ? 'location'
                                           : ''
                                       }"
