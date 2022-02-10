@@ -1,6 +1,6 @@
 import styles from './transition-box.module.scss';
 
-export const getTransitionsHtml = (props, mode) => {
+export const getTransitionsHtml = (element, props, mode) => {
   function style(name) {
     let rules = [];
     if (mode === 'animation') {
@@ -22,7 +22,7 @@ export const getTransitionsHtml = (props, mode) => {
   }
 
   setTimeout(() => {
-    const boxes = document.querySelectorAll('.transitionBox');
+    const boxes = element.querySelectorAll('.transitionBox');
     const toggle = mode === 'animation' ? 'no-anim' : 'clicked';
     boxes.forEach((box) =>
       box.addEventListener('click', () => {

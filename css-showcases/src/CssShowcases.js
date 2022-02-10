@@ -39,6 +39,7 @@ export class CssShowcases extends HTMLElement {
           ? 'animation'
           : null;
       this.innerHTML = getTransitionsHtml(
+        this,
         props,
         _mode,
         prefix.includes('transition')
