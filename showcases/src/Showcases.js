@@ -1,7 +1,10 @@
+import { CaptionedBox } from './CaptionedBox.js';
+import { CaptionedText } from './CaptionedText';
 import styles from './Showcases.module.css';
-import './DockitCaptionedBox';
-import './DockitCaptionedText';
 import { getCaption } from './caption-helper';
+
+customElements.define('dockit-captioned-box', CaptionedBox);
+customElements.define('dockit-captioned-text', CaptionedText);
 
 export class Showcases extends HTMLElement {
   connectedCallback() {

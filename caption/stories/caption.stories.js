@@ -1,4 +1,4 @@
-import '../index.js';
+import '../dockit-caption.define.js';
 
 export default {
   parameters: {

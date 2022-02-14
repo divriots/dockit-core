@@ -1,4 +1,4 @@
-import '~/showcases';
+import '~/showcases/dockit-showcases.define.js';
 import { extractClassSuffixes } from './theme-helpers';
 import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';

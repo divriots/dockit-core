@@ -1,4 +1,4 @@
-import '../index.js';
+import '../dockit-showcases.define.js';
 import './showcases-stories.css';
 
 export const opacity_classes = () => {

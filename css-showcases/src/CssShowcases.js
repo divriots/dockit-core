@@ -1,4 +1,4 @@
-import '~/showcases';
+import '~/showcases/dockit-showcases.define.js';
 import { getCssCustomProps } from './css-props';
 import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';

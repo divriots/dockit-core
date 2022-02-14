@@ -1,3 +1,3 @@
-import { Caption } from './Caption';
+import { Caption } from './src/Caption';
 
 customElements.define('dockit-caption', Caption);

@@ -1,6 +1,6 @@
 import styles from './CaptionedBox.module.css';
-import '~/box';
-import '~/caption';
+import '~/box/dockit-box.define.js';
+import '~/caption/dockit-caption.define.js';
 import { getCaption } from './caption-helper';
 
 export class CaptionedBox extends HTMLElement {

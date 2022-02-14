@@ -1,4 +1,4 @@
-import '../index.js';
+import '../dockit-box.define.js';
 import './box-stories.css';
 
 export default {

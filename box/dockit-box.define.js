@@ -1,2 +1,2 @@
-import { Box } from './Box';
+import { Box } from './src/Box';
 customElements.define('dockit-box', Box);

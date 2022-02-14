@@ -1,6 +1,6 @@
 import styles from './CaptionedText.module.css';
-import '~/caption';
-import '~/text';
+import '~/caption/dockit-caption.define.js';
+import '~/text/dockit-text.define.js';
 import { getCaption } from './caption-helper';
 
 export class CaptionedText extends HTMLElement {
