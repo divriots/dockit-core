@@ -3,7 +3,6 @@
     "dir": "",
     "menu": [
       "readme",
-      ["System-UI", []],
       ["TailwindCSS", ["tailwind-showcases"]],
       ["Sass", ["css-showcases"]],
       ["Components", ["box", "caption", "text", "showcases", "space"]],
