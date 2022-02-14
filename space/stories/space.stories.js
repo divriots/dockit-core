@@ -1,4 +1,4 @@
-import '../index';
+import '../dockit-space.define.js';
 import { html } from 'lit';
 
 export const space_numbers_array_scale = () => html`<dockit-space

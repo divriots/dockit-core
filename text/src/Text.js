@@ -4,10 +4,6 @@ const shortText = 'The quick brown fox jumps over the lazy dog.';
 
 export class Text extends HTMLElement {
   connectedCallback() {
-    const lt = this.getAttribute('long-text');
-    const useLongText =
-      this.hasAttribute('long-text') && lt !== 'false' && lt !== 'null';
-
-    this.innerHTML = useLongText ? longText : shortText;
+    this.innerHTML = this.hasAttribute('long-text') ? longText : shortText;
   }
 }

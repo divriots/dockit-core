@@ -1,4 +1,4 @@
-import '../index';
+import '../dockit-css-showcases.define.js';
 import './css-showcases.css';
 import './tokens.scss';
 

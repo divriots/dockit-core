@@ -1,3 +1,3 @@
-import { CssShowcases } from './CssShowcases';
+import { CssShowcases } from './src/CssShowcases';
 
 customElements.define('dockit-css-showcases', CssShowcases);

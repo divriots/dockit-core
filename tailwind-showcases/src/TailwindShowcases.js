@@ -1,4 +1,4 @@
-import '~/showcases';
+import '~/showcases/dockit-showcases.define.js';
 import { extractClassSuffixes } from './theme-helpers';
 import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';
@@ -106,8 +106,8 @@ export class TailwindShowcases extends HTMLElement {
     const { classes, componentType } = classNames[showcaseKey];
 
     const componentClass = this.getAttribute('component-class');
-    const useLongText = this.getAttribute('long-text');
-    const checkeredBackground = this.getAttribute('checkered-background');
+    const hasLongText = this.hasAttribute('long-text');
+    const hasCheckeredBackground = this.hasAttribute('checkered-background');
 
     this.innerHTML =
       this.innerHTML +
@@ -116,8 +116,8 @@ export class TailwindShowcases extends HTMLElement {
           component-class="${componentClass}"
           showcase-classes="${classes.join(' ')}"
           component-type="${componentType}"
-          long-text="${useLongText}"
-          checkered-background="${checkeredBackground}"
+          ${hasLongText ? 'long-text' : ''}
+          ${hasCheckeredBackground ? 'checkered-background' : ''}
       ></dockit-showcases>`;
   }
 }

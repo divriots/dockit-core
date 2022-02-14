@@ -2,10 +2,7 @@ import styles from './Box.module.css';
 
 export class Box extends HTMLElement {
   connectedCallback() {
-    const shouldShowCheckedBackground =
-      (this.hasAttribute('checkered-background') &&
-        this.getAttribute('checkered-background') !== 'false') ||
-      !this.hasAttribute('checkered-background'); // enable checkered background by default
+    const hasCheckedBackground = this.hasAttribute('checkered-background');
 
     const className = this.getAttribute('class-name') || '';
     const style = this.getAttribute('showcase-style') || '';
@@ -13,7 +10,7 @@ export class Box extends HTMLElement {
     this.innerHTML = /*html*/ `
       <div class="${styles.wrapper}">
         ${
-          shouldShowCheckedBackground
+          hasCheckedBackground
             ? `<div class="${styles.checkered} ${className}"></div>`
             : ''
         }

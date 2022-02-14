@@ -1,6 +1,6 @@
 import styles from './CaptionedBox.module.css';
-import '~/box';
-import '~/caption';
+import '~/box/dockit-box.define.js';
+import '~/caption/dockit-caption.define.js';
 import { getCaption } from './caption-helper';
 
 export class CaptionedBox extends HTMLElement {
@@ -9,12 +9,12 @@ export class CaptionedBox extends HTMLElement {
     const showcaseStyle = this.getAttribute('showcase-style');
     const captionWidth = this.getAttribute('caption-width');
     const componentClass = this.getAttribute('class-name');
-    const checkeredBackground = this.getAttribute('checkered-background');
+    const hasCheckeredBackground = this.hasAttribute('checkered-background');
 
     this.innerHTML = /*html*/ `
 <div class="${styles.container}">
   <dockit-box
-    checkered-background="${checkeredBackground}"
+    ${hasCheckeredBackground ? 'checkered-background' : ''}
     class-name="${showcaseClass} ${componentClass}"
     showcase-style="${showcaseStyle}"
   ></dockit-box>

@@ -1,3 +1,3 @@
-import { Space } from './Space';
+import { Space } from './src/Space';
 
 customElements.define('dockit-space', Space);

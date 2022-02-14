@@ -1,4 +1,4 @@
-import '../index.js';
+import '../dockit-text.define.js';
 
 export default {
   parameters: {
