@@ -14,7 +14,7 @@ export class Box extends HTMLElement {
       <div class="${styles.wrapper}">
         ${
           shouldShowCheckedBackground
-            ? `<div id="${styles.checkered}" class="${className}"></div>`
+            ? `<div class="${styles.checkered} ${className}"></div>`
             : ''
         }
         <div class="${className}" style="${style}"></div>

@@ -2,10 +2,9 @@
   "packages": {
     "dir": "",
     "menu": [
-      "readme",
-      ["System-UI", []],
+      "introduction",
       ["TailwindCSS", ["tailwind-showcases"]],
-      ["Sass", ["css-showcases"]],
+      ["CSS", ["css-showcases"]],
       ["Components", ["box", "caption", "text", "showcases", "space"]],
       ["Layouts", ["mdjs-layout"]],
       ["Infra", ["doc-layout"]]
