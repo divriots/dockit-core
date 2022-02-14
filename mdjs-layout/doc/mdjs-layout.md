@@ -27,7 +27,7 @@ We recommend to use the following setup to define the element, import styles, in
 
 ```js
 // mdjs.config.js
-import '@divriots/dockit-core/mdjs-layout/define.js';
+import '@divriots/dockit-core/mdjs-layout/mdjs-layout.define.js';
 import { styles } from '@divriots/dockit-core/mdjs-layout';
 import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
