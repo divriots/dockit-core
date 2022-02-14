@@ -2,7 +2,7 @@
   "packages": {
     "dir": "",
     "menu": [
-      "readme",
+      "introduction",
       ["TailwindCSS", ["tailwind-showcases"]],
       ["CSS", ["css-showcases"]],
       ["Components", ["box", "caption", "text", "showcases", "space"]],
