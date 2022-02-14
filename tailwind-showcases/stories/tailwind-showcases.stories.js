@@ -46,7 +46,6 @@ export const border_width = () => html`<dockit-tailwind-showcases
 export const border_color = () => html`<dockit-tailwind-showcases
   .theme=${twTheme}
   showcase-key="borderColor"
-  checkered-background="false"
   component-class="h-24 w-24 border-4 rounded"
 ></dockit-tailwind-showcases>`;
 

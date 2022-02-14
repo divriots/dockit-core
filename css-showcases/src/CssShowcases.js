@@ -66,8 +66,8 @@ export class CssShowcases extends HTMLElement {
     }
 
     const componentClass = this.getAttribute('component-class');
-    const useLongText = this.getAttribute('long-text');
-    const checkeredBackground = this.getAttribute('checkered-background');
+    const hasLongText = this.hasAttribute('long-text');
+    const hasCheckeredBackground = this.hasAttribute('checkered-background');
     const showcaseStyles = props
       .map(([name]) => `${styleKey}: var(${name});`)
       .join(' ');
@@ -79,8 +79,8 @@ export class CssShowcases extends HTMLElement {
           component-class="${componentClass}"
           showcase-styles="${showcaseStyles}"
           component-type="${componentType}"
-          long-text="${useLongText}"
-          checkered-background="${checkeredBackground}"
+          ${hasLongText ? 'long-text' : ''}
+          ${hasCheckeredBackground ? 'checkered-background' : ''}
       >
       </dockit-showcases>`;
   }
