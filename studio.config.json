@@ -6,7 +6,7 @@
       ["TailwindCSS", ["tailwind-showcases"]],
       ["CSS", ["css-showcases"]],
       ["Components", ["box", "caption", "text", "showcases", "space"]],
-      ["Layouts", ["mdjs-layout"]],
+      ["Layouts", ["layout"]],
       ["Infra", ["doc-layout"]]
     ]
   }
