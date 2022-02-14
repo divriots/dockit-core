@@ -1,4 +1,4 @@
-import { mdjsLayoutStyles } from './mdjs-layout.styles';
+import { LayoutStyles } from './Layout.styles';
 
 type ColorScheme = 'light' | 'dark';
 
@@ -16,7 +16,7 @@ const getInitialColorScheme = (): ColorScheme => {
   );
 };
 
-export class MdjsLayout extends HTMLElement {
+export class Layout extends HTMLElement {
   context: any;
 
   private _isNavigationShown: boolean = false;
@@ -256,7 +256,7 @@ export class MdjsLayout extends HTMLElement {
   private renderTemplate() {
     return /*html*/ `
       <style>
-        ${mdjsLayoutStyles}
+        ${LayoutStyles}
       </style>
       <div class="fixed-container">
         <div class="relative-container">

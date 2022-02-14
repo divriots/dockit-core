@@ -5,7 +5,7 @@ body {
   overflow-y: scroll;
 }
 
-mdjs-layout [slot='logo'] > :first-child {
+dockit-layout [slot='logo'] > :first-child {
   width: auto;
   height: 3em;
 }
