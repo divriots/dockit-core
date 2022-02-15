@@ -1,3 +1,4 @@
+import type { Context } from '@divriots/studio-doc-compiler';
 import { LayoutStyles } from './Layout.styles';
 
 type ColorScheme = 'light' | 'dark';
@@ -17,7 +18,7 @@ const getInitialColorScheme = (): ColorScheme => {
 };
 
 export class Layout extends HTMLElement {
-  context: any;
+  context: Context;
 
   private _isNavigationShown: boolean = false;
   private _colorScheme: ColorScheme =
@@ -173,7 +174,7 @@ export class Layout extends HTMLElement {
   }
 
   private get hasNavigation(): boolean {
-    return this.context && this.context.pagesGraph;
+    return !!(this.context && this.context.pagesGraph);
   }
 
   private relativeUrl(url: string): string {
