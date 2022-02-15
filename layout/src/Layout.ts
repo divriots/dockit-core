@@ -51,7 +51,7 @@ export class Layout extends HTMLElement {
   }
 
   private disconnectedCallback(): void {
-    this.teardownEvents();
+    this.teardownWindowEvents();
   }
 
   private scheduleRender() {
@@ -76,7 +76,7 @@ export class Layout extends HTMLElement {
     this.renderColorScheme();
     this.renderHasNavigation();
     this.renderIsNavigationShown();
-    this.setupShadowEvents();
+    this.setupTemplateEvents();
   }
 
   private dispatchColorSchemeChange(): void {
@@ -96,52 +96,27 @@ export class Layout extends HTMLElement {
     });
   }
 
-  private setupShadowEvents() {
+  private setupTemplateEvents() {
     if (this.$colorSchemeToggle) {
-      const colorSchemeToggleClickListener = () => this.toggleColorScheme();
-      this.$colorSchemeToggle.addEventListener(
-        'click',
-        colorSchemeToggleClickListener
+      this.$colorSchemeToggle.addEventListener('click', () =>
+        this.toggleColorScheme()
       );
-      this.listenerRemovers.push(() => {
-        this.$colorSchemeToggle.removeEventListener(
-          'click',
-          colorSchemeToggleClickListener
-        );
-      });
     }
 
     if (this.$navigationToggle) {
-      const navigationToggleClickListener = () => this.toggleNavigation();
-      this.$navigationToggle.addEventListener(
-        'click',
-        navigationToggleClickListener
+      this.$navigationToggle.addEventListener('click', () =>
+        this.toggleNavigation()
       );
-      this.listenerRemovers.push(() => {
-        this.$navigationToggle.removeEventListener(
-          'click',
-          navigationToggleClickListener
-        );
-      });
     }
 
     if (this.$navigationWrapper) {
-      const navigationWrapperClickListener = (event: Event) =>
-        this.onNavigationWrapperClick(event);
-      this.$navigationWrapper.addEventListener(
-        'click',
-        navigationWrapperClickListener
+      this.$navigationWrapper.addEventListener('click', (event) =>
+        this.onNavigationWrapperClick(event)
       );
-      this.listenerRemovers.push(() => {
-        this.$navigationWrapper.removeEventListener(
-          'click',
-          navigationWrapperClickListener
-        );
-      });
     }
   }
 
-  private teardownEvents() {
+  private teardownWindowEvents() {
     this.listenerRemovers.forEach((removeListener) => removeListener());
     this.listenerRemovers = [];
   }
