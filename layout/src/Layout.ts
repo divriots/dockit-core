@@ -322,6 +322,9 @@ export class Layout extends HTMLElement {
                                       href="${sanitize(
                                         this.relativeUrl(item.page.url)
                                       )}"
+                                      data-page-render-doc-url="${sanitize(
+                                        this.relativeUrl(item.page.renderDocUrl)
+                                      )}"
                                       aria-current="${
                                         location.href.endsWith(
                                           '/' + item.page.url
