@@ -18,12 +18,22 @@ const getInitialColorScheme = (): ColorScheme => {
 };
 
 export class Layout extends HTMLElement {
-  context: Context;
+  set context(context: Context) {
+    this._context = context;
+    this.scheduleRender();
+  }
+
+  get context(): Context {
+    return this._context;
+  }
+
+  private _context: Context;
 
   private _isNavigationShown: boolean = false;
   private _colorScheme: ColorScheme =
     this.initialColorScheme || getInitialColorScheme();
 
+  private isRenderScheduled = false;
   private $colorSchemeToggle?: HTMLElement;
   private $navigationToggle?: HTMLElement;
   private $navigationWrapper?: HTMLElement;
@@ -35,13 +45,22 @@ export class Layout extends HTMLElement {
   }
 
   private connectedCallback(): void {
-    this.render();
+    this.scheduleRender();
     this.dispatchColorSchemeChange();
-    this.setupEvents();
+    this.setupWindowEvents();
   }
 
   private disconnectedCallback(): void {
-    this.teardownEvents();
+    this.teardownWindowEvents();
+  }
+
+  private scheduleRender() {
+    if (this.isRenderScheduled) return;
+    this.isRenderScheduled = true;
+    requestAnimationFrame(() => {
+      this.render();
+      this.isRenderScheduled = false;
+    });
   }
 
   private render() {
@@ -57,6 +76,7 @@ export class Layout extends HTMLElement {
     this.renderColorScheme();
     this.renderHasNavigation();
     this.renderIsNavigationShown();
+    this.setupTemplateEvents();
   }
 
   private dispatchColorSchemeChange(): void {
@@ -67,50 +87,7 @@ export class Layout extends HTMLElement {
     );
   }
 
-  private setupEvents() {
-    if (this.$colorSchemeToggle) {
-      const colorSchemeToggleClickListener = () => this.toggleColorScheme();
-      this.$colorSchemeToggle.addEventListener(
-        'click',
-        colorSchemeToggleClickListener
-      );
-      this.listenerRemovers.push(() => {
-        this.$colorSchemeToggle.removeEventListener(
-          'click',
-          colorSchemeToggleClickListener
-        );
-      });
-    }
-
-    if (this.$navigationToggle) {
-      const navigationToggleClickListener = () => this.toggleNavigation();
-      this.$navigationToggle.addEventListener(
-        'click',
-        navigationToggleClickListener
-      );
-      this.listenerRemovers.push(() => {
-        this.$navigationToggle.removeEventListener(
-          'click',
-          navigationToggleClickListener
-        );
-      });
-    }
-
-    if (this.$navigationWrapper) {
-      const navigationWrapperClickListener = (event: Event) =>
-        this.onNavigationWrapperClick(event);
-      this.$navigationWrapper.addEventListener(
-        'click',
-        navigationWrapperClickListener
-      );
-      this.listenerRemovers.push(() => {
-        this.$navigationWrapper.removeEventListener(
-          'click',
-          navigationWrapperClickListener
-        );
-      });
-    }
-
+  private setupWindowEvents() {
     const windowKeydownListener = (event: KeyboardEvent) =>
       this.onWindowKeydown(event);
     window.addEventListener('keydown', windowKeydownListener);
@@ -119,7 +96,27 @@ export class Layout extends HTMLElement {
     });
   }
 
-  private teardownEvents() {
+  private setupTemplateEvents() {
+    if (this.$colorSchemeToggle) {
+      this.$colorSchemeToggle.addEventListener('click', () =>
+        this.toggleColorScheme()
+      );
+    }
+
+    if (this.$navigationToggle) {
+      this.$navigationToggle.addEventListener('click', () =>
+        this.toggleNavigation()
+      );
+    }
+
+    if (this.$navigationWrapper) {
+      this.$navigationWrapper.addEventListener('click', (event) =>
+        this.onNavigationWrapperClick(event)
+      );
+    }
+  }
+
+  private teardownWindowEvents() {
     this.listenerRemovers.forEach((removeListener) => removeListener());
     this.listenerRemovers = [];
   }
