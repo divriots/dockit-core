@@ -1,8 +1,11 @@
 import '@divriots/dockit-core/layout/dockit-layout.define.js';
 import { styles } from '@divriots/dockit-core/layout';
+import { installRouter } from '@divriots/dockit-core/router';
 import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import logoSvg from './logo.svg?raw';
+
+installRouter();
 
 export const docLayoutTemplate = (content, context) => html`
   <style>
