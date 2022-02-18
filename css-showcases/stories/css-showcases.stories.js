@@ -3,12 +3,14 @@ import './css-showcases.css';
 import './tokens.scss';
 
 export const background_color_by_prefix = () => /*html*/ `<dockit-css-showcases
+  checkered-background
   css-props-prefix="--color"
   component-class="box"
   style-key="background-color"
 ></dockit-css-showcases>`;
 
 export const background_color_by_names = () => /*html*/ `<dockit-css-showcases
+  checkered-background
   css-props-names="--color-white,--color-primary,--color-gray-300,--color-focus-outline"
   component-class="box"
   style-key="background-color"

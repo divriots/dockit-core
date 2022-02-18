@@ -18,6 +18,7 @@ export const opacity_classes = () => {
 
   return /*html*/ `
   <dockit-showcases
+    checkered-background
     component-class="box"
     showcase-classes="${classes.join(' ')}"
   ></dockit-showcases>`;
@@ -50,6 +51,7 @@ export const opacity_styles = () => {
 
   return /*html*/ `
   <dockit-showcases
+    checkered-background
     component-class="box"
     showcase-styles="${styles.join(' ')}"
   ></dockit-showcases>`;
