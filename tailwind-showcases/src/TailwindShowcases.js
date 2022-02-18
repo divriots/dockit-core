@@ -67,6 +67,7 @@ const getClassNames = (suffixes) => ({
   lineHeight: {
     componentType: 'text',
     classes: suffixes.lineHeight.map((s) => `leading${s}`),
+    requiresLongText: true,
   },
 });
 
@@ -105,11 +106,14 @@ export class TailwindShowcases extends HTMLElement {
       return;
     }
 
-    const { classes, componentType, requiresCheckeredBackground } =
-      classNames[showcaseKey];
+    const {
+      classes,
+      componentType,
+      requiresLongText,
+      requiresCheckeredBackground,
+    } = classNames[showcaseKey];
 
     const componentClass = this.getAttribute('component-class');
-    const hasLongText = this.hasAttribute('long-text');
 
     this.innerHTML =
       this.innerHTML +
@@ -118,7 +122,7 @@ export class TailwindShowcases extends HTMLElement {
           component-class="${componentClass}"
           showcase-classes="${classes.join(' ')}"
           component-type="${componentType}"
-          ${hasLongText ? 'long-text' : ''}
+          ${requiresLongText ? 'long-text' : ''}
           ${requiresCheckeredBackground ? 'checkered-background' : ''}
       ></dockit-showcases>`;
   }
