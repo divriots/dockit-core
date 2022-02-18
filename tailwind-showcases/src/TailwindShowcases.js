@@ -107,7 +107,6 @@ export class TailwindShowcases extends HTMLElement {
 
     const componentClass = this.getAttribute('component-class');
     const hasLongText = this.hasAttribute('long-text');
-    const hasCheckeredBackground = this.hasAttribute('checkered-background');
 
     this.innerHTML =
       this.innerHTML +
@@ -117,7 +116,6 @@ export class TailwindShowcases extends HTMLElement {
           showcase-classes="${classes.join(' ')}"
           component-type="${componentType}"
           ${hasLongText ? 'long-text' : ''}
-          ${hasCheckeredBackground ? 'checkered-background' : ''}
       ></dockit-showcases>`;
   }
 }

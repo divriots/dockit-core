@@ -13,7 +13,6 @@ export class Showcases extends HTMLElement {
       type === 'box' ? 'dockit-captioned-box' : 'dockit-captioned-text';
 
     const componentClass = this.getAttribute('component-class');
-    const hasCheckeredBackground = this.hasAttribute('checkered-background');
 
     const showcaseClasses = this.getAttribute('showcase-classes');
     const showcaseStyles = this.getAttribute('showcase-styles');
@@ -42,7 +41,6 @@ export class Showcases extends HTMLElement {
           ${showcaseAttr}="${showcase}"
           ${hasLongText ? 'long-text' : ''}
           caption-width="${captionWidth}"
-          ${hasCheckeredBackground ? 'checkered-background' : ''}
         ></${showcaseComponent}>`,
       ''
     );

@@ -9,12 +9,10 @@ export class CaptionedBox extends HTMLElement {
     const showcaseStyle = this.getAttribute('showcase-style');
     const captionWidth = this.getAttribute('caption-width');
     const componentClass = this.getAttribute('class-name');
-    const hasCheckeredBackground = this.hasAttribute('checkered-background');
 
     this.innerHTML = /*html*/ `
 <div class="${styles.container}">
   <dockit-box
-    ${hasCheckeredBackground ? 'checkered-background' : ''}
     class-name="${showcaseClass} ${componentClass}"
     showcase-style="${showcaseStyle}"
   ></dockit-box>
