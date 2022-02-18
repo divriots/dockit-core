@@ -73,7 +73,6 @@ export const line_height = () => html`<dockit-tailwind-showcases
   .theme=${twTheme}
   showcase-key="lineHeight"
   long-text
-  componentProps={{ useLongText: true }}
 ></dockit-tailwind-showcases>`;
 
 export const text_color = () => html`<dockit-tailwind-showcases

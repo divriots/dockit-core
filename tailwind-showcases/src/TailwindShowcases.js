@@ -21,10 +21,12 @@ const getClassNames = (suffixes) => ({
   backgroundColor: {
     componentType: 'box',
     classes: suffixes.colors.map((s) => `bg${s}`),
+    requiresCheckeredBackground: true,
   },
   opacity: {
     componentType: 'box',
     classes: suffixes.opacity.map((s) => `opacity${s}`),
+    requiresCheckeredBackground: true,
   },
   shadow: {
     componentType: 'box',
@@ -65,6 +67,7 @@ const getClassNames = (suffixes) => ({
   lineHeight: {
     componentType: 'text',
     classes: suffixes.lineHeight.map((s) => `leading${s}`),
+    requiresLongText: true,
   },
 });
 
@@ -103,11 +106,14 @@ export class TailwindShowcases extends HTMLElement {
       return;
     }
 
-    const { classes, componentType } = classNames[showcaseKey];
+    const {
+      classes,
+      componentType,
+      requiresLongText,
+      requiresCheckeredBackground,
+    } = classNames[showcaseKey];
 
     const componentClass = this.getAttribute('component-class');
-    const hasLongText = this.hasAttribute('long-text');
-    const hasCheckeredBackground = this.hasAttribute('checkered-background');
 
     this.innerHTML =
       this.innerHTML +
@@ -116,8 +122,8 @@ export class TailwindShowcases extends HTMLElement {
           component-class="${componentClass}"
           showcase-classes="${classes.join(' ')}"
           component-type="${componentType}"
-          ${hasLongText ? 'long-text' : ''}
-          ${hasCheckeredBackground ? 'checkered-background' : ''}
+          ${requiresLongText ? 'long-text' : ''}
+          ${requiresCheckeredBackground ? 'checkered-background' : ''}
       ></dockit-showcases>`;
   }
 }
