@@ -1,6 +1,6 @@
 # dockit-core
 
-Check if PR creation works.
+Check if PR update works.
 
 This is a documentation kit for design systems designed for [Backlight](https://backlight.dev/), an all-in-one Design System platform.
 
