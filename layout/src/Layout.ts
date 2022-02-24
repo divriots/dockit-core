@@ -1,4 +1,4 @@
-import type { Context } from '@divriots/studio-doc-compiler';
+import type { Context, Page } from '@divriots/studio-doc-compiler';
 import { LayoutStyles } from './Layout.styles';
 
 type ColorScheme = 'light' | 'dark';
@@ -160,11 +160,10 @@ export class Layout extends HTMLElement {
 
   private getLogoHref() {
     if (this.hasNavigation && this.context.pagesGraph[0]) {
-      return this.relativeUrl(
-        this.context.pagesGraph[0].children
-          ? this.context.pagesGraph[0].children[0].page.url
-          : this.context.pagesGraph[0].page.url
-      );
+      const page = this.context.pagesGraph[0].children
+        ? this.context.pagesGraph[0].children[0].page
+        : this.context.pagesGraph[0].page;
+      return this.getPageUrlWithoutOrigin(page);
     } else {
       return '';
     }
@@ -174,13 +173,8 @@ export class Layout extends HTMLElement {
     return !!(this.context && this.context.pagesGraph);
   }
 
-  private relativeUrl(url: string): string {
-    return [
-      Array(url.split('/').length - 1)
-        .fill('..')
-        .join('/'),
-      url,
-    ].join('/');
+  private getPageUrlWithoutOrigin(page: Page): string {
+    return this.context.base + page.url;
   }
 
   private toggleColorScheme(): void {
@@ -320,12 +314,11 @@ export class Layout extends HTMLElement {
                                   (item) => `<li>
                                     <a
                                       href="${sanitize(
-                                        this.relativeUrl(item.page.url)
+                                        this.getPageUrlWithoutOrigin(item.page)
                                       )}"
                                       aria-current="${
-                                        location.href.endsWith(
-                                          '/' + item.page.url
-                                        )
+                                        location.pathname ===
+                                        this.getPageUrlWithoutOrigin(item.page)
                                           ? 'location'
                                           : ''
                                       }"
