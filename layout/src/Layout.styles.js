@@ -64,7 +64,11 @@ export const LayoutStyles = /*css*/ `
     min-height: 100vh;
     overflow: hidden;
     --private--dockit-layout-spacer: 1rem;
-    --private--dockit-layout-header-height: 3rem;
+    --private--dockit-layout-header-content-height: 3rem;
+    --private--dockit-layout-header-height: calc(
+      var(--private--dockit-layout-header-content-height) + 2 *
+        var(--private--dockit-layout-spacer)
+    );
     --private--dockit-layout-navigation-width: 244px;
   }
 
@@ -83,15 +87,12 @@ export const LayoutStyles = /*css*/ `
   .header {
     display: flex;
     background-color: var(--private--dockit-layout-bg);
-    height: calc(
-      var(--private--dockit-layout-header-height) + 2 *
-        var(--private--dockit-layout-spacer)
-    );
+    height: var(--private--dockit-layout-header-height);
   }
 
   .logo-container {
     flex: 0;
-    height: var(--private--dockit-layout-header-height);
+    height: var(--private--dockit-layout-header-content-height);
     padding: var(--private--dockit-layout-spacer);
     border-bottom: 1px solid var(--private--dockit-layout-header-border-color);
   }
@@ -115,7 +116,7 @@ export const LayoutStyles = /*css*/ `
     flex: 1;
     display: flex;
     align-items: center;
-    height: var(--private--dockit-layout-header-height);
+    height: var(--private--dockit-layout-header-content-height);
     padding: var(--private--dockit-layout-spacer);
     border-bottom: 1px solid var(--private--dockit-layout-header-border-color);
   }
@@ -140,12 +141,12 @@ export const LayoutStyles = /*css*/ `
     background-color: var(--private--dockit-layout-toggle-button-bg);
     color: var(--private--dockit-layout-toggle-button-color);
     cursor: pointer;
-    font-size: calc(var(--private--dockit-layout-header-height) / 2);
+    font-size: calc(var(--private--dockit-layout-header-content-height) / 2);
     font-family: inherit;
     margin-right: var(--private--dockit-layout-spacer);
-    width: var(--private--dockit-layout-header-height);
-    height: var(--private--dockit-layout-header-height);
-    line-height: var(--private--dockit-layout-header-height);
+    width: var(--private--dockit-layout-header-content-height);
+    height: var(--private--dockit-layout-header-content-height);
+    line-height: var(--private--dockit-layout-header-content-height);
     text-align: center;
     border: 0;
     padding: 0;
@@ -217,10 +218,7 @@ export const LayoutStyles = /*css*/ `
 
   @media screen and (min-width: ${breakpoints.lg}) {
     .navigation {
-      height: calc(
-        100vh - var(--private--dockit-layout-header-height) - 2 *
-          var(--private--dockit-layout-spacer)
-      );
+      height: calc(100vh - var(--private--dockit-layout-header-height));
     }
   }
 
@@ -279,10 +277,7 @@ export const LayoutStyles = /*css*/ `
   .main-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding-top: calc(
-      var(--private--dockit-layout-header-height) + 2 *
-        var(--private--dockit-layout-spacer)
-    );
+    padding-top: calc(var(--private--dockit-layout-header-height));
     position: relative;
     z-index: 1;
   }
