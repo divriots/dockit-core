@@ -274,7 +274,9 @@ export const LayoutStyles = /*css*/ `
   }
 
   .navigation a[aria-current='location'] {
-    background-color: var(--private--dockit-layout-navigation-current-link-color);
+    background-color: var(
+      --private--dockit-layout-navigation-current-link-color
+    );
   }
 
   .main-container {
