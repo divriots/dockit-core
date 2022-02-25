@@ -69,6 +69,9 @@ export const LayoutStyles = /*css*/ `
       var(--private--dockit-layout-header-content-height) + 2 *
         var(--private--dockit-layout-spacer)
     );
+    --private--dockit-layout-logo-height: var(
+      --private--dockit-layout-header-content-height
+    );
     --private--dockit-layout-navigation-width: 244px;
   }
 

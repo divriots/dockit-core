@@ -13,7 +13,7 @@ body {
 
 dockit-layout [slot='logo'] > :first-child {
   width: auto;
-  height: 3em;
+  height: var(--private--dockit-layout-logo-height);
 }
 
 dockit-layout :where(h1, h2, h3, h4, h5, h6) {
