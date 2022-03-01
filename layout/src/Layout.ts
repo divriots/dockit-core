@@ -256,7 +256,7 @@ export class Layout extends HTMLElement {
             <div class="logo-container">
             ${
               this.hasNavigation
-                ? `<a href="${sanitize(
+                ? `<a class="logo-link" href="${sanitize(
                     this.getLogoHref()
                   )}"><slot name="logo"></slot></a>`
                 : '<slot name="logo"></slot>'
