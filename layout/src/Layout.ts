@@ -1,5 +1,9 @@
 import type { Context, Page } from '@divriots/studio-doc-compiler';
 import { LayoutStyles } from './Layout.styles';
+import menuSvg from './menu.svg?raw';
+import moonSvg from './moon.svg?raw';
+import sunSvg from './sun.svg?raw';
+import xSvg from './x.svg?raw';
 
 type ColorScheme = 'light' | 'dark';
 
@@ -130,8 +134,8 @@ export class Layout extends HTMLElement {
           this.colorScheme === 'dark' ? 'light' : 'dark'
         } mode`
       );
-      this.$colorSchemeToggle.innerText =
-        this.colorScheme === 'dark' ? '🌙' : '☀';
+      this.$colorSchemeToggle.innerHTML =
+        this.colorScheme === 'dark' ? moonSvg : sunSvg;
     }
   }
 
@@ -154,7 +158,9 @@ export class Layout extends HTMLElement {
         'aria-label',
         `Press to ${this.isNavigationShown ? 'close' : 'open'} navigation`
       );
-      this.$navigationToggle.innerText = this.isNavigationShown ? '✕' : '☰';
+      this.$navigationToggle.innerHTML = this.isNavigationShown
+        ? xSvg
+        : menuSvg;
     }
   }
 

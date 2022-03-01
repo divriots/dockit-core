@@ -145,11 +145,12 @@ export const LayoutStyles = /*css*/ `
 
   .color-scheme-toggle,
   .navigation-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--private--dockit-layout-toggle-button-bg);
     color: var(--private--dockit-layout-toggle-button-color);
     cursor: pointer;
-    font-size: calc(var(--private--dockit-layout-header-content-height) / 2);
-    font-family: inherit;
     margin-right: var(--private--dockit-layout-spacer);
     width: var(--private--dockit-layout-header-content-height);
     height: var(--private--dockit-layout-header-content-height);
@@ -158,6 +159,11 @@ export const LayoutStyles = /*css*/ `
     border: 0;
     padding: 0;
     border-radius: 50%;
+  }
+
+  .color-scheme-toggle > svg,
+  .navigation-toggle > svg {
+    width: 1.5rem;
   }
 
   @media screen and (min-width: ${breakpoints.lg}) {
