@@ -100,6 +100,10 @@ export const LayoutStyles = /*css*/ `
     border-bottom: 1px solid var(--private--dockit-layout-header-border-color);
   }
 
+  .logo-link {
+    text-decoration: none;
+  }
+
   .logo-container ::slotted(:first-child) {
     display: inline-block;
   }
