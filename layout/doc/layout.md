@@ -243,3 +243,28 @@ export default {
     `,
 };
 ```
+
+## Get/set color scheme
+
+You might want to demo your own component that switches the color scheme.
+The way how the color scheme is implemented on the page depends on your Design System, therefore `dockit-layout` doesn't force you to use it's custom way and rely on the internal implementation details.
+Instead the current value of the color scheme is exposed on the component for reading and writing, so that you can initialize the current value from the documentation site value and change it when needed to let `dockit-layout` update the internals.
+
+Let's say your component is called `color-scheme-switcher`.
+Then you need to provide a way to set it's initial value and listen to changes, so the demo code might look like this:
+
+```js
+import { html } from 'lit';
+export const story = () => html`
+  <color-scheme-switcher
+    initial-color-scheme="${document.querySelector('dockit-layout')
+      .colorScheme}"
+    @color-scheme-change="${(event) => {
+      document.querySelector('dockit-layout').colorScheme =
+        event.detail.colorScheme;
+    }}"
+  ></color-scheme-switcher>
+`;
+```
+
+`dockit-layout` understands `light` and `dark` color scheme values, so if you use different values then you need to transform them to `light` and `dark` manually.

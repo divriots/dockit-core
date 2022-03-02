@@ -31,6 +31,19 @@ export class Layout extends HTMLElement {
     return this._context;
   }
 
+  set colorScheme(value: ColorScheme) {
+    const changed = this._colorScheme !== value;
+    this._colorScheme = value;
+    this.renderColorScheme();
+    if (changed) {
+      this.dispatchColorSchemeChange();
+    }
+  }
+
+  get colorScheme(): ColorScheme {
+    return this._colorScheme;
+  }
+
   private _context: Context;
 
   private _isNavigationShown: boolean = false;
@@ -185,7 +198,6 @@ export class Layout extends HTMLElement {
 
   private toggleColorScheme(): void {
     this.colorScheme = this.colorScheme === 'dark' ? 'light' : 'dark';
-    this.dispatchColorSchemeChange();
     localStorage.setItem('colorScheme', this.colorScheme);
   }
 
@@ -240,15 +252,6 @@ export class Layout extends HTMLElement {
     } else {
       this.removeAttribute('disable-color-scheme-change');
     }
-  }
-
-  private get colorScheme(): ColorScheme {
-    return this._colorScheme;
-  }
-
-  private set colorScheme(value: ColorScheme) {
-    this._colorScheme = value;
-    this.renderColorScheme();
   }
 
   private renderTemplate() {
