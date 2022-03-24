@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 1.1rem;
+  bottom: 1.15rem;
   font-size: 0.8rem;
   border-radius: 0.3rem;
   background-color: rgb(45, 55, 72);
@@ -22,6 +22,10 @@
   overflow: hidden;
   opacity: 0;
   cursor: pointer;
+}
+
+.text {
+  margin: 0;
 }
 
 .text:hover {

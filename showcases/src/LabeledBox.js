@@ -1,13 +1,13 @@
-import styles from './CaptionedBox.module.css';
+import styles from './LabeledBox.module.css';
 import '~/box/dockit-box.define.js';
-import '~/caption/dockit-caption.define.js';
-import { getCaption } from './caption-helper';
+import '~/label/dockit-label.define.js';
+import { getLabel } from './label-helper';
 
-export class CaptionedBox extends HTMLElement {
+export class LabeledBox extends HTMLElement {
   connectedCallback() {
     const showcaseClass = this.getAttribute('showcase-class');
     const showcaseStyle = this.getAttribute('showcase-style');
-    const captionWidth = this.getAttribute('caption-width');
+    const labelWidth = this.getAttribute('label-width');
     const componentClass = this.getAttribute('class-name');
     const hasCheckeredBackground = this.hasAttribute('checkered-background');
 
@@ -18,10 +18,9 @@ export class CaptionedBox extends HTMLElement {
     class-name="${showcaseClass} ${componentClass}"
     showcase-style="${showcaseStyle}"
   ></dockit-box>
-  <dockit-caption
-    text="${getCaption(showcaseClass, showcaseStyle)}"
-    width="${captionWidth}"
-  ></dockit-caption>
+  <dockit-label
+    width="${labelWidth}"
+  >${getLabel(showcaseClass, showcaseStyle)}</dockit-label>
 </div>`;
   }
 }
