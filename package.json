@@ -20,5 +20,8 @@
   "devDependencies": {
     "@divriots/studio-doc-compiler": "^0.0.31",
     "twind": "^0.16.16"
+  },
+  "exports": {
+    "./label/define": "./label/dockit-label.define.js"
   }
 }
