@@ -5,13 +5,9 @@
       "introduction",
       ["TailwindCSS", ["tailwind-showcases"]],
       ["CSS", ["css-showcases"]],
-<<<<<<< HEAD
       ["Components", ["box", "caption", "text", "showcases", "space"]],
       ["Doc-site", ["layout", "speedy-links"]],
-=======
-      ["Components", ["box", "label", "text", "showcases", "space"]],
-      ["Layouts", ["layout"]],
->>>>>>> 6d361f2 (caption -> label: renamed, refactored, improved)
+      ["Components", ["box", "label", "text", "showcases", "space", "do-dont"]],
       ["Infra", ["doc-layout"]]
     ]
   }

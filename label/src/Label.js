@@ -1,5 +1,5 @@
 import copyTextToClipboard from 'copy-to-clipboard';
-import labelStyles from './label.css';
+import labelStyles from './Label.css';
 
 export class Label extends HTMLElement {
   constructor() {
