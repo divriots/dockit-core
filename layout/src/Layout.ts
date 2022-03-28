@@ -68,7 +68,16 @@ export class Layout extends HTMLElement {
   }
 
   private render() {
+    let prevNavigationScrollTop;
+    if (this.hasNavigation) {
+      prevNavigationScrollTop =
+        this.shadowRoot.querySelector('.navigation')?.scrollTop;
+    }
     this.shadowRoot.innerHTML = this.renderTemplate();
+    if (this.hasNavigation && prevNavigationScrollTop) {
+      this.shadowRoot.querySelector('.navigation').scrollTop =
+        prevNavigationScrollTop;
+    }
     this.$colorSchemeToggle = this.shadowRoot.querySelector(
       '.color-scheme-toggle'
     );
