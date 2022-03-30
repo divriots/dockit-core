@@ -1,7 +1,7 @@
 import copyTextToClipboard from 'copy-to-clipboard';
-import labelStyles from './Label.css';
+import clipboardStyles from './Clipboard.css';
 
-export class Label extends HTMLElement {
+export class Clipboard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -25,9 +25,11 @@ export class Label extends HTMLElement {
     const widthStyle = width ? `style="width:${width};"` : '';
 
     this.shadowRoot.innerHTML = /*html*/ `
-      <style>${labelStyles}</style>
-      <div class="wrapper">
-        <pre ${widthStyle} class="text"><slot></slot></pre>
+      <style>${clipboardStyles}</style>
+      <div class="wrapper" ${widthStyle}>
+        <div class="slotContainer">
+          <slot></slot>
+        </div>
         <div class="tooltip">Copy</div>
       </div>
     `;

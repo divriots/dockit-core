@@ -1,4 +1,4 @@
-export const getLabel = (showcaseClass, showcaseStyle) => {
+export const getCaption = (showcaseClass, showcaseStyle) => {
   if (showcaseClass) return showcaseClass;
   return getValue(showcaseStyle);
 };

@@ -4,7 +4,7 @@ import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';
 import { getTransitionsHtml } from './transition-helper';
 import styles from './alerts.module.scss';
-
+import '~/clipboard/dockit-clipboard.define.js';
 export class CssShowcases extends HTMLElement {
   connectedCallback() {
     const prefix = this.getAttribute('css-props-prefix') || '';

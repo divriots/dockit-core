@@ -50,32 +50,12 @@ const styles = css`
   }
 `;
 
-const doColor = '#36B37E';
-const dontColor = '#DE350B';
-
-const doIcon = (color = doColor) => svg`
-  <svg width="24" height="24" viewBox="0 0 24 24">
-    <path
-      fill="${color}"
-      d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"
-    />
-  </svg>
-`;
-
-const dontIcon = (color = dontColor) => svg`
-  <svg width="24" height="24" viewBox="0 0 24 24">
-    <path
-      fill="${color}"
-      d="M8.27,3L3,8.27V15.73L8.27,21H15.73L21,15.73V8.27L15.73,3M8.41,7L12,10.59L15.59,7L17,8.41L13.41,12L17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41"
-    />
-  </svg>
-`;
 type Icon = string | TemplateResult | ((color: string) => TemplateResult);
 
 /**
  * Component to render general instructions or for a specific component.
  */
-abstract class InstructionsCard extends LitElement {
+export abstract class InstructionsCard extends LitElement {
   @property()
   color: string;
 
@@ -122,23 +102,5 @@ abstract class InstructionsCard extends LitElement {
         </div>
       </div>
     `;
-  }
-}
-
-/**
- * Component to render general instructions or for a specific component.
- */
-export class Do extends InstructionsCard {
-  constructor() {
-    super(doColor, doIcon, 'DO');
-  }
-}
-
-/**
- * Component to render general instructions or for a specific component.
- */
-export class Dont extends InstructionsCard {
-  constructor() {
-    super(dontColor, dontIcon(dontColor), "DON'T");
   }
 }

@@ -1,16 +1,16 @@
-import { LabeledBox } from './LabeledBox.js';
-import { LabeledText } from './LabeledText';
+import { renderCaptionedBox } from './captioned-box';
+import { renderCaptionedText } from './captioned-text';
 import styles from './Showcases.module.css';
-import { getLabel } from './label-helper';
-
-customElements.define('dockit-labeled-box', LabeledBox);
-customElements.define('dockit-labeled-text', LabeledText);
+import { getCaption } from './caption-helper';
+import '~/box/dockit-box.define.js';
+import '~/text/dockit-text.define.js';
+import '~/clipboard/dockit-clipboard.define.js';
 
 export class Showcases extends HTMLElement {
   connectedCallback() {
     const type = this.getAttribute('component-type') || 'box';
-    const showcaseComponent =
-      type === 'box' ? 'dockit-labeled-box' : 'dockit-labeled-text';
+    const renderComponent =
+      type === 'box' ? renderCaptionedBox : renderCaptionedText;
 
     const componentClass = this.getAttribute('component-class');
     const hasCheckeredBackground = this.hasAttribute('checkered-background');
@@ -18,9 +18,8 @@ export class Showcases extends HTMLElement {
     const showcaseClasses = this.getAttribute('showcase-classes');
     const showcaseStyles = this.getAttribute('showcase-styles');
 
-    const showcaseAttr = showcaseClasses ? 'showcase-class' : 'showcase-style';
+    const showcaseAttr = showcaseClasses ? 'showcaseClass' : 'showcaseStyle';
     const separator = !!showcaseClasses ? ' ' : ';';
-
     const showcases = (showcaseClasses || showcaseStyles)
       .split(separator)
       .filter((c) => !!c)
@@ -28,20 +27,24 @@ export class Showcases extends HTMLElement {
 
     const hasLongText = this.hasAttribute('long-text');
     const longestName = showcases
-      .map((val) => getLabel(!!showcaseClasses && val, !!showcaseStyles && val))
+      .map((val) =>
+        getCaption(!!showcaseClasses && val, !!showcaseStyles && val)
+      )
       .reduce((max, e) => Math.max(e.length, max), 0);
 
-    const labelWidth = `${1 + longestName / 2}rem`;
+    const captionWidth = `${1 + longestName / 2}rem`;
 
     const showcaseComponents = showcases.reduce(
-      (acc, showcase) => /*html*/ `${acc}
-        <${showcaseComponent}
-          class-name="${componentClass}"
-          ${showcaseAttr}="${showcase}"
-          ${hasLongText ? 'long-text' : ''}
-          label-width="${labelWidth}"
-          ${hasCheckeredBackground ? 'checkered-background' : ''}
-        ></${showcaseComponent}>`,
+      (acc, showcase) => /*html*/ `
+      ${acc}
+      ${renderComponent({
+        componentClass,
+        [showcaseAttr]: showcase,
+        hasLongText,
+        captionWidth,
+        hasCheckeredBackground,
+      })}
+    `,
       ''
     );
 

@@ -24,11 +24,11 @@
   cursor: pointer;
 }
 
-.text {
-  margin: 0;
+::slotted(*) {
+  margin: 0 0;
 }
 
-.text:hover {
+.slotContainer:hover {
   opacity: 0.7;
 }
 

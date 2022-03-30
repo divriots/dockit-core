@@ -1,5 +1,6 @@
 import { html } from 'lit';
-import '~/do-dont/dockit-do-dont.define';
+import '~/do-dont/dockit-dont.define';
+import '~/do-dont/dockit-do.define';
 
 export default {
   parameters: {

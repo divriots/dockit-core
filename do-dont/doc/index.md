@@ -1,5 +1,6 @@
 ```js script
-import '@divriots/dockit-core/do-dont/dockit-do-dont.define.js';
+import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
+import '@divriots/dockit-core/do-dont/dockit-do.define.js';
 ```
 
 # dockit-do & dockit-dont
@@ -12,7 +13,8 @@ See setup and usage examples below:
 ## Setup
 
 ```js
-import '@divriots/dockit-core/do-dont/dockit-do-dont.define.js';
+import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
+import '@divriots/dockit-core/do-dont/dockit-do.define.js';
 ```
 
 ## Demos
