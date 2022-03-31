@@ -1,9 +1,9 @@
 ```js script
-import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
-import '@divriots/dockit-core/do-dont/dockit-do.define.js';
+import '@divriots/dockit-core/do-dont/dockit-dont.define';
+import '@divriots/dockit-core/do-dont/dockit-do.define';
 ```
 
-# dockit-do & dockit-dont
+# Do/Don't
 
 Component to render general instructions or for a specific component.
 It can take a component in the "component" slot, and instructions html in the "instructions" slot.
@@ -13,8 +13,11 @@ See setup and usage examples below:
 ## Setup
 
 ```js
-import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
-import '@divriots/dockit-core/do-dont/dockit-do.define.js';
+import '@divriots/dockit-core/do-dont/dockit-dont.define';
+import '@divriots/dockit-core/do-dont/dockit-do.define';
+
+// or define all
+import '@divriots/dockit-core/do-dont/define-all';
 ```
 
 ## Demos
