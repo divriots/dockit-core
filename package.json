@@ -12,13 +12,13 @@
     "copy-to-clipboard": "^3.3.1",
     "deepmerge": "^4.2.2",
     "is-plain-object": "^5.0.0",
+    "lit": "^2.0.0",
     "lodash": "^4.17.21",
     "prism-themes": "^1.9.0",
     "tailwindcss": "^2.2.19"
   },
   "devDependencies": {
     "@divriots/studio-doc-compiler": "^0.0.31",
-    "lit": "^2.0.0",
     "twind": "^0.16.16"
   }
 }

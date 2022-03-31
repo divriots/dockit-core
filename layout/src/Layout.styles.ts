@@ -1,6 +1,7 @@
+import { css, unsafeCSS } from 'lit';
 import { breakpoints } from './breakpoints';
 
-export const LayoutStyles = /*css*/ `
+export const LayoutStyles = css`
   :host {
     --private--dockit-layout-bg: var(--dockit-layout-bg, #ffffff);
     --private--dockit-layout-header-border-color: var(
@@ -108,7 +109,7 @@ export const LayoutStyles = /*css*/ `
     display: inline-block;
   }
 
-  @media screen and (min-width: ${breakpoints.lg}) {
+  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {
     :host([data-has-navigation]) .logo-container {
       flex: none;
       width: calc(
@@ -128,7 +129,7 @@ export const LayoutStyles = /*css*/ `
     border-bottom: 1px solid var(--private--dockit-layout-header-border-color);
   }
 
-  @media screen and (min-width: ${breakpoints.lg}) {
+  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {
     :host([data-has-navigation]) .topbar-container {
       margin-left: calc(2 * var(--private--dockit-layout-spacer));
       margin-right: var(--private--dockit-layout-spacer);
@@ -166,7 +167,7 @@ export const LayoutStyles = /*css*/ `
     width: 1.5rem;
   }
 
-  @media screen and (min-width: ${breakpoints.lg}) {
+  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {
     .buttons-container {
       position: absolute;
       top: var(--private--dockit-layout-spacer);
@@ -193,7 +194,7 @@ export const LayoutStyles = /*css*/ `
     z-index: 9999;
   }
 
-  @media screen and (min-width: ${breakpoints.lg}) {
+  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {
     :host([data-has-navigation]) .navigation-wrapper {
       display: block;
     }
@@ -229,7 +230,7 @@ export const LayoutStyles = /*css*/ `
     overflow-y: auto;
   }
 
-  @media screen and (min-width: ${breakpoints.lg}) {
+  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {
     .navigation {
       height: calc(100vh - var(--private--dockit-layout-header-height));
     }
@@ -301,7 +302,7 @@ export const LayoutStyles = /*css*/ `
     padding: var(--private--dockit-layout-spacer);
   }
 
-  @media screen and (min-width: ${breakpoints.lg}) {
+  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {
     :host([data-has-navigation]) .content {
       padding-left: var(--private--dockit-layout-navigation-width);
     }
