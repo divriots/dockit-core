@@ -1,6 +1,14 @@
 ```js script
+import { html, svg } from 'lit';
 import '@divriots/dockit-core/do-dont/dockit-dont.define';
 import '@divriots/dockit-core/do-dont/dockit-do.define';
+
+const sampleButton = html`<div
+  slot="component"
+  style="background-color: #00000030; padding: .5rem; font-weight: 600; border-radius: .25rem;"
+>
+  SAMPLE BUTTON
+</div>`;
 ```
 
 # Do/Don't
@@ -36,20 +44,15 @@ import '@divriots/dockit-core/do-dont/define-all';
 
 #### Do with component
 
-```html preview-story
-<dockit-do>
-  <div
-    slot="component"
-    style="background-color: #00000030; padding: .5rem; font-weight: 600; border-radius: .25rem;"
-  >
-    SAMPLE BUTTON
-  </div>
+```js preview-story
+export const do_with_component = () => html`<dockit-do>
+  ${sampleButton}
   <ul slot="instructions">
     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
     <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
     <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
   </ul>
-</dockit-do>
+</dockit-do>`;
 ```
 
 ### Don't
@@ -66,20 +69,15 @@ import '@divriots/dockit-core/do-dont/define-all';
 
 ### Don't with component
 
-```html preview-story
-<dockit-dont>
-  <div
-    slot="component"
-    style="background-color: #00000030; padding: .5rem; font-weight: 600; border-radius: .25rem;"
-  >
-    SAMPLE BUTTON
-  </div>
+```js preview-story
+export const dont_with_component = () => html`<dockit-dont>
+  ${sampleButton}
   <ul slot="instructions">
     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
     <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
     <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
   </ul>
-</dockit-dont>
+</dockit-dont>`;
 ```
 
 ### Do with custom color and label
@@ -95,9 +93,7 @@ import '@divriots/dockit-core/do-dont/define-all';
 ```
 
 ```js preview-story
-import { html } from 'lit';
-
-const customIcon = html`<svg
+const customIcon = svg`<svg
   width="24"
   height="24"
   viewBox="0 0 16 16"
