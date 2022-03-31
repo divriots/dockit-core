@@ -20,8 +20,5 @@
   "devDependencies": {
     "@divriots/studio-doc-compiler": "^0.0.31",
     "twind": "^0.16.16"
-  },
-  "exports": {
-    "./clipboard/define": "./clipboard/dockit-clipboard.define.js"
   }
 }
