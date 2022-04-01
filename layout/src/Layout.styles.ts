@@ -95,18 +95,15 @@ export const LayoutStyles = css`
   }
 
   .logo-container {
-    flex: 0;
+    display: flex;
     height: var(--private--dockit-layout-header-content-height);
     padding: var(--private--dockit-layout-spacer);
     border-bottom: 1px solid var(--private--dockit-layout-header-border-color);
   }
 
   .logo-link {
+    display: flex;
     text-decoration: none;
-  }
-
-  .logo-container ::slotted(:first-child) {
-    display: inline-block;
   }
 
   @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {
