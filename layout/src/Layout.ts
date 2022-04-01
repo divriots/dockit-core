@@ -188,15 +188,14 @@ export class Layout extends LitElement {
   }
 
   private getLogoHref() {
-    if (this.hasNavigation && this.context.pagesGraph[0]) {
-      const page =
-        this.context.pagesGraph[0].children?.length > 0
-          ? this.context.pagesGraph[0].children[0].page
-          : this.context.pagesGraph[0].page;
-      return this.getPageUrlWithoutOrigin(page);
-    } else {
-      return '';
+    let page = '';
+    if (this.hasNavigation && this.context.pagesGraph?.length > 0) {
+      const pageGraph = this.context.pagesGraph[0];
+      page =
+        pageGraph.page ||
+        (pageGraph.children?.length > 0 ? pageGraph.children[0].page : '');
     }
+    return page ? this.getPageUrlWithoutOrigin(page) : '';
   }
 
   private get hasNavigation(): boolean {
