@@ -138,7 +138,7 @@ export default {
 ```
 
 Pay attention to the usage of `breakpoints`.
-This is handy if you want to sync with the reponsive `<dockit-layout>` behavior which looks differently on different screen sizes.
+This is handy if you want to sync with the responsive `<dockit-layout>` behavior which looks differently on different screen sizes.
 Use `min-width` and think of it as mobile-first responsive layout.
 
 ## Configure the theme
