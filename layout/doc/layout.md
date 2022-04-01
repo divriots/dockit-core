@@ -243,3 +243,6 @@ export default {
     `,
 };
 ```
+
+These CSS custom properties are also available for reading.
+It's handy when you create something for the `topbar` slot and want it to reuse same values.
