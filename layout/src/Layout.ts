@@ -189,9 +189,10 @@ export class Layout extends LitElement {
 
   private getLogoHref() {
     if (this.hasNavigation && this.context.pagesGraph[0]) {
-      const page = this.context.pagesGraph[0].children
-        ? this.context.pagesGraph[0].children[0].page
-        : this.context.pagesGraph[0].page;
+      const page =
+        this.context.pagesGraph[0].children?.length > 0
+          ? this.context.pagesGraph[0].children[0].page
+          : this.context.pagesGraph[0].page;
       return this.getPageUrlWithoutOrigin(page);
     } else {
       return '';
