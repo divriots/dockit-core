@@ -223,7 +223,10 @@ export class Layout extends LitElement {
   }
 
   private onNavigationWrapperClick(event: Event): void {
-    if (event.currentTarget === event.target) {
+    if (
+      event.target === event.currentTarget ||
+      (event.target as HTMLElement).tagName === 'A'
+    ) {
       this.hideNavigation();
     }
   }
