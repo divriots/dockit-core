@@ -3,67 +3,85 @@ import { breakpoints } from './breakpoints';
 
 export const LayoutStyles = css`
   :host {
-    --private--dockit-layout-bg: var(--dockit-layout-bg, #ffffff);
-    --private--dockit-layout-header-border-color: var(
-      --dockit-layout-header-border-color,
+    --proxy--dockit-layout-bg: var(--dockit-layout-bg);
+    --proxy--dockit-layout-header-border-color: var(
+      --dockit-layout-header-border-color
+    );
+    --proxy--dockit-layout-toggle-button-bg: var(
+      --dockit-layout-toggle-button-bg
+    );
+    --proxy--dockit-layout-toggle-button-color: var(
+      --dockit-layout-toggle-button-color
+    );
+    --proxy--dockit-layout-navigation-group-heading-color: var(
+      --dockit-layout-navigation-group-heading-color
+    );
+    --proxy--dockit-layout-navigation-link-color: var(
+      --dockit-layout-navigation-link-color
+    );
+    --proxy--dockit-layout-navigation-current-link-color: var(
+      --dockit-layout-navigation-current-link-color
+    );
+  }
+
+  :host([data-color-scheme='light']) .root {
+    --dockit-layout-bg: var(--proxy--dockit-layout-bg, #ffffff);
+    --dockit-layout-header-border-color: var(
+      --proxy--dockit-layout-header-border-color,
       #e5e5e5
     );
-    --private--dockit-layout-toggle-button-bg: var(
-      --dockit-layout-toggle-button-bg,
+    --dockit-layout-toggle-button-bg: var(
+      --proxy--dockit-layout-toggle-button-bg,
       #737373
     );
-    --private--dockit-layout-toggle-button-color: var(
-      --dockit-layout-toggle-button-color,
+    --dockit-layout-toggle-button-color: var(
+      --proxy--dockit-layout-toggle-button-color,
       #ffffff
     );
-    --private--dockit-layout-navigation-group-heading-color: var(
-      --dockit-layout-navigation-group-heading-color,
+    --dockit-layout-navigation-group-heading-color: var(
+      --proxy--dockit-layout-navigation-group-heading-color,
       #404040
     );
-    --private--dockit-layout-navigation-link-color: var(
-      --dockit-layout-navigation-link-color,
+    --dockit-layout-navigation-link-color: var(
+      --proxy--dockit-layout-navigation-link-color,
       #171717
     );
-    --private--dockit-layout-navigation-current-link-color: var(
-      --dockit-layout-navigation-current-link-color,
+    --dockit-layout-navigation-current-link-color: var(
+      --proxy--dockit-layout-navigation-current-link-color,
       #e5e5e5
     );
   }
 
-  :host([data-color-scheme='dark']) {
-    --private--dockit-layout-bg: var(--dockit-layout-bg, #171717);
-    --private--dockit-layout-header-border-color: var(
-      --dockit-layout-header-border-color,
+  :host([data-color-scheme='dark']) .root {
+    --dockit-layout-bg: var(--proxy--dockit-layout-bg, #171717);
+    --dockit-layout-header-border-color: var(
+      --proxy--dockit-layout-header-border-color,
       #404040
     );
-    --private--dockit-layout-toggle-button-bg: var(
-      --dockit-layout-toggle-button-bg,
+    --dockit-layout-toggle-button-bg: var(
+      --proxy--dockit-layout-toggle-button-bg,
       #737373
     );
-    --private--dockit-layout-toggle-button-color: var(
-      --dockit-layout-toggle-button-color,
+    --dockit-layout-toggle-button-color: var(
+      --proxy--dockit-layout-toggle-button-color,
       #ffffff
     );
-    --private--dockit-layout-navigation-group-heading-color: var(
-      --dockit-layout-navigation-group-heading-color,
+    --dockit-layout-navigation-group-heading-color: var(
+      --proxy--dockit-layout-navigation-group-heading-color,
       #a3a3a3
     );
-    --private--dockit-layout-navigation-link-color: var(
-      --dockit-layout-navigation-link-color,
+    --dockit-layout-navigation-link-color: var(
+      --proxy--dockit-layout-navigation-link-color,
       #ffffff
     );
-    --private--dockit-layout-navigation-current-link-color: var(
-      --dockit-layout-navigation-current-link-color,
+    --dockit-layout-navigation-current-link-color: var(
+      --proxy--dockit-layout-navigation-current-link-color,
       #404040
     );
   }
 
   :host {
     display: block;
-    background-color: var(--private--dockit-layout-bg);
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
     --private--dockit-layout-spacer: 1rem;
     --private--dockit-layout-header-content-height: 3rem;
     --private--dockit-layout-header-height: calc(
@@ -74,6 +92,13 @@ export const LayoutStyles = css`
       --private--dockit-layout-header-content-height
     );
     --private--dockit-layout-navigation-width: 244px;
+  }
+
+  .root {
+    background-color: var(--dockit-layout-bg);
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
   }
 
   .fixed-container {
@@ -90,7 +115,7 @@ export const LayoutStyles = css`
 
   .header {
     display: flex;
-    background-color: var(--private--dockit-layout-bg);
+    background-color: var(--dockit-layout-bg);
     height: var(--private--dockit-layout-header-height);
   }
 
@@ -98,7 +123,7 @@ export const LayoutStyles = css`
     display: flex;
     height: var(--private--dockit-layout-header-content-height);
     padding: var(--private--dockit-layout-spacer);
-    border-bottom: 1px solid var(--private--dockit-layout-header-border-color);
+    border-bottom: 1px solid var(--dockit-layout-header-border-color);
   }
 
   .logo-link {
@@ -123,7 +148,7 @@ export const LayoutStyles = css`
     align-items: center;
     height: var(--private--dockit-layout-header-content-height);
     padding: var(--private--dockit-layout-spacer);
-    border-bottom: 1px solid var(--private--dockit-layout-header-border-color);
+    border-bottom: 1px solid var(--dockit-layout-header-border-color);
   }
 
   @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {
@@ -146,8 +171,8 @@ export const LayoutStyles = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--private--dockit-layout-toggle-button-bg);
-    color: var(--private--dockit-layout-toggle-button-color);
+    background-color: var(--dockit-layout-toggle-button-bg);
+    color: var(--dockit-layout-toggle-button-color);
     cursor: pointer;
     margin-right: var(--private--dockit-layout-spacer);
     width: var(--private--dockit-layout-header-content-height);
@@ -200,7 +225,7 @@ export const LayoutStyles = css`
       content: '';
       background-image: linear-gradient(
         to bottom,
-        var(--private--dockit-layout-bg),
+        var(--dockit-layout-bg),
         #ffffff00
       );
       height: 20px;
@@ -221,7 +246,7 @@ export const LayoutStyles = css`
   }
 
   .navigation {
-    background-color: var(--private--dockit-layout-bg);
+    background-color: var(--dockit-layout-bg);
     width: var(--private--dockit-layout-navigation-width);
     height: 100vh;
     overflow-y: auto;
@@ -270,21 +295,19 @@ export const LayoutStyles = css`
   }
 
   .navigation > ul > li > span {
-    color: var(--private--dockit-layout-navigation-group-heading-color);
+    color: var(--dockit-layout-navigation-group-heading-color);
     text-transform: uppercase;
   }
 
   .navigation a {
-    color: var(--private--dockit-layout-navigation-link-color);
+    color: var(--dockit-layout-navigation-link-color);
     padding: calc(var(--private--dockit-layout-spacer) / 2);
     margin-left: calc(-1 * var(--private--dockit-layout-spacer) / 2);
     text-decoration: none;
   }
 
   .navigation a[aria-current='location'] {
-    background-color: var(
-      --private--dockit-layout-navigation-current-link-color
-    );
+    background-color: var(--dockit-layout-navigation-current-link-color);
   }
 
   .main-container {

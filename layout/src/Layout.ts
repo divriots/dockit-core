@@ -54,100 +54,103 @@ export class Layout extends LitElement {
   render() {
     this.renderHost();
     return html`
-      <div class="fixed-container">
-        <div class="relative-container">
-          <header class="header">
-            <div class="logo-container">
-              ${this.hasNavigation
-                ? html`<a class="logo-link" href="${this.getLogoHref()}">
-                    <slot name="logo"></slot>
-                  </a>`
-                : html`<slot name="logo"></slot>`}
-            </div>
-            <div class="topbar-container">
-              <slot name="topbar"></slot>
-            </div>
-            <div class="buttons-container">
-              ${this.disableColorSchemeChange
-                ? nothing
-                : html`
-                    <button
-                      class="color-scheme-toggle"
-                      aria-live="polite"
-                      aria-label="${`Press to activate ${
-                        this.colorScheme === 'dark' ? 'light' : 'dark'
-                      } mode`}"
-                      @click="${() => this.toggleColorScheme()}"
-                    >
-                      ${unsafeHTML(
-                        this.colorScheme === 'dark' ? moonSvg : sunSvg
-                      )}
-                    </button>
-                  `}
-              ${this.hasNavigation
-                ? html`
-                    <button
-                      class="navigation-toggle"
-                      aria-live="polite"
-                      aria-label="${`Press to ${
-                        this.isNavigationShown ? 'close' : 'open'
-                      } navigation`}"
-                      @click="${() => this.toggleNavigation()}"
-                    >
-                      ${unsafeHTML(this.isNavigationShown ? xSvg : menuSvg)}
-                    </button>
-                  `
-                : nothing}
-            </div>
-          </header>
-          ${this.hasNavigation
-            ? html`<div
-                class="navigation-wrapper"
-                @click="${(event) => this.onNavigationWrapperClick(event)}"
-              >
-                <nav class="navigation">
-                  <ul>
-                    ${this.context.pagesGraph
-                      .filter(
-                        (group) => !group.children || group.children.length > 0
-                      )
-                      .map(
-                        (group) => html`<li>
-                          ${group.children
-                            ? html`<span>${group.key}</span>`
-                            : nothing}
-                          <ul>
-                            ${(group.children ? group.children : [group]).map(
-                              (item) => html`<li>
-                                <a
-                                  href="${this.getPageUrlWithoutOrigin(
-                                    item.page
-                                  )}"
-                                  aria-current="${ifDefined(
-                                    location.pathname ===
-                                      this.getPageUrlWithoutOrigin(item.page)
-                                      ? 'location'
-                                      : undefined
-                                  )}"
-                                >
-                                  ${item.key}
-                                </a>
-                              </li>`
-                            )}
-                          </ul>
-                        </li>`
-                      )}
-                  </ul>
-                </nav>
-              </div>`
-            : nothing}
+      <div class="root">
+        <div class="fixed-container">
+          <div class="relative-container">
+            <header class="header">
+              <div class="logo-container">
+                ${this.hasNavigation
+                  ? html`<a class="logo-link" href="${this.getLogoHref()}">
+                      <slot name="logo"></slot>
+                    </a>`
+                  : html`<slot name="logo"></slot>`}
+              </div>
+              <div class="topbar-container">
+                <slot name="topbar"></slot>
+              </div>
+              <div class="buttons-container">
+                ${this.disableColorSchemeChange
+                  ? nothing
+                  : html`
+                      <button
+                        class="color-scheme-toggle"
+                        aria-live="polite"
+                        aria-label="${`Press to activate ${
+                          this.colorScheme === 'dark' ? 'light' : 'dark'
+                        } mode`}"
+                        @click="${() => this.toggleColorScheme()}"
+                      >
+                        ${unsafeHTML(
+                          this.colorScheme === 'dark' ? moonSvg : sunSvg
+                        )}
+                      </button>
+                    `}
+                ${this.hasNavigation
+                  ? html`
+                      <button
+                        class="navigation-toggle"
+                        aria-live="polite"
+                        aria-label="${`Press to ${
+                          this.isNavigationShown ? 'close' : 'open'
+                        } navigation`}"
+                        @click="${() => this.toggleNavigation()}"
+                      >
+                        ${unsafeHTML(this.isNavigationShown ? xSvg : menuSvg)}
+                      </button>
+                    `
+                  : nothing}
+              </div>
+            </header>
+            ${this.hasNavigation
+              ? html`<div
+                  class="navigation-wrapper"
+                  @click="${(event) => this.onNavigationWrapperClick(event)}"
+                >
+                  <nav class="navigation">
+                    <ul>
+                      ${this.context.pagesGraph
+                        .filter(
+                          (group) =>
+                            !group.children || group.children.length > 0
+                        )
+                        .map(
+                          (group) => html`<li>
+                            ${group.children
+                              ? html`<span>${group.key}</span>`
+                              : nothing}
+                            <ul>
+                              ${(group.children ? group.children : [group]).map(
+                                (item) => html`<li>
+                                  <a
+                                    href="${this.getPageUrlWithoutOrigin(
+                                      item.page
+                                    )}"
+                                    aria-current="${ifDefined(
+                                      location.pathname ===
+                                        this.getPageUrlWithoutOrigin(item.page)
+                                        ? 'location'
+                                        : undefined
+                                    )}"
+                                  >
+                                    ${item.key}
+                                  </a>
+                                </li>`
+                              )}
+                            </ul>
+                          </li>`
+                        )}
+                    </ul>
+                  </nav>
+                </div>`
+              : nothing}
+          </div>
         </div>
+        <main class="main-container">
+          <article class="content">
+            <slot></slot>
+          </article>
+        </main>
       </div>
-      <main class="main-container">
-        <article class="content">
-          <slot></slot>
-        </article>
-      </main>
     `;
   }
 
