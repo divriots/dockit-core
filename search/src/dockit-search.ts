@@ -19,10 +19,6 @@ export class SearchBox extends LitElement {
     });
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
   render() {
     return html`<div id="search-box">
       <form action="" role="search" novalidate="">

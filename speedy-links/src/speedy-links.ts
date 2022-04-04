@@ -81,7 +81,6 @@ async function renderPage(url: string): Promise<void> {
     const moduleUrl = await opts.mapLinkUrlToModuleUrl(urlWithoutHash);
     module = await import(moduleUrl);
     if (!module) {
-      debugger;
       location.href = url;
       return;
     }
