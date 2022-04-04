@@ -3,6 +3,7 @@ import { extractClassSuffixes } from './theme-helpers';
 import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';
 import resolveConfig from 'tailwindcss/resolveConfig';
+import '~/clipboard/dockit-clipboard.define';
 
 const getClassSuffixes = (theme) => ({
   colors: extractClassSuffixes('colors', theme),

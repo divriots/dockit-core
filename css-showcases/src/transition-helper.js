@@ -48,8 +48,8 @@ export const getTransitionsHtml = (element, props, mode) => {
       } transitionBox"
           style="${style(name)}"
       >
-        <code class="${styles.details}">${name}</code>
-        <code class="${styles.details} ${styles['details-sm']}">${value}</code>
+        <pre class="${styles.details}">${name}</pre>
+        <pre class="${styles.details} ${styles['details-sm']}">${value}</pre>
       </div>`
     )
     .join('\n')}

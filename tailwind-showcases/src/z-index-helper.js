@@ -21,7 +21,7 @@ export const getZIndexHtml = (theme) => {
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
       "
     >
-      <div style="color:#FFF;">${cls}</div>
+      <dockit-clipboard><pre style="color:#FFF;">${cls}</pre></dockit-clipboard>
     </div>`
     )
     .join(' ');

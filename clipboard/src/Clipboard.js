@@ -1,14 +1,16 @@
 import copyTextToClipboard from 'copy-to-clipboard';
-import captionStyles from './Caption.css';
+import clipboardStyles from './Clipboard.css';
 
-export class Caption extends HTMLElement {
+export class Clipboard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
   copy() {
-    const text = this.getAttribute('text');
+    const text = this.shadowRoot
+      .querySelector('slot')
+      .assignedNodes()[0]?.textContent;
     copyTextToClipboard(text);
 
     const tooltip = this.shadowRoot.querySelector(`.tooltip`);
@@ -22,12 +24,12 @@ export class Caption extends HTMLElement {
     const width = this.getAttribute('width');
     const widthStyle = width ? `style="width:${width};"` : '';
 
-    const text = this.getAttribute('text');
-
     this.shadowRoot.innerHTML = /*html*/ `
-      <style>${captionStyles}</style>
-      <div class="wrapper">
-        <pre ${widthStyle} class="text">${text}</pre>
+      <style>${clipboardStyles}</style>
+      <div class="wrapper" ${widthStyle}>
+        <div class="slotContainer">
+          <slot></slot>
+        </div>
         <div class="tooltip">Copy</div>
       </div>
     `;

@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 1.1rem;
+  bottom: 1.15rem;
   font-size: 0.8rem;
   border-radius: 0.3rem;
   background-color: rgb(45, 55, 72);
@@ -24,7 +24,11 @@
   cursor: pointer;
 }
 
-.text:hover {
+::slotted(*) {
+  margin: 0 0;
+}
+
+.slotContainer:hover {
   opacity: 0.7;
 }
 

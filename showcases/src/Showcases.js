@@ -1,16 +1,16 @@
-import { CaptionedBox } from './CaptionedBox.js';
-import { CaptionedText } from './CaptionedText';
+import { renderCaptionedBox } from './captioned-box';
+import { renderCaptionedText } from './captioned-text';
 import styles from './Showcases.module.css';
 import { getCaption } from './caption-helper';
-
-customElements.define('dockit-captioned-box', CaptionedBox);
-customElements.define('dockit-captioned-text', CaptionedText);
+import '~/box/dockit-box.define.js';
+import '~/text/dockit-text.define.js';
+import '~/clipboard/dockit-clipboard.define.js';
 
 export class Showcases extends HTMLElement {
   connectedCallback() {
     const type = this.getAttribute('component-type') || 'box';
-    const showcaseComponent =
-      type === 'box' ? 'dockit-captioned-box' : 'dockit-captioned-text';
+    const renderComponent =
+      type === 'box' ? renderCaptionedBox : renderCaptionedText;
 
     const componentClass = this.getAttribute('component-class');
     const hasCheckeredBackground = this.hasAttribute('checkered-background');
@@ -18,9 +18,8 @@ export class Showcases extends HTMLElement {
     const showcaseClasses = this.getAttribute('showcase-classes');
     const showcaseStyles = this.getAttribute('showcase-styles');
 
-    const showcaseAttr = showcaseClasses ? 'showcase-class' : 'showcase-style';
+    const showcaseAttr = showcaseClasses ? 'showcaseClass' : 'showcaseStyle';
     const separator = !!showcaseClasses ? ' ' : ';';
-
     const showcases = (showcaseClasses || showcaseStyles)
       .split(separator)
       .filter((c) => !!c)
@@ -36,14 +35,16 @@ export class Showcases extends HTMLElement {
     const captionWidth = `${1 + longestName / 2}rem`;
 
     const showcaseComponents = showcases.reduce(
-      (acc, showcase) => /*html*/ `${acc}
-        <${showcaseComponent}
-          class-name="${componentClass}"
-          ${showcaseAttr}="${showcase}"
-          ${hasLongText ? 'long-text' : ''}
-          caption-width="${captionWidth}"
-          ${hasCheckeredBackground ? 'checkered-background' : ''}
-        ></${showcaseComponent}>`,
+      (acc, showcase) => /*html*/ `
+      ${acc}
+      ${renderComponent({
+        componentClass,
+        [showcaseAttr]: showcase,
+        hasLongText,
+        captionWidth,
+        hasCheckeredBackground,
+      })}
+    `,
       ''
     );
 

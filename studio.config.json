@@ -5,8 +5,12 @@
       "introduction",
       ["TailwindCSS", ["tailwind-showcases"]],
       ["CSS", ["css-showcases"]],
-      ["Components", ["box", "caption", "text", "showcases", "space"]],
       ["Doc-site", ["layout", "speedy-links"]],
+      [
+        "Components",
+        ["box", "clipboard", "text", "showcases", "space", "do-dont"]
+      ],
+      ["Layouts", ["layout"]],
       ["Infra", ["doc-layout"]]
     ]
   }
