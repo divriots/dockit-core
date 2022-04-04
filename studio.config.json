@@ -1,51 +1,45 @@
 {
- "packages": {
-  "dir": "",
-  "menu": [
-   "introduction",
-   [
-    "TailwindCSS",
-    [
-     "tailwind-showcases"
+  "packages": {
+    "dir": "",
+    "menu": [
+      "introduction",
+      [
+        "TailwindCSS",
+        [
+          "tailwind-showcases"
+        ]
+      ],
+      [
+        "CSS",
+        [
+          "css-showcases"
+        ]
+      ],
+      [
+        "Doc-site",
+        [
+          "layout",
+          "speedy-links"
+        ]
+      ],
+      [
+        "Components",
+        [
+          "box",
+          "clipboard",
+          "text",
+          "showcases",
+          "space",
+          "do-dont",
+          "search"
+        ]
+      ],
+      [
+        "Infra",
+        [
+          "doc-layout"
+        ]
+      ]
     ]
-   ],
-   [
-    "CSS",
-    [
-     "css-showcases"
-    ]
-   ],
-   [
-    "Doc-site",
-    [
-     "layout",
-     "speedy-links"
-    ]
-   ],
-   [
-    "Components",
-    [
-     "box",
-     "clipboard",
-     "text",
-     "showcases",
-     "space",
-     "do-dont",
-     "search"
-    ]
-   ],
-   [
-    "Layouts",
-    [
-     "layout"
-    ]
-   ],
-   [
-    "Infra",
-    [
-     "doc-layout"
-    ]
-   ]
-  ]
- }
+  }
 }
