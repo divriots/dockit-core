@@ -1,18 +1,26 @@
 import { LitElement, css, html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
+const beforeHitMatch = 20;
+const afterHitMatch = beforeHitMatch;
+const markChar = '\0';
+
 export class SearchBox extends LitElement {
   search = null;
   hits = null;
 
   constructor() {
     super();
-    this.addEventListener('keydown', (e) => {
+    addEventListener('keydown', (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
         this.updateHits();
       } else if (e.key === 'Escape') this.hideHits();
     });
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
   }
 
   render() {
@@ -43,15 +51,20 @@ export class SearchBox extends LitElement {
           : this.hits.length === 0
           ? html`<li><i>No match found</i></li>`
           : this.hits.map(
-              (hit) => html`<li>${unsafeHTML(this.hitHTML(hit))}</li>`
+              (hit) =>
+                html`<li>
+                  <a href="${hit.id}" @click=${this.hideHits}>
+                    ${unsafeHTML(this.hitHTML(hit))}
+                  </a>
+                </li>`
             )}
       </ul>
-      <div id="search-overlay" @click=${() => this.hideHits()}></div>
+      <div id="search-overlay" @click=${this.hideHits}></div>
     </div>`;
   }
 
   hitHTML(hit) {
-    return `<a href="${hit.id}">
+    return `
       <header>
         ${hit.headline}
         <span class="tags">
@@ -59,8 +72,7 @@ export class SearchBox extends LitElement {
           ${hit.section ? `<span>${hit.section}</span>` : ''}
         </span>
       </header>
-      ${hit.body ? `<pre class="content">${hit.body}</pre>` : ''}
-    </a>`;
+      ${hit.body ? `<pre class="content">${hit.body}</pre>` : ''}`;
   }
 
   async updateHits(searchValue?: string) {
@@ -72,8 +84,8 @@ export class SearchBox extends LitElement {
         .slice(0, 10)
         .map(this.mark)
         .map((hit) => {
-          hit.headline = this.highlight(hit.headline);
-          hit.body = this.highlight(hit.body);
+          hit.headline = this.highlight(hit.headline) || hit.headline;
+          hit.body = this.highlight(hit.body) || ' ';
           return hit;
         });
     }
@@ -87,30 +99,31 @@ export class SearchBox extends LitElement {
   mark(hit) {
     for (const t of hit.terms.sort((a, b) => b.length - a.length))
       for (const m of hit.match[t])
-        hit[m] = hit[m].replace(
-          new RegExp(`([^\0]?)(${t})([^\0]?)`, 'gi'),
-          '$1\0$2\0$3'
-        );
+        hit[m] = hit[m]
+          .replace(new RegExp(`([^\0]?)(${t})([^\0]?)`, 'gi'), '$1\0$2\0$3')
+          .replace(/</gm, '&lt;')
+          .replace(/>/gm, '&gt;');
     return hit;
   }
 
-  highlight(value: string) {
-    let content = value.replace(/</gm, '&lt;').replace(/>/gm, '&gt;');
-    const first = content.indexOf('\0');
+  highlight(content: string) {
+    const first = content.indexOf(markChar);
     if (first >= 0) {
-      const last = content.lastIndexOf('\0');
-      const start = Math.max(0, first - 50);
-      const end = Math.min(Math.max(last, first) + 50, content.length);
+      const last = content.lastIndexOf(markChar);
+      const start = Math.max(0, first - beforeHitMatch);
+      const end = Math.min(
+        Math.max(last, first) + afterHitMatch,
+        content.length
+      );
       content =
         (start > 0 ? '...' : '') +
         content.slice(start, end) +
         (end < content.length - 1 ? '...' : '');
-      content = content.replace(
+      return content.replace(
         /\0(.*?)\0/g,
         '<strong class="highlight">$1</strong>'
       );
     }
-    return content;
   }
 
   hideHits() {
