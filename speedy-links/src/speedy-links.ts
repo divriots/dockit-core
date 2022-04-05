@@ -66,7 +66,12 @@ function pushNewUrlToHistory(url: string): void {
 }
 
 function tryScrollToHashOrResetScroll(hash?: string): void {
-  const hashEl = hash ? document.querySelector(hash) : null;
+  let hashEl;
+  if (hash) {
+    try {
+      hashEl = document.querySelector(hash);
+    } catch {}
+  }
   if (hashEl) {
     hashEl.scrollIntoView();
   } else {
