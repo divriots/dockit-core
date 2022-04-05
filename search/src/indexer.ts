@@ -11,7 +11,7 @@ const miniSearch = new MiniSearch({
 });
 
 const docBlocks = new Map();
-function indexDoc(content: string, { url, file, title, section, base } ) {
+function indexDoc(content: string, { url, file, title, section, base }) {
   if (docBlocks.has(file)) miniSearch.removeAll(docBlocks.get(file));
   let heading: RegExpExecArray;
   const headingRE = /^\n?(#*)\s+(.*)\n\n([^#]*)/gm;
