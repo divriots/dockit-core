@@ -24,7 +24,7 @@ export class SearchBox extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    removeEventListener(this.keydownListener);
+    removeEventListener('keydown', this.keydownListener);
   }
 
   render() {
