@@ -79,11 +79,11 @@ async function renderPage(url: string): Promise<void> {
   let module = modulesCache[urlWithoutHash];
   if (!module) {
     const moduleUrl = await opts.mapLinkUrlToModuleUrl(urlWithoutHash);
-    module = await import(moduleUrl);
-    if (!module) {
+    if (!moduleUrl) {
       location.href = url;
       return;
     }
+    module = await import(moduleUrl);
     modulesCache[urlWithoutHash] = module;
   }
   try {
