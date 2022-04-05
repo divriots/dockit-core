@@ -66,7 +66,7 @@ export class SearchBox extends LitElement {
     </div>`;
   }
 
-  hitHTML(hit) {
+  private hitHTML(hit) {
     return `
       <header>
         ${hit.headline}
@@ -78,7 +78,7 @@ export class SearchBox extends LitElement {
       ${hit.body ? `<pre class="content">${hit.body}</pre>` : ''}`;
   }
 
-  async updateHits(searchValue?: string) {
+  private async updateHits(searchValue?: string) {
     if (!searchValue) {
       this.hits = null;
     } else {
@@ -99,7 +99,7 @@ export class SearchBox extends LitElement {
     this.requestUpdate();
   }
 
-  mark(hit) {
+  private mark(hit) {
     for (const t of hit.terms.sort((a, b) => b.length - a.length))
       for (const m of hit.match[t])
         hit[m] = hit[m]
@@ -109,7 +109,7 @@ export class SearchBox extends LitElement {
     return hit;
   }
 
-  highlight(content: string) {
+  private highlight(content: string) {
     const first = content.indexOf(markChar);
     if (first >= 0) {
       const last = content.lastIndexOf(markChar);
@@ -129,26 +129,26 @@ export class SearchBox extends LitElement {
     }
   }
 
-  hideHits() {
+  private hideHits() {
     this.searchHits.style.display = 'none';
     this.searchOverlay.style.display = 'none';
     this.searchInput.value = '';
     this.searchInput.placeholder = this.placeHolder;
   }
 
-  get placeHolder() {
+  private get placeHolder() {
     return window.navigator.platform === 'MacIntel' ? '⌘K' : 'Ctrl+K';
   }
 
-  get searchInput(): HTMLInputElement {
+  private get searchInput(): HTMLInputElement {
     return this.shadowRoot.querySelector('input[type="search"]');
   }
 
-  get searchHits(): HTMLUListElement {
+  private get searchHits(): HTMLUListElement {
     return this.shadowRoot.querySelector('.hits');
   }
 
-  get searchOverlay(): HTMLDivElement {
+  private get searchOverlay(): HTMLDivElement {
     return this.shadowRoot.querySelector('.overlay');
   }
 
