@@ -28,6 +28,18 @@ import '@divriots/dockit-core/do-dont/dockit-do.define';
 import '@divriots/dockit-core/do-dont/define-all';
 ```
 
+## API
+
+```js story
+import manifest from '../../custom-elements.json';
+export const api = () =>
+  html`<api-docs
+    .manifest="${manifest}"
+    only="dockit-do,dockit-dont"
+    selected="dockit-do"
+  ></api-docs>`;
+```
+
 ## Demos
 
 ### Do
