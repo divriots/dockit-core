@@ -1,9 +1,9 @@
-import { svg } from 'lit';
+import { html } from 'lit';
 import { InstructionsCard } from './InstructionsCard';
 
 const doColor = '#36B37E';
 
-const doIcon = (color = doColor) => svg`
+const doIcon = (color = doColor) => html`
   <svg width="24" height="24" viewBox="0 0 24 24">
     <path
       fill="${color}"

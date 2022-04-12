@@ -1,9 +1,9 @@
-import { svg } from 'lit';
+import { html } from 'lit';
 import { InstructionsCard } from './InstructionsCard';
 
 const dontColor = '#DE350B';
 
-const dontIcon = (color = dontColor) => svg`
+const dontIcon = (color = dontColor) => html`
   <svg width="24" height="24" viewBox="0 0 24 24">
     <path
       fill="${color}"
