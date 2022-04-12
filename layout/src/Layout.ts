@@ -19,6 +19,9 @@ const getInitialColorScheme = (): ColorScheme => {
   );
 };
 
+/**
+ * Customisable layout for your documentation site.
+ */
 export class Layout extends LitElement {
   static styles = LayoutStyles;
 
