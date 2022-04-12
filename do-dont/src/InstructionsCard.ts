@@ -1,4 +1,4 @@
-import { LitElement, html, svg, css, TemplateResult } from 'lit';
+import { LitElement, html, TemplateResult } from 'lit';
 import { property } from 'lit/decorators.js';
 import { InstructionsCardStyles } from './InstructionsCard.styles';
 
