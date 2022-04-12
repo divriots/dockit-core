@@ -10,19 +10,15 @@ export abstract class InstructionsCard extends LitElement {
   @property()
   color: string;
 
+  /**
+   * Takes string or lit-html template. To render correct color automatically wrap in a function with `color` as a param.
+   * @type string | `lit-html template` | `(color: string) => lit-html template`
+   */
   @property()
   icon: Icon;
 
   @property()
   label: string;
-
-  constructor(color: string, icon: Icon, label: string) {
-    super();
-
-    this.color = color;
-    this.label = label;
-    this.icon = icon;
-  }
 
   render() {
     const icon =
