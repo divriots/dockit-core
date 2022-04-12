@@ -13,7 +13,7 @@ const doIcon = (color = doColor) => html`
 `;
 
 /**
- * Component to render general instructions or for a specific component.
+ * Show recomendations in general or for a specific component.
  */
 export class Do extends InstructionsCard {
   constructor() {

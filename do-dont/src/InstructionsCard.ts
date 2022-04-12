@@ -4,9 +4,6 @@ import { InstructionsCardStyles } from './InstructionsCard.styles';
 
 type Icon = string | TemplateResult | ((color: string) => TemplateResult);
 
-/**
- * Component to render general instructions or for a specific component.
- */
 export abstract class InstructionsCard extends LitElement {
   static styles = InstructionsCardStyles;
 

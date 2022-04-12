@@ -13,7 +13,7 @@ const dontIcon = (color = dontColor) => html`
 `;
 
 /**
- * Component to render general instructions or for a specific component.
+ * Show cautions in general or for a specific component.
  */
 export class Dont extends InstructionsCard {
   constructor() {
