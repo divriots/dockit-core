@@ -79,10 +79,6 @@ async function renderPage(url: string): Promise<void> {
   let module = modulesCache[urlWithoutHash];
   if (!module) {
     const moduleUrl = await opts.mapLinkUrlToModuleUrl(urlWithoutHash);
-    if (!moduleUrl) {
-      location.href = url;
-      return;
-    }
     module = await import(moduleUrl);
     modulesCache[urlWithoutHash] = module;
   }
