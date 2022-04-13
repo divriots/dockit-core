@@ -1,15 +1,19 @@
-import { LitElement, css, html, unsafeCSS } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import styles from './Search.scss';
+import styles from './Search.styles';
 
 const beforeHitMatch = 20;
 const afterHitMatch = beforeHitMatch;
 const markChar = '\0';
 
 export class SearchBox extends LitElement {
-  search = null;
-  hits = null;
-  keydownListener = null;
+  public search = null;
+  private hits = null;
+  private keydownListener = null;
+
+  static get styles() {
+    return styles;
+  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -29,7 +33,7 @@ export class SearchBox extends LitElement {
 
   render() {
     return html`<div>
-      <form action="" role="search" novalidate="">
+      <form method="dialog" role="search" novalidate="">
         <label aria-label="Search">
           <input
             aria-autocomplete="list"
@@ -150,9 +154,5 @@ export class SearchBox extends LitElement {
 
   private get searchOverlay(): HTMLDivElement {
     return this.shadowRoot.querySelector('.overlay');
-  }
-
-  static get styles() {
-    return unsafeCSS(styles);
   }
 }

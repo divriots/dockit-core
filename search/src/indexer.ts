@@ -1,3 +1,4 @@
+import type { BuildContext } from '@divriots/studio-doc-compiler';
 import MiniSearch from 'minisearch';
 
 const miniSearch = new MiniSearch({
@@ -11,7 +12,7 @@ const miniSearch = new MiniSearch({
 });
 
 const docBlocks = new Map();
-function indexDoc(content: string, { url, file, title, section, base }) {
+function indexDoc(content: string, { url, input: file, title, section, base }) {
   if (docBlocks.has(file)) miniSearch.removeAll(docBlocks.get(file));
   let heading: RegExpExecArray;
   const headingRE = /^\n?(#*)\s+(.*)\n\n([^#]*)/gm;
@@ -26,16 +27,12 @@ function indexDoc(content: string, { url, file, title, section, base }) {
   miniSearch.addAll(blocks);
 }
 
-export const search = async (searchValue: string, docs: string[]) => {
-  if (docBlocks.size === 0) {
-    await Promise.all(
-      docs.map((p) =>
-        Promise.all([
-          import(/* @vite-ignore */ p + '?raw'),
-          import(/* @vite-ignore */ p + '?docmeta'),
-        ]).then(([{ default: content }, meta]) => indexDoc(content, meta))
-      )
-    );
-  }
+export const search = async (
+  searchValue: string,
+  { pages, base }: BuildContext
+) => {
+  if (docBlocks.size === 0)
+    for (const { data, content, ...rest } of pages)
+      indexDoc(content, { base, ...data, ...rest });
   return miniSearch.search(searchValue);
 };
