@@ -4,6 +4,8 @@ import { setupSpeedyLinks } from '@divriots/dockit-core/speedy-links';
 import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import logoSvg from './logo.svg?raw';
+import { search } from '@divriots/dockit-core/search';
+import '@divriots/dockit-core/search/dockit-search.define';
 
 export const docLayoutTemplate = (content, context) => {
   setupSpeedyLinks({
@@ -36,6 +38,8 @@ export const docLayoutTemplate = (content, context) => {
       <div class="logo" slot="logo" aria-label="dockit-core">
         ${unsafeHTML(logoSvg)}
       </div>
+      <doc-search slot="topbar" .search=${(query) => search(query, context)}>
+      </doc-search>
       <div class="prose dark:prose-invert">${unsafeHTML(content)}</div>
     </dockit-layout>
   `;
