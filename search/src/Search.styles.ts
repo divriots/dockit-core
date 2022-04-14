@@ -5,18 +5,22 @@ export default css`
   flex-grow: 1;
   margin: 0 4rem 0 1rem;
 }
+
 @media only screen and (max-width: 1024px) :host {
   margin: 0px;
 }
+
 form {
   z-index: 11;
   display: flex;
   align-items: center;
 }
+
 form label {
   position: relative;
   width: 100%;
 }
+
 form label:before {
   content: '';
   z-index: 12;s
@@ -41,9 +45,11 @@ form input[type='search'] {
   font-size: large;
   color: inherit;
 }
+
 form input[type='search']:focus {
   outline: 1px solid var(--dockit-layout-accent);
 }
+
 .overlay {
   display: none;
   position: fixed;
@@ -54,6 +60,7 @@ form input[type='search']:focus {
   right: 0;
   bottom: 0;
 }
+
 .hits {
   display: none;
   position: absolute;
@@ -71,6 +78,7 @@ form input[type='search']:focus {
 @media only screen and (max-width: 768px) hits{
   position: fixed;
 }
+
 .hits a {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -81,20 +89,27 @@ form input[type='search']:focus {
   padding: 0.5rem 0.25rem;
   border: 1px solid transparent;
 }
+
 .hits a:hover {
   border-color: var(--dockit-layout-accent);
 }
+
 .hits li {
   border-bottom: 1px solid var(--dockit-layout-header-border-color);
   margin: 0.25rem 0;
 }
+
 .hits header {
-  font-weight: 600;}
-.hits header.tags {
+  font-weight: 600;
+}
+
+.hits header .tags {
   font-size: small;
   opacity: 0.7;
-  float: right;}
-header.tags > * {
+  float: right;
+}
+
+.hits header .tags > * {
   background: #80808040;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
@@ -103,6 +118,7 @@ header.tags > * {
   font-size: 80%;
   font-family: sans-serif !important;
 }
+
 .hits .highlight {
   color: var(--dockit-layout-accent);
 }`;
