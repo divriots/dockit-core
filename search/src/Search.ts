@@ -1,19 +1,17 @@
-import { LitElement, css, html } from 'lit';
+import { LitElement, html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import styles from './Search.styles';
+import { SearchStyles } from './Search.styles';
 
 const beforeHitMatch = 20;
 const afterHitMatch = beforeHitMatch;
 const markChar = '\0';
 
-export class SearchBox extends LitElement {
+export class Search extends LitElement {
+  static styles = SearchStyles;
+
   public search = null;
   private hits = null;
   private keydownListener = null;
-
-  static get styles() {
-    return styles;
-  }
 
   connectedCallback() {
     super.connectedCallback();

@@ -1,5 +1,6 @@
 import { css } from 'lit';
-export default css`
+
+export const SearchStyles = css`
 :host {
   position: relative;
   flex-grow: 1;
