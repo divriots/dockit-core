@@ -1,38 +1,30 @@
-import { LitElement, html, svg, css, TemplateResult } from 'lit';
+import { LitElement, html, TemplateResult } from 'lit';
 import { property } from 'lit/decorators.js';
-import { styles } from './InstructionsCard.styles';
+import { InstructionsCardStyles } from './InstructionsCard.styles';
 
 type Icon = string | TemplateResult | ((color: string) => TemplateResult);
 
-/**
- * Component to render general instructions or for a specific component.
- */
 export abstract class InstructionsCard extends LitElement {
+  static styles = InstructionsCardStyles;
+
   @property()
   color: string;
 
+  /**
+   * Takes string or lit-html template. To render correct color automatically wrap in a function with `color` as a param.
+   * @type string | `lit-html template` | `(color: string) => lit-html template`
+   */
   @property()
   icon: Icon;
 
   @property()
   label: string;
 
-  constructor(color: string, icon: Icon, label: string) {
-    super();
-
-    this.color = color;
-    this.label = label;
-    this.icon = icon;
-  }
-
   render() {
     const icon =
       typeof this.icon === 'function' ? this.icon(this.color) : this.icon;
 
     return html`
-      <style>
-        ${styles}
-      </style>
       <div class="container">
         <div class="component-container">
           <slot name="component"></slot>

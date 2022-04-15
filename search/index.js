@@ -1,2 +1,2 @@
-export * from './src/Search.ts';
-export * from './src/indexer.ts';
+export { search } from './src/indexer.ts';
+export { Search } from './src/Search.ts';

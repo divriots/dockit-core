@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const styles = css`
+export const InstructionsCardStyles = css`
   .container {
     border-radius: 0.25rem;
     overflow: hidden;

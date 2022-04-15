@@ -5,10 +5,13 @@
   "license": "ISC",
   "type": "module",
   "homepage": "{{ homepage }}",
+  "customElements": "custom-elements.json",
   "scripts": {
+    "generate-cem": "cem analyze",
     "serve": "npx backlight@latest serve 4BeMe20hqOWTkdUL2NuJ --open"
   },
   "dependencies": {
+    "@api-viewer/docs": "1.0.0-pre.6",
     "copy-to-clipboard": "^3.3.1",
     "deepmerge": "^4.2.2",
     "is-plain-object": "^5.0.0",
@@ -19,6 +22,7 @@
     "tailwindcss": "^2.2.19"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.5.7",
     "@divriots/studio-doc-compiler": "^0.0.31",
     "twind": "^0.16.16"
   }

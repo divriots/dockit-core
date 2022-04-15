@@ -1,3 +1,7 @@
+```js script
+import { html } from 'lit';
+```
+
 # dockit-layout
 
 This project itself serves as an example of how to use `<dockit-layout>`, so we recommend to learn from it.
@@ -246,3 +250,14 @@ export default {
 
 These CSS custom properties are also available for reading.
 It's handy when you create something for the `topbar` slot and want it to reuse same values.
+
+## API
+
+```js story
+import manifest from '../../custom-elements.json';
+export const api = () => html`<api-docs
+  .manifest="${manifest}"
+  only="dockit-layout"
+  selected="dockit-layout"
+></api-docs>`;
+```
