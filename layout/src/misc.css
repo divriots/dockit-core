@@ -85,6 +85,7 @@ dockit-layout [slot='logo'] > :first-child {
 
 /* double-class is due to a specificity war with typography and Prism theme */
 .preview-story.preview-story pre {
+  caret-color: red;
   border: 0;
   border-radius: 0;
   margin: 0;
