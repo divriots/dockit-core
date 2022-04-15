@@ -1,3 +1,6 @@
 import { SearchBox } from './src/Search.ts';
 
-customElements.define('doc-search', SearchBox);
+customElements.define('dockit-search', SearchBox);
+
+// deprecated
+customElements.define('doc-search', class extends SearchBox {});

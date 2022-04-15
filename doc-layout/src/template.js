@@ -39,8 +39,8 @@ export const docLayoutTemplate = (content, context) => {
       <div class="logo" slot="logo" aria-label="dockit-core">
         ${unsafeHTML(logoSvg)}
       </div>
-      <doc-search slot="topbar" .search=${(query) => search(query, context)}>
-      </doc-search>
+      <dockit-search slot="topbar" .search=${(query) => search(query, context)}>
+      </dockit-search>
       <div class="prose dark:prose-invert">${unsafeHTML(content)}</div>
     </dockit-layout>
   `;
