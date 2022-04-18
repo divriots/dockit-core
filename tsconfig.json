@@ -4,6 +4,7 @@
     "allowJs": true,
     "allowNonTsExtensions": true,
     "experimentalDecorators": true,
+    "useDefineForClassFields": false,
     "jsx": "react",
     "reactNamespace": "React",
     "module": "ESNext",

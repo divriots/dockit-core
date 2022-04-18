@@ -18,6 +18,7 @@ export const getZIndexHtml = (props) => {
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
       "
+      class="not-prose"
     >
       <dockit-clipboard><pre style="color:#FFF;">${name}</pre></dockit-clipboard>
     </div>`

@@ -1,5 +1,5 @@
 ```js script
-import { html, svg } from 'lit';
+import { html, svg, css } from 'lit';
 import '@divriots/dockit-core/do-dont/dockit-dont.define';
 import '@divriots/dockit-core/do-dont/dockit-do.define';
 
@@ -11,7 +11,7 @@ const sampleButton = html`<div
 </div>`;
 ```
 
-# Do/Don't
+# dockit-do & dockit-dont
 
 Component to render general instructions or for a specific component.
 It can take a component in the "component" slot, and instructions html in the "instructions" slot.
@@ -135,4 +135,42 @@ export const do_custom = () => html` <dockit-do
     <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
   </ul>
 </dockit-do>`;
+```
+
+### Themed component
+
+`dockit-do` and `dockit-dont` support theming and custom styling via `::part()` selector, see example:
+
+```js preview-story
+export const do_themed = () =>
+  html`
+    <style>
+      ${css`
+        .themed-do dockit-do::part(container) {
+          border-style: solid;
+          border-width: 2px;
+          border-color: #000080;
+          border-radius: 1rem;
+        }
+        .themed-do dockit-do::part(component-container) {
+          background-color: #00008020;
+        }
+        .themed-do dockit-do::part(instructions-container) {
+          background-color: #00008040;
+        }
+      `}
+    </style>
+    <div class="themed-do">
+      <dockit-do color="#000080" label="NAVY BLUE">
+        ${sampleButton}
+        <ul slot="instructions">
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+          <li>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          </li>
+          <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+        </ul>
+      </dockit-do>
+    </div>
+  `;
 ```

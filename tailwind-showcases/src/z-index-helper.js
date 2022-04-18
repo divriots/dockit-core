@@ -5,7 +5,7 @@ export const getZIndexHtml = (theme) => {
   const cells = classes
     .map(
       (cls, i) => /*html*/ `
-    <div class="${cls}"
+    <div class="${cls} not-prose"
       style="
         height: 6rem;
         min-width: 8rem;

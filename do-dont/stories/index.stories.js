@@ -1,4 +1,4 @@
-import { html } from 'lit';
+import { html, css } from 'lit';
 import '~/do-dont/define-all';
 
 export default {
@@ -108,3 +108,35 @@ export const do_custom_color = () => `
     </ul>
   </dockit-do>
 `;
+
+export const do_themed = () =>
+  html`
+    <style>
+      ${css`
+        .themed-do dockit-do::part(container) {
+          border-style: solid;
+          border-width: 2px;
+          border-color: #000080;
+          border-radius: 1rem;
+        }
+        .themed-do dockit-do::part(component-container) {
+          background-color: #00008020;
+        }
+        .themed-do dockit-do::part(instructions-container) {
+          background-color: #00008040;
+        }
+      `}
+    </style>
+    <div class="themed-do">
+      <dockit-do color="#000080" label="NAVY BLUE">
+        ${sampleButton}
+        <ul slot="instructions">
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+          <li>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          </li>
+          <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+        </ul>
+      </dockit-do>
+    </div>
+  `;

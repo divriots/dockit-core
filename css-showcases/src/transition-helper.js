@@ -43,7 +43,7 @@ export const getTransitionsHtml = (element, props, mode) => {
     .map(
       ([name, value], i) => /*html*/ `
       <div id="transitionBox${i}"
-          class="${styles.box} ${
+          class="not-prose ${styles.box} ${
         mode === 'animation' ? 'no-anim' : ''
       } transitionBox"
           style="${style(name)}"

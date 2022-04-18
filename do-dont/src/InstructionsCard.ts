@@ -25,11 +25,12 @@ export abstract class InstructionsCard extends LitElement {
       typeof this.icon === 'function' ? this.icon(this.color) : this.icon;
 
     return html`
-      <div class="container">
-        <div class="component-container">
+      <div part="container" class="container">
+        <div part="component-container" class="component-container">
           <slot name="component"></slot>
         </div>
         <div
+          part="instructions-container"
           class="instructions-container"
           style="
             border-top-color: ${this.color};
@@ -40,9 +41,7 @@ export abstract class InstructionsCard extends LitElement {
             ${icon}
             <span class="title">${this.label}</span>
           </div>
-          <div class="instructions-wrapper">
-            <slot name="instructions"></slot>
-          </div>
+          <slot name="instructions"></slot>
         </div>
       </div>
     `;

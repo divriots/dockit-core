@@ -1,0 +1,10 @@
+dockit-note .container {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  border-left: 0.25rem solid var(--dockit-note-color);
+  border-top-color: var(--dockit-note-color);
+  border-right-color: var(--dockit-note-color);
+  border-bottom-color: var(--dockit-note-color);
+  background-color: var(--dockit-note-color);
+}

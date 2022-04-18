@@ -38,13 +38,10 @@ export const InstructionsCardStyles = css`
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 1rem;
   }
 
   .title {
     margin-left: 0.5rem;
-  }
-
-  .instructions-wrapper {
-    margin-top: 1rem;
   }
 `;
