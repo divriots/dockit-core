@@ -1,22 +1,14 @@
 ```js script
 import '@divriots/dockit-core/playground/dockit-playground.define.js';
-import { html } from 'lit';
-const someExternalVar = 'external text';
 ```
 
 # dockit-playground
 
-Editable code preview executed as an ES module.
+Editable code preview with support for ES modules.
 
 ## HTML
 
-Just regular preview-story
-
-```html
-<button type="submit">Submit</button>
-```
-
-instead of
+Just define `language` and `code` attributes:
 
 ```html
 <dockit-playground
@@ -25,64 +17,132 @@ instead of
 ></dockit-playground>
 ```
 
+This results in:
+
+```html story
+<dockit-playground
+  language="html"
+  code='<button type="submit">Submit</button>'
+></dockit-playground>
+```
+
 ## JS
+
+The easiest way is to register your own preconfigured component.
+E.g. for Lit it might look like this:
+
+```js script
+import { Playground } from '@divriots/dockit-core/playground/index.js';
+import { html, render } from 'lit';
+
+class PlaygroundLit extends Playground {
+  constructor() {
+    super();
+    this.language = 'js';
+    this.defaultScope = { html };
+    this.previewRenderer = (storyFn, container) => {
+      return render(storyFn(), container);
+    };
+  }
+}
+
+customElements.define('dockit-playground-lit', PlaygroundLit);
+```
+
+```js
+import { Playground } from '@divriots/dockit-core/playground/index.js';
+import { html, render } from 'lit';
+
+class PlaygroundLit extends Playground {
+  constructor() {
+    super();
+    this.language = 'js';
+    this.defaultScope = { html };
+    this.previewRenderer = (storyFn, container) => {
+      return render(storyFn(), container);
+    };
+  }
+}
+
+customElements.define('dockit-playground-lit', PlaygroundLit);
+```
+
+In the examples below we will use `<dockit-playground-lit>` where appropriate.
+
+You can also use `<dockit-playground language="js" ...></dockit-playground>` directly, but then every time you'll need to pass `html` to the `scope` and pass `previewRenderer` which can only be done using `js story` and will be challenging due to quotes mishmash.
 
 ### Simple template
 
-Just regular preview-story
-
-```js
-export const storyJsSimple = () => html`<input .value=${'test'} />`;
+```html
+<dockit-playground-lit
+  code="export default () => html`<input .value=${'test'}/>`"
+></dockit-playground-lit>
 ```
 
-instead of
+```html story
+<dockit-playground-lit
+  code="export default () => html`<input .value=${'test'}/>`"
+></dockit-playground-lit>
+```
 
-```html
-<dockit-playground
-  language="js"
-  code="html`<input .value=${'test'}/>`"
-></dockit-playground>
+### Scope
+
+Any external variable that needs to be available in the code can be passed as a scope:
+
+```js
+const someVar = 'world!';
+export const scopeStory = () => html`
+  <dockit-playground-lit
+    .scope="${{ someVar }}"
+    code="export default () => html\`<input .value=\${'Hello ' + someVar}/>\`"
+  ></dockit-playground-lit>
+`;
+```
+
+```js story
+const someVar = 'world!';
+export const scopeStory = () => html`
+  <dockit-playground-lit
+    .scope="${{ someVar }}"
+    code="export default () => html\`<input .value=\${'Hello ' + someVar}/>\`"
+  ></dockit-playground-lit>
+`;
 ```
 
 ### ES imports
 
-Just regular preview-story
-
-```js
-import 'https://esm.run/@divriots/simba@0.7.0/button/define';
-export const storyJsWithImport = () =>
-  html`<simba-button>Simba button with long text</simba-button>`;
-```
-
-instead of
+Static:
 
 ```html
-<dockit-playground
-  language="js"
+<dockit-playground-lit
   code="import 'https://esm.run/@divriots/simba@0.7.0/button/define';
-html`<simba-button>Button</simba-button>`;"
-></dockit-playground>
+export default () => html`<simba-button>Button</simba-button>`;"
+></dockit-playground-lit>
 ```
 
-### Use vars from js script
-
-TODO: make this work with `preview-story`, maybe by analyzing the vars used in the story and setting the `scope` automatically.
-
-```js preview-story
-const someInnerVar = 'inner text';
-export const storyJsScriptVars = () =>
-  html`<input .value=${someExternalVar + '' + someInnerVar} />`;
+```html story
+<dockit-playground-lit
+  code="import 'https://esm.run/@divriots/simba@0.7.0/button/define';
+export default () => html`<simba-button>Button</simba-button>`;"
+></dockit-playground-lit>
 ```
 
-should work similar to
+Dynamic:
 
-```js
-const someInnerVar = 'inner text';
-export const playgroundJsScriptVars = () => html`
-  <dockit-playground
-    language="js"
-    .scope="${{ someExternalVar }}"
-    code="return () => html\`<input .value=\${someExternalVar + '' + someInnerVar}/>\`"
-  ></dockit-playground>
-`;
+```html
+<dockit-playground-lit
+  code="await import('https://esm.run/@divriots/simba@0.7.0/input-email/define');
+export default () => html`<simba-input-email></simba-input-email>`;"
+></dockit-playground-lit>
 ```
+
+```html story
+<dockit-playground-lit
+  code="await import('https://esm.run/@divriots/simba@0.7.0/input-email/define');
+export default () => html`<simba-input-email></simba-input-email>`;"
+></dockit-playground-lit>
+```
+
+### Import maps
+
+TODO:

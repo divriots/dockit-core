@@ -1,9 +1,7 @@
 import { html, render, LitElement, TemplateResult } from 'lit';
+import 'lit-code';
 import { property } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { CodeEditor } from './CodeEditor';
-
-customElements.define('dockit-code-editor', CodeEditor);
 
 function esm(strings: TemplateStringsArray, ...values: string[]): string {
   let code = strings.raw[0];
@@ -30,6 +28,7 @@ export class Playground extends LitElement {
   code: string;
 
   @property()
+  // @ts-ignore
   previewRenderer: (
     storyFn: () => unknown,
     container: HTMLElement
@@ -52,8 +51,10 @@ export class Playground extends LitElement {
   @property()
   initialStoryFn?: () => unknown;
 
+  protected defaultScope?: { [key: string]: any };
+
   protected $storyContainer?: HTMLElement;
-  protected $codeEditor?: CodeEditor;
+  protected $codeEditor?: HTMLElement & { getCode(): string };
 
   protected render(): TemplateResult {
     return html`
@@ -61,10 +62,11 @@ export class Playground extends LitElement {
         <div class="story_padded"></div>
         <details>
           <summary>Code</summary>
-          <dockit-code-editor
-            lang="${this.language}"
+          <lit-code
+            language="${this.language}"
+            code="${this.code}"
             @update=${() => this.onCodeUpdate()}
-          ></dockit-code-editor>
+          ></lit-code>
         </details>
       </div>
     `;
@@ -73,9 +75,7 @@ export class Playground extends LitElement {
   protected firstUpdated(): void {
     this.$storyContainer =
       this.querySelector<HTMLElement>('.story_padded') || undefined;
-    this.$codeEditor =
-      this.querySelector<CodeEditor>('dockit-code-editor') || undefined;
-    this.$codeEditor!.code = this.code;
+    this.$codeEditor = this.querySelector('lit-code') || undefined;
     if (this.initialStoryFn) {
       this.renderStory(this.initialStoryFn);
     } else {
@@ -108,7 +108,7 @@ export class Playground extends LitElement {
   }
 
   protected getCode(): string {
-    return this.$codeEditor?.code || '';
+    return this.$codeEditor?.getCode() || '';
   }
 
   protected async renderHtml(code: string): Promise<void> {
@@ -133,12 +133,12 @@ export class Playground extends LitElement {
   }
 
   protected prepareArguments(): [string[], unknown[]] {
-    const args = {
-      ...this.scope,
-      html: this.scope?.html || html,
-    };
-    const argNames = Object.keys(args);
-    const argVals = Object.values(args);
+    if (!this.scope && !this.defaultScope) {
+      return [[], []];
+    }
+    const scope = { ...this.defaultScope, ...this.scope };
+    const argNames = Object.keys(scope);
+    const argVals = Object.values(scope);
     return [argNames, argVals];
   }
 
@@ -146,10 +146,11 @@ export class Playground extends LitElement {
     const codeLines = code
       .trim()
       .replace(
-        this.export ? `export const ${this.export} =` : /export const \w+ =/,
+        this.export
+          ? new RegExp(`/export \w+ ${this.export} =`)
+          : 'export default',
         'return'
       )
-      .replace(/export \w+ \w+ =/g, '')
       .split('\n');
     let importLines = codeLines.filter((line) =>
       line.trimStart().startsWith('import ')
