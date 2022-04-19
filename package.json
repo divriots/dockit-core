@@ -16,8 +16,10 @@
     "deepmerge": "^4.2.2",
     "is-plain-object": "^5.0.0",
     "lit": "^2.0.0",
+    "lit-code": "^0.1.10",
     "lodash": "^4.17.21",
     "minisearch": "^4",
+    "prismjs": "^1.28.0",
     "prism-themes": "^1.9.0",
     "tailwindcss": "^2.2.19"
   },
