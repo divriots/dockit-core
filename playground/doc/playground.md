@@ -40,8 +40,8 @@ class PlaygroundLit extends Playground {
     super();
     this.language = 'js';
     this.defaultScope = { html };
-    this.previewRenderer = (storyFn, container) => {
-      return render(storyFn(), container);
+    this.renderStory = (story, container) => {
+      return render(story(), container);
     };
   }
 }
@@ -58,8 +58,8 @@ class PlaygroundLit extends Playground {
     super();
     this.language = 'js';
     this.defaultScope = { html };
-    this.previewRenderer = (storyFn, container) => {
-      return render(storyFn(), container);
+    this.renderStory = (story, container) => {
+      return render(story(), container);
     };
   }
 }
@@ -69,7 +69,7 @@ customElements.define('dockit-playground-lit', PlaygroundLit);
 
 In the examples below we will use `<dockit-playground-lit>` where appropriate.
 
-You can also use `<dockit-playground language="js" ...></dockit-playground>` directly, but then every time you'll need to pass `html` to the `scope` and pass `previewRenderer` which can only be done using `js story` and will be challenging due to quotes mishmash.
+You can also use `<dockit-playground language="js" ...></dockit-playground>` directly, but then every time you'll need to pass `html` to the `scope` and pass `renderStory` which can only be done using `js story` and will be challenging due to quotes mishmash.
 
 ### Simple template
 
@@ -149,4 +149,30 @@ await import('https://esm.run/@divriots/simba@0.7.0/switch/define');
 setTheme('amber');
 export default () => html`<simba-switch style='justify-content: left;'></simba-switch>`;"
 ></dockit-playground-lit>
+```
+
+### Dispose function
+
+Sometimes the rendering leaves state which needs to be cleaned before rendering again.
+Therefore the `renderStory` function can return a dispose function to do the job which will be executed before new rendering starts.
+E.g. for FAST `html` you can have the following implementation:
+
+```js
+import { Playground } from '@divriots/dockit-core/playground/index.js';
+import { html } from '@microsoft/fast-element';
+
+class PlaygroundFast extends Playground {
+  constructor() {
+    super();
+    this.language = 'js';
+    this.defaultScope = { html };
+    this.renderStory = (story, container) => {
+      const template = story();
+      const view = template.render({}, container);
+      return () => view.dispose();
+    };
+  }
+}
+
+customElements.define('dockit-playground-fast', PlaygroundFast);
 ```

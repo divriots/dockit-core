@@ -5,6 +5,14 @@ import { CodeEditor } from './CodeEditor';
 
 customElements.define('dockit-code-editor', CodeEditor);
 
+function debounce(callback: VoidFunction, time: number): VoidFunction {
+  let timeoutId: number;
+  return () => {
+    clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(callback, time);
+  };
+}
+
 function esm(strings: TemplateStringsArray, ...values: string[]): string {
   let code = strings.raw[0];
   for (let i = 0; i < values.length; i++) {
@@ -17,60 +25,54 @@ function esm(strings: TemplateStringsArray, ...values: string[]): string {
  * Render and preview code with live code editor.
  */
 export class Playground extends LitElement {
-  createRenderRoot(): HTMLElement {
-    return this;
-  }
-
   @property()
   // @ts-ignore
   language: 'html' | 'js';
 
   @property()
-  // @ts-ignore
-  code: string = '';
+  code = '';
 
   @property()
   // @ts-ignore
-  previewRenderer: (
-    storyFn: () => unknown,
+  renderStory: (
+    story: () => unknown,
     container: HTMLElement
-  ) => Promise<void> = async (
-    storyFn: () => TemplateResult,
-    container: HTMLElement
-  ) => {
-    render(storyFn(), container);
-  };
+  ) => Promise<void | VoidFunction>;
 
   @property({ attribute: false })
   scope?: { [key: string]: any };
 
-  // below properties are for Backlight MDJS preview-story only
-
-  @property()
-  export?: string;
-
-  @property({
-    attribute: 'import-maps',
-    type: Object,
-  })
-  importMaps?: { [key: string]: string };
-
-  @property()
-  initialStoryFn?: () => unknown;
-
   @state()
   protected isOpen = false;
 
+  @state()
+  protected error = '';
+
   protected defaultScope?: { [key: string]: any };
 
-  protected $storyContainer?: HTMLElement;
-  protected $codeEditor?: CodeEditor;
+  protected disposePreviousRender?: VoidFunction;
+
+  constructor() {
+    super();
+    this.onCodeUpdate = debounce(this.onCodeUpdate.bind(this), 50);
+  }
+
+  protected createRenderRoot(): HTMLElement {
+    return this;
+  }
 
   protected render(): TemplateResult {
     return html`
       <div class="preview-story">
-        <div class="story_padded"></div>
-        <details @toggle="${(event) => this.onDetailsToggle(event)}">
+        ${this.error ? html`<pre>${this.error}</pre>` : nothing}
+        <div
+          class="story_padded"
+          style="${this.error ? 'display: none' : ''}"
+        ></div>
+        <details
+          @toggle="${(event: { target: HTMLDetailsElement }) =>
+            this.onDetailsToggle(event)}"
+        >
           <summary>Code</summary>
           ${this.isOpen
             ? html`<dockit-code-editor
@@ -85,13 +87,7 @@ export class Playground extends LitElement {
   }
 
   protected firstUpdated(): void {
-    this.$storyContainer =
-      this.querySelector<HTMLElement>('.story_padded') || undefined;
-    if (this.initialStoryFn) {
-      this.renderStory(this.initialStoryFn);
-    } else {
-      this.renderCode();
-    }
+    this.renderCode();
   }
 
   protected onDetailsToggle(event: { target: HTMLDetailsElement }): void {
@@ -103,42 +99,41 @@ export class Playground extends LitElement {
   }
 
   protected async renderCode(): Promise<void> {
-    if (!this.previewRenderer) {
-      this.renderError('previewRenderer is required');
-      return;
-    }
     const code = this.getActualCode();
     if (!code) {
       return;
     }
     try {
+      this.error = '';
+      if (typeof this.disposePreviousRender === 'function') {
+        this.disposePreviousRender();
+        this.disposePreviousRender = undefined;
+      }
       if (this.language === 'html') {
         await this.renderHtml(code);
       } else if (this.language === 'js') {
         await this.renderJs(code);
       }
     } catch (e) {
-      this.renderError(`${e}`);
+      this.error = `${e}`;
     }
   }
 
-  protected setActualCode(code: string) {
-    const $editor = this.querySelector<CodeEditor>('dockit-code-editor');
-    return $editor?.setCode(code);
+  protected setActualCode(code: string): void {
+    this.querySelectCodeEditor()?.setCode(code);
   }
 
   protected getActualCode(): string {
-    const $editor = this.querySelector<CodeEditor>('dockit-code-editor');
-    return $editor?.getCode() || this.code;
+    return this.querySelectCodeEditor()?.getCode() || this.code;
   }
 
   protected async renderHtml(code: string): Promise<void> {
-    render(html`${unsafeHTML(code)}`, this.$storyContainer!);
+    render(html`${unsafeHTML(code)}`, this.querySelectStoryContainer());
   }
 
   protected async renderJs(code: string): Promise<void> {
-    const [argNames, argVals] = this.prepareArguments();
-    const [importLines, innerLines] = this.prepareCode(code);
+    const [argNames, argVals] = this.prepareJsArguments();
+    const [importLines, innerLines] = this.prepareJsCode(code);
     const moduleUrl = esm`
       ${importLines.join('\n')}
       export default async (${argNames.join(', ')}) => {
@@ -146,14 +141,14 @@ export class Playground extends LitElement {
       }
     `;
     const module = await import(moduleUrl);
-    const storyFn = await module.default(...argVals);
-    if (!storyFn) {
-      throw 'code must contain a story function: either on the last line or exported as a named export';
+    const story = await module.default(...argVals);
+    if (!story || typeof story !== 'function') {
+      throw 'code must have a default export with a story function';
     }
-    this.renderStory(storyFn);
+    return this.renderStoryFunction(story);
   }
 
-  protected prepareArguments(): [string[], unknown[]] {
+  protected prepareJsArguments(): [string[], unknown[]] {
     if (!this.scope && !this.defaultScope) {
       return [[], []];
     }
@@ -163,49 +158,41 @@ export class Playground extends LitElement {
     return [argNames, argVals];
   }
 
-  protected prepareCode(code: string): [string[], string[]] {
-    const codeLines = code
-      .trim()
-      .replace(
-        this.export
-          ? new RegExp(`/export \w+ ${this.export} =`)
-          : 'export default',
-        'return'
-      )
-      .split('\n');
-    let importLines = codeLines.filter((line) =>
-      line.trimStart().startsWith('import ')
-    );
-    if (this.importMaps) {
-      const moduleSpecifiers = Object.keys(this.importMaps);
-      importLines = importLines.map((line) => {
-        moduleSpecifiers.forEach((moduleSpecifier) => {
-          if (line.includes(moduleSpecifier)) {
-            line = line
-              .replace(
-                `'${moduleSpecifier}'`,
-                `'${this.importMaps![moduleSpecifier]}'`
-              )
-              .replace(
-                `"${moduleSpecifier}"`,
-                `"${this.importMaps![moduleSpecifier]}"`
-              );
-          }
-        });
-        return line;
+  protected prepareJsCode(code: string): [string[], string[]] {
+    const importLines: string[] = [];
+    const innerLines: string[] = [];
+    code
+      .replace('export default ', 'return ')
+      .split('\n')
+      .map((line) => line.trimStart())
+      .forEach((line) => {
+        if (line.startsWith('import ')) {
+          importLines.push(line);
+        } else {
+          innerLines.push(line);
+        }
       });
-    }
-    const innerLines = codeLines.filter(
-      (line) => !line.trimStart().startsWith('import ')
-    );
     return [importLines, innerLines];
   }
 
-  protected renderStory(storyFn: () => unknown): void {
-    this.previewRenderer(storyFn, this.$storyContainer!);
+  protected async renderStoryFunction(story: () => unknown): Promise<void> {
+    if (!this.renderStory) {
+      throw 'renderStory is required';
+    }
+    this.disposePreviousRender =
+      (await this.renderStory(story, this.querySelectStoryContainer())) ||
+      undefined;
   }
 
   protected renderError(error: string): void {
-    render(html`<pre>${error}</pre>`, this.$storyContainer!);
+    render(html`<pre>${error}</pre>`, this.querySelectStoryContainer());
+  }
+
+  protected querySelectStoryContainer(): HTMLElement {
+    return this.querySelector<HTMLElement>('.story_padded')!;
+  }
+
+  protected querySelectCodeEditor(): CodeEditor | null {
+    return this.querySelector<CodeEditor>('dockit-code-editor');
   }
 }

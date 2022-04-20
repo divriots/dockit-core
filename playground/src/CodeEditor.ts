@@ -19,7 +19,7 @@ export class CodeEditor extends LiteCodeEditor {
     this.redispatchEvent = this.redispatchEvent.bind(this);
   }
 
-  connectedCallback() {
+  connectedCallback(): void {
     this.addEventListener('src_code', this.redispatchEvent);
     this.addEventListener('src_code:input', this.redispatchEvent);
 
@@ -33,13 +33,13 @@ export class CodeEditor extends LiteCodeEditor {
     this.src_code = src_code;
   }
 
-  disconnectedCallback() {
+  disconnectedCallback(): void {
     this.removeEventListener('src_code', this.redispatchEvent);
     this.removeEventListener('src_code:input', this.redispatchEvent);
     super.disconnectedCallback();
   }
 
-  private redispatchEvent(event) {
+  private redispatchEvent(event): void {
     event.stopImmediatePropagation();
     if (event.type === 'src_code:input') {
       this.dispatchEvent(
@@ -48,7 +48,7 @@ export class CodeEditor extends LiteCodeEditor {
     }
   }
 
-  private _highlight_src(_, el_code) {
+  private _highlight_src(_, el_code): string {
     return Prism.highlightElement(el_code);
   }
 }
