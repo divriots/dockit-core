@@ -1,7 +1,9 @@
-import { html, render, LitElement, TemplateResult } from 'lit';
-import 'lit-code';
-import { property } from 'lit/decorators.js';
+import { html, LitElement, nothing, render, TemplateResult } from 'lit';
+import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { CodeEditor } from './CodeEditor';
+
+customElements.define('dockit-code-editor', CodeEditor);
 
 function esm(strings: TemplateStringsArray, ...values: string[]): string {
   let code = strings.raw[0];
@@ -25,7 +27,7 @@ export class Playground extends LitElement {
 
   @property()
   // @ts-ignore
-  code: string;
+  code: string = '';
 
   @property()
   // @ts-ignore
@@ -51,22 +53,27 @@ export class Playground extends LitElement {
   @property()
   initialStoryFn?: () => unknown;
 
+  @state()
+  protected isOpen = false;
+
   protected defaultScope?: { [key: string]: any };
 
   protected $storyContainer?: HTMLElement;
-  protected $codeEditor?: HTMLElement & { getCode(): string };
+  protected $codeEditor?: CodeEditor;
 
   protected render(): TemplateResult {
     return html`
       <div class="preview-story">
         <div class="story_padded"></div>
-        <details>
+        <details @toggle="${(event) => this.onDetailsToggle(event)}">
           <summary>Code</summary>
-          <lit-code
-            language="${this.language}"
-            code="${this.code}"
-            @update=${() => this.onCodeUpdate()}
-          ></lit-code>
+          ${this.isOpen
+            ? html`<dockit-code-editor
+                lang="${this.language}"
+                .initialCode="${this.code}"
+                @update=${() => this.onCodeUpdate()}
+              ></dockit-code-editor>`
+            : nothing}
         </details>
       </div>
     `;
@@ -75,12 +82,15 @@ export class Playground extends LitElement {
   protected firstUpdated(): void {
     this.$storyContainer =
       this.querySelector<HTMLElement>('.story_padded') || undefined;
-    this.$codeEditor = this.querySelector('lit-code') || undefined;
     if (this.initialStoryFn) {
       this.renderStory(this.initialStoryFn);
     } else {
       this.renderCode();
     }
+  }
+
+  protected onDetailsToggle(event: { target: HTMLDetailsElement }): void {
+    this.isOpen = event.target.open;
   }
 
   protected onCodeUpdate(): void {
@@ -92,7 +102,7 @@ export class Playground extends LitElement {
       this.renderError('previewRenderer is required');
       return;
     }
-    const code = this.getCode();
+    const code = this.getActualCode();
     if (!code) {
       return;
     }
@@ -107,8 +117,14 @@ export class Playground extends LitElement {
     }
   }
 
-  protected getCode(): string {
-    return this.$codeEditor?.getCode() || '';
+  protected setActualCode(code: string) {
+    const $editor = this.querySelector<CodeEditor>('dockit-code-editor');
+    return $editor?.setCode(code);
+  }
+
+  protected getActualCode(): string {
+    const $editor = this.querySelector<CodeEditor>('dockit-code-editor');
+    return $editor?.getCode() || this.code;
   }
 
   protected async renderHtml(code: string): Promise<void> {
