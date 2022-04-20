@@ -3,10 +3,10 @@
     "dir": "",
     "menu": [
       "introduction",
-      ["DESIGN TOKEN SHOWCASES", ["tailwind-showcases", "css-showcases"]],
-      ["COMPONENTS", ["do-dont", "note", "caption", "image-container", "row"]],
-      ["LAYOUTS", ["layout", "speedy-links"]],
-      ["ATOMS", ["box", "clipboard", "text", "showcases", "space", "search"]],
+      ["Design Token Showcases", ["tailwind-showcases", "css-showcases"]],
+      ["Components", ["do-dont", "note", "caption", "image-container", "row"]],
+      ["Layout", ["layout", "speedy-links"]],
+      ["Atoms", ["box", "clipboard", "text", "showcases", "space", "search"]],
       ["Infra", ["doc-layout"]]
     ]
   }

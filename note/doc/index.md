@@ -1,6 +1,6 @@
 ```js script
 import { html } from 'lit';
-import '@divriots/dockit-core/note/dockit-note.define';
+import '@divriots/dockit-core/note/dockit-note.define.js';
 ```
 
 # dockit-note
@@ -57,7 +57,7 @@ export const note_error_variant = () =>
 
 ```js preview-story
 export const note_custom_color = () => html`
-  <dockit-note color="#36B37E40">
+  <dockit-note color="BurlyWood">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit
   </dockit-note>
 `;
@@ -68,16 +68,16 @@ export const note_custom_color = () => html`
 ```js preview-story
 export const note_themed = () => html`
   <style>
-    .themed-note dockit-note div {
+    dockit-note.themed-note {
+      --dockit-note-color: #ffe133;
+      color: #000000;
       padding: 1.5rem;
       border-radius: 0.5rem;
-      border-left-width: 0.5rem;
+      border-left-width: 1rem;
     }
   </style>
-  <div class="themed-note">
-    <dockit-note>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    </dockit-note>
-  </div>
+  <dockit-note class="themed-note">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  </dockit-note>
 `;
 ```

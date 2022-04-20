@@ -1,6 +1,6 @@
 ```js script
-import '@divriots/dockit-core/caption/dockit-caption.define';
-import '@divriots/dockit-core/image-container/dockit-image-container.define';
+import '@divriots/dockit-core/caption/dockit-caption.define.js';
+import '@divriots/dockit-core/image-container/dockit-image-container.define.js';
 ```
 
 # dockit-caption
@@ -10,7 +10,7 @@ Component used to call out information in documentation pages.
 ## Setup
 
 ```js
-import '@divriots/dockit-core/caption/dockit-caption.define';
+import '@divriots/dockit-core/caption/dockit-caption.define.js';
 ```
 
 ## Demo

@@ -1,6 +1,6 @@
 ```js script
-import '@divriots/dockit-core/image-container/dockit-image-container.define';
-import '@divriots/dockit-core/caption/dockit-caption.define';
+import '@divriots/dockit-core/image-container/dockit-image-container.define.js';
+import '@divriots/dockit-core/caption/dockit-caption.define.js';
 ```
 
 # dockit-image-container
@@ -10,7 +10,7 @@ Component used to contain images in documentation pages.
 ## Setup
 
 ```js
-import '@divriots/dockit-core/image-container/dockit-image-container.define';
+import '@divriots/dockit-core/image-container/dockit-image-container.define.js';
 ```
 
 ## Demo

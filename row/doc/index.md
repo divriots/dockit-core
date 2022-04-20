@@ -16,8 +16,8 @@ import '@divriots/dockit-core/row/dockit-row.define.js';
 
 ```js preview-story
 import { html } from 'lit';
-import '~/row/dockit-row.define';
-import '~/do-dont/define-all';
+import '~/row/dockit-row.define.js';
+import '~/do-dont/define-all.js';
 
 export const row = () => html`
   <dockit-row>

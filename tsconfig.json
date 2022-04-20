@@ -9,7 +9,6 @@
     "reactNamespace": "React",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "useDefineForClassFields": false,
     "baseUrl": ".",
     "paths": {
       "~/*": ["*"],

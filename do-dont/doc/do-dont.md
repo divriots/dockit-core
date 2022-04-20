@@ -1,7 +1,7 @@
 ```js script
 import { html, svg, css } from 'lit';
-import '@divriots/dockit-core/do-dont/dockit-dont.define';
-import '@divriots/dockit-core/do-dont/dockit-do.define';
+import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
+import '@divriots/dockit-core/do-dont/dockit-do.define.js';
 
 const sampleButton = html`<div
   slot="component"
@@ -21,11 +21,11 @@ See setup and usage examples below:
 ## Setup
 
 ```js
-import '@divriots/dockit-core/do-dont/dockit-dont.define';
-import '@divriots/dockit-core/do-dont/dockit-do.define';
+import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
+import '@divriots/dockit-core/do-dont/dockit-do.define.js';
 
 // or define all
-import '@divriots/dockit-core/do-dont/define-all';
+import '@divriots/dockit-core/do-dont/define-all.js';
 ```
 
 ## API

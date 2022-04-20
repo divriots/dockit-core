@@ -1,5 +1,5 @@
 import '~/row/dockit-row.define';
-import '~/do-dont/define-all';
+import '~/do-dont/define-all.js';
 
 export default {
   parameters: {
