@@ -75,13 +75,13 @@ You can also use `<dockit-playground language="js" ...></dockit-playground>` dir
 
 ```html
 <dockit-playground-lit
-  code="export default () => html`<input .value=${'test'}/>`"
+  code="export default () => html`<input type='email' .value=${'email@example.com'}/>`"
 ></dockit-playground-lit>
 ```
 
 ```html story
 <dockit-playground-lit
-  code="export default () => html`<input .value=${'test'}/>`"
+  code="export default () => html`<input type='email' .value=${'email@example.com'}/>`"
 ></dockit-playground-lit>
 ```
 
@@ -90,21 +90,21 @@ You can also use `<dockit-playground language="js" ...></dockit-playground>` dir
 Any external variable that needs to be available in the code can be passed as a scope:
 
 ```js
-const someVar = 'world!';
+const name = 'username!';
 export const scopeStory = () => html`
   <dockit-playground-lit
-    .scope="${{ someVar }}"
-    code="export default () => html\`<input .value=\${'Hello ' + someVar}/>\`"
+    .scope="${{ name }}"
+    code="export default () => html\`<input .value=\${'Hello ' + name}/>\`"
   ></dockit-playground-lit>
 `;
 ```
 
 ```js story
-const someVar = 'world!';
+const name = 'username!';
 export const scopeStory = () => html`
   <dockit-playground-lit
-    .scope="${{ someVar }}"
-    code="export default () => html\`<input .value=\${'Hello ' + someVar}/>\`"
+    .scope="${{ name }}"
+    code="export default () => html\`<input .value=\${'Hello ' + name}/>\`"
   ></dockit-playground-lit>
 `;
 ```
@@ -115,34 +115,38 @@ Static:
 
 ```html
 <dockit-playground-lit
-  code="import 'https://esm.run/@divriots/simba@0.7.0/button/define';
+  code="import { setTheme } from 'https://esm.run/@divriots/simba@0.7.0/themes';
+import 'https://esm.run/@divriots/simba@0.7.0/button/define';
+setTheme('amber');
 export default () => html`<simba-button>Button</simba-button>`;"
 ></dockit-playground-lit>
 ```
 
 ```html story
 <dockit-playground-lit
-  code="import 'https://esm.run/@divriots/simba@0.7.0/button/define';
+  code="import { setTheme } from 'https://esm.run/@divriots/simba@0.7.0/themes';
+import 'https://esm.run/@divriots/simba@0.7.0/button/define';
+setTheme('amber');
 export default () => html`<simba-button>Button</simba-button>`;"
 ></dockit-playground-lit>
 ```
 
-Dynamic:
+Dynamic (top-level await is supported too):
 
 ```html
 <dockit-playground-lit
-  code="await import('https://esm.run/@divriots/simba@0.7.0/input-email/define');
-export default () => html`<simba-input-email></simba-input-email>`;"
+  code="const { setTheme } = await import('https://esm.run/@divriots/simba@0.7.0/themes');
+await import('https://esm.run/@divriots/simba@0.7.0/switch/define');
+setTheme('amber');
+export default () => html`<simba-switch style='justify-content: left;'></simba-switch>`;"
 ></dockit-playground-lit>
 ```
 
 ```html story
 <dockit-playground-lit
-  code="await import('https://esm.run/@divriots/simba@0.7.0/input-email/define');
-export default () => html`<simba-input-email></simba-input-email>`;"
+  code="const { setTheme } = await import('https://esm.run/@divriots/simba@0.7.0/themes');
+await import('https://esm.run/@divriots/simba@0.7.0/switch/define');
+setTheme('amber');
+export default () => html`<simba-switch style='justify-content: left;'></simba-switch>`;"
 ></dockit-playground-lit>
 ```
-
-### Import maps
-
-TODO:

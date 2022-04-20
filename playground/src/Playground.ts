@@ -41,13 +41,18 @@ export class Playground extends LitElement {
     render(storyFn(), container);
   };
 
-  @property()
-  export?: string;
-
   @property({ attribute: false })
   scope?: { [key: string]: any };
 
+  // below properties are for Backlight MDJS preview-story only
+
   @property()
+  export?: string;
+
+  @property({
+    attribute: 'import-maps',
+    type: Object,
+  })
   importMaps?: { [key: string]: string };
 
   @property()
