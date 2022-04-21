@@ -19,17 +19,11 @@ export const docLayoutTemplate = (content, context) => {
       ${unsafeHTML(styles)} .logo {
         color: #f8c307;
       }
-      html {
-        --ds-preview-background: #f3f4f6;
-      }
-      html.dark {
-        --ds-preview-background: #1f2937;
-      }
       .preview-story .story_padded {
-        background-color: var(--ds-preview-background);
+        background-color: #f3f4f6;
       }
-      dockit-playground {
-        --dockit-playground-preview-background: var(--ds-preview-background);
+      html.dark .preview-story .story_padded {
+        background-color: #1f2937;
       }
     </style>
     <dockit-layout

@@ -6,6 +6,11 @@ import '@divriots/dockit-core/playground/dockit-playground.define.js';
 
 Editable code preview with support for ES modules.
 
+## Note for MDJS users in Backlight
+
+You don't need this component.
+Just use `html preview-story` or `js preview-story` to get an editable playground automatically.
+
 ## HTML
 
 Just define `language` and `code` attributes:
@@ -71,7 +76,10 @@ In the examples below we will use `<dockit-playground-lit>` where appropriate.
 
 You can also use `<dockit-playground language="js" ...></dockit-playground>` directly, but then every time you'll need to pass `html` to the `scope` and pass `renderStory` which can only be done using `js story` and will be challenging due to quotes mishmash.
 
-### Simple template
+### Basic demo
+
+Provide a default export containing a JS story function.
+E.g. for Lit it's an `html` template.
 
 ```html
 <dockit-playground-lit

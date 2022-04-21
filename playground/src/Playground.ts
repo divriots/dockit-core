@@ -1,9 +1,10 @@
+import takeCareOf from 'carehtml';
 import { html, LitElement, nothing, render, TemplateResult } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { CodeEditor } from './CodeEditor';
 
-customElements.define('dockit-code-editor', CodeEditor);
+const careHtml = takeCareOf(html);
 
 function debounce(callback: VoidFunction, time: number): VoidFunction {
   let timeoutId: number;
@@ -75,11 +76,11 @@ export class Playground extends LitElement {
         >
           <summary>Code</summary>
           ${this.isOpen
-            ? html`<dockit-code-editor
+            ? careHtml`<${CodeEditor}
                 lang="${this.language}"
                 .initialCode="${this.code}"
                 @update=${() => this.onCodeUpdate()}
-              ></dockit-code-editor>`
+              ></${CodeEditor}>`
             : nothing}
         </details>
       </div>
@@ -192,7 +193,7 @@ export class Playground extends LitElement {
     return this.querySelector<HTMLElement>('.story_padded')!;
   }
 
-  protected querySelectCodeEditor(): CodeEditor | null {
-    return this.querySelector<CodeEditor>('dockit-code-editor');
+  protected querySelectCodeEditor(): CodeEditor | undefined {
+    return this.querySelector('details')!.children[1] as CodeEditor | undefined;
   }
 }

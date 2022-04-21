@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@api-viewer/docs": "1.0.0-pre.6",
+    "carehtml": "^0.1.4",
     "copy-to-clipboard": "^3.3.1",
     "deepmerge": "^4.2.2",
     "is-plain-object": "^5.0.0",
