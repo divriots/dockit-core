@@ -1,14 +1,26 @@
-import '~/row/dockit-row.define';
+```js script
+import '@divriots/dockit-core/columns/dockit-columns.define.js';
+```
+
+# dockit-columns
+
+Component to render children in columns.
+
+## Setup
+
+```js
+import '@divriots/dockit-core/columns/dockit-columns.define.js';
+```
+
+## Demo
+
+```js preview-story
+import { html } from 'lit';
+import '~/columns/dockit-columns.define.js';
 import '~/do-dont/define-all.js';
 
-export default {
-  parameters: {
-    layout: 'centered',
-  },
-};
-
-export const row = () => /*html*/ `
-  <dockit-row>
+export const columns = () => html`
+  <dockit-columns>
     <dockit-do>
       <ul slot="instructions">
         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
@@ -27,11 +39,15 @@ export const row = () => /*html*/ `
         <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
       </ul>
     </dockit-dont>
-  </dockit-row>
+  </dockit-columns>
 `;
+```
 
+#### Custom style - different gap size
+
+```js preview-story
 export const row_custom_gap = () => /*html*/ `
-  <dockit-row style="gap: 0.5rem;">
+  <dockit-columns style="gap: 0.5rem;">
     <dockit-do>
       <ul slot="instructions">
         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
@@ -50,5 +66,6 @@ export const row_custom_gap = () => /*html*/ `
         <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
       </ul>
     </dockit-dont>
-  </dockit-row>
+  </dockit-columns>
 `;
+```

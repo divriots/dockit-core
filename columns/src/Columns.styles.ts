@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const RowStyles = css`
+export const ColumnsStyles = css`
   :host {
     display: flex;
     flex-direction: row;

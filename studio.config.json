@@ -4,7 +4,7 @@
     "menu": [
       "introduction",
       ["Design Token Showcases", ["tailwind-showcases", "css-showcases"]],
-      ["Components", ["do-dont", "note", "caption", "image-container", "row"]],
+      ["Components", ["do-dont", "note", "columns"]],
       ["Layout", ["layout", "speedy-links"]],
       ["Atoms", ["box", "clipboard", "text", "showcases", "space", "search"]],
       ["Infra", ["doc-layout"]]

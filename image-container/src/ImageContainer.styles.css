@@ -1,9 +1,0 @@
-dockit-image-container {
-  margin: 1rem;
-  display: flex;
-  justify-content: center;
-}
-
-dockit-image-container img:first-of-type {
-  margin: 0;
-}
