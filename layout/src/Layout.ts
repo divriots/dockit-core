@@ -40,6 +40,9 @@ export class Layout extends LitElement {
   @state()
   private colorScheme: ColorScheme;
 
+  @state()
+  private locationPathname = location.pathname;
+
   private listenerRemovers: Function[] = [];
 
   connectedCallback(): void {
@@ -52,6 +55,14 @@ export class Layout extends LitElement {
   disconnectedCallback(): void {
     super.disconnectedCallback();
     this.teardownWindowEvents();
+  }
+
+  requestUpdate(...args): void {
+    super.requestUpdate(...args);
+    const name = args[0] as PropertyKey;
+    if (name === 'context') {
+      this.locationPathname = location.pathname;
+    }
   }
 
   render() {
@@ -129,7 +140,7 @@ export class Layout extends LitElement {
                                       item.page
                                     )}"
                                     aria-current="${ifDefined(
-                                      location.pathname ===
+                                      this.locationPathname ===
                                         this.getPageUrlWithoutOrigin(item.page)
                                         ? 'location'
                                         : undefined
