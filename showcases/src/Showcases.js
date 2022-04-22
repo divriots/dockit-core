@@ -2,9 +2,9 @@ import { renderCaptionedBox } from './captioned-box';
 import { renderCaptionedText } from './captioned-text';
 import styles from './Showcases.module.css';
 import { getCaption } from './caption-helper';
-import '~/box/dockit-box.define.js';
-import '~/text/dockit-text.define.js';
-import '~/clipboard/dockit-clipboard.define.js';
+import '@divriots/dockit-core/box/dockit-box.define.js';
+import '@divriots/dockit-core/text/dockit-text.define.js';
+import '@divriots/dockit-core/clipboard/dockit-clipboard.define.js';
 
 export class Showcases extends HTMLElement {
   connectedCallback() {

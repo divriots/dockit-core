@@ -6,7 +6,7 @@ import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import logoSvg from './logo.svg?raw';
 import { search } from '@divriots/dockit-core/search';
-import '@divriots/dockit-core/search/dockit-search.define';
+import '@divriots/dockit-core/search/dockit-search.define.js';
 
 export const docLayoutTemplate = (content, context) => {
   setupSpeedyLinks({

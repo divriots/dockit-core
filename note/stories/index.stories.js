@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import '~/note/dockit-note.define';
+import '@divriots/dockit-core/note/dockit-note.define.js';
 
 export default {
   parameters: {

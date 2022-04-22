@@ -1,5 +1,5 @@
-import '~/columns/dockit-columns.define';
-import '~/do-dont/define-all.js';
+import '@divriots/dockit-core/columns/dockit-columns.define.js';
+import '@divriots/dockit-core/do-dont/define-all.js';
 
 export default {
   parameters: {

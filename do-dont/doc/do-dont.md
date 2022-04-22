@@ -95,7 +95,7 @@ export const dont_with_component = () => html`<dockit-dont>
 ### Do with custom color and label
 
 ```html preview-story
-<dockit-do color="#fcba03" label="HINTS">
+<dockit-do style="--dockit-do-color: #fcba03" label="HINTS">
   <ul slot="instructions">
     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
     <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
@@ -104,12 +104,16 @@ export const dont_with_component = () => html`<dockit-dont>
 </dockit-do>
 ```
 
+### Do with custom icon
+
+SVGs should define `currentColor` on the needed parts, see example below.
+
 ```js preview-story
 const customIcon = svg`<svg
   width="24"
   height="24"
   viewBox="0 0 16 16"
-  fill="#fcba03"
+  fill="currentColor"
   class="play"
 >
   <path
@@ -124,20 +128,17 @@ const customIcon = svg`<svg
   />
 </svg>`;
 
-export const do_custom = () => html`<style>
-    dockit-do.custom {
-      --dockit-do-color: #fcba03;
-    }
-  </style>
-  <dockit-do class="custom" .icon=${customIcon} .label=${'HINTS'}>
-    <ul slot="instructions">
-      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-      <li>
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-      </li>
-      <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-    </ul>
-  </dockit-do>`;
+export const do_custom = () => html`<dockit-do
+  style="--dockit-do-color: #fcba03"
+  .icon=${customIcon}
+  .label=${'HINTS'}
+>
+  <ul slot="instructions">
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
+    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+  </ul>
+</dockit-do>`;
 ```
 
 ### Themed component
@@ -165,7 +166,7 @@ export const do_themed = () =>
       }
     </style>
     <div class="themed-do">
-      <dockit-do color="#000080" label="NAVY BLUE">
+      <dockit-do style="--dockit-do-color: #000080" label="NAVY BLUE">
         ${sampleButton}
         <ul slot="instructions">
           <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>

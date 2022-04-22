@@ -1,4 +1,4 @@
-import { html, css } from 'lit';
+import { html } from 'lit';
 import '~/do-dont/define-all.js';
 
 export default {
@@ -70,7 +70,7 @@ const customIcon = html`<svg
   width="24"
   height="24"
   viewBox="0 0 16 16"
-  fill="#fcba03"
+  fill="currentColor"
   class="play"
 >
   <path
@@ -86,12 +86,11 @@ const customIcon = html`<svg
 </svg>`;
 
 export const do_custom = () => html`
-  <style>
-    dockit-do.custom {
-      --dockit-do-color: #fcba03;
-    }
-  </style>
-  <dockit-do class="custom" .icon=${customIcon} .label=${'HINTS'}>
+  <dockit-do
+    style="--dockit-do-color: #fcba03"
+    .icon=${customIcon}
+    .label=${'HINTS'}
+  >
     <ul slot="instructions">
       <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
       <li>
@@ -103,12 +102,7 @@ export const do_custom = () => html`
 `;
 
 export const do_custom_color = () => html`
-  <style>
-    dockit-do.custom-color {
-      --dockit-do-color: #fcba03;
-    }
-  </style>
-  <dockit-do class="custom-color" label="HINTS">
+  <dockit-do style="--dockit-do-color: #fcba03" label="HINTS">
     <ul slot="instructions">
       <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
       <li>
@@ -122,23 +116,21 @@ export const do_custom_color = () => html`
 export const do_themed = () =>
   html`
     <style>
-      ${css`
-        dockit-do.themed-do {
-          --dockit-do-color: #000080;
-        }
-        dockit-do.themed-do::part(container) {
-          border-style: solid;
-          border-width: 2px;
-          border-color: #000080;
-          border-radius: 1rem;
-        }
-        dockit-do.themed-do::part(component-container) {
-          background-color: #00008020;
-        }
-        dockit-do.themed-do::part(instructions-container) {
-          background-color: #00008040;
-        }
-      `}
+      .themed-do {
+        --dockit-do-color: #000080;
+      }
+      .themed-do::part(container) {
+        border-style: solid;
+        border-width: 2px;
+        border-color: #000080;
+        border-radius: 1rem;
+      }
+      .themed-do::part(component-container) {
+        background-color: #00008020;
+      }
+      .themed-do::part(instructions-container) {
+        background-color: #00008040;
+      }
     </style>
     <dockit-do class="themed-do" label="NAVY BLUE">
       ${sampleButton}

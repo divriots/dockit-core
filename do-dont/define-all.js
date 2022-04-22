@@ -1,2 +1,2 @@
-import './dockit-do.define';
-import './dockit-dont.define';
+import './dockit-do.define.js';
+import './dockit-dont.define.js';
