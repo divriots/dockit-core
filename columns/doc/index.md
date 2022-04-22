@@ -39,10 +39,10 @@ import '@divriots/dockit-core/columns/dockit-columns.define.js';
 </dockit-columns>
 ```
 
-#### Custom style - different gap size
+#### Custom gap size
 
 ```html preview-story
-<dockit-columns style="gap: 0.5rem;">
+<dockit-columns gap="0.5rem">
   <dockit-do>
     <ul slot="instructions">
       <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
