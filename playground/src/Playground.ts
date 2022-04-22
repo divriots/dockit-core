@@ -185,10 +185,6 @@ export class Playground extends LitElement {
       undefined;
   }
 
-  protected renderError(error: string): void {
-    render(html`<pre>${error}</pre>`, this.querySelectStoryContainer());
-  }
-
   protected querySelectStoryContainer(): HTMLElement {
     return this.querySelector<HTMLElement>('.story_padded')!;
   }

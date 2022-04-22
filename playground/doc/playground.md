@@ -31,6 +31,8 @@ This results in:
 ></dockit-playground>
 ```
 
+Click the `Code` and try to edit the code in it and see how it is rendering live.
+
 ## JS
 
 The easiest way is to register your own preconfigured component.
