@@ -1,5 +1,5 @@
 import takeCareOf from 'carehtml';
-import { html, LitElement, nothing, render, TemplateResult } from 'lit';
+import { css, html, LitElement, nothing, render, TemplateResult } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { CodeEditor } from './CodeEditor';
@@ -26,15 +26,45 @@ function esm(strings: TemplateStringsArray, ...values: string[]): string {
  * Render and preview code with live code editor.
  */
 export class Playground extends LitElement {
-  @property()
-  // @ts-ignore
-  language: 'html' | 'js';
+  static styles = css`
+    :host {
+      display: block;
+      border: 1px solid #404040;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      color-scheme: dark;
+    }
+
+    .story {
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      padding: 15px;
+    }
+
+    details {
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      border-top: 1px solid #404040;
+      overflow: hidden;
+    }
+
+    summary {
+      background-color: #262626;
+      cursor: pointer;
+      padding: 5px 20px;
+    }
+
+    /* double-class is due to a specificity war with typography and Prism theme */
+    pre {
+      caret-color: white;
+      border: 0;
+      border-radius: 0;
+      margin: 0;
+      padding: 15px;
+    }
+  `;
 
   @property()
-  code = '';
-
-  @property()
-  // @ts-ignore
   renderStory: (
     story: () => unknown,
     container: HTMLElement
@@ -42,6 +72,12 @@ export class Playground extends LitElement {
 
   @property({ attribute: false })
   scope?: { [key: string]: any };
+
+  @state()
+  protected language: 'html' | 'js';
+
+  @state()
+  protected initialCode: string;
 
   @state()
   protected isOpen = false;
@@ -58,37 +94,66 @@ export class Playground extends LitElement {
     this.onCodeUpdate = debounce(this.onCodeUpdate.bind(this), 50);
   }
 
-  protected createRenderRoot(): HTMLElement {
-    return this;
-  }
-
   protected render(): TemplateResult {
     return html`
-      <div class="preview-story">
-        ${this.error ? html`<pre>${this.error}</pre>` : nothing}
-        <div
-          class="story_padded"
-          style="${this.error ? 'display: none' : ''}"
-        ></div>
-        <details
-          @toggle="${(event: { target: HTMLDetailsElement }) =>
-            this.onDetailsToggle(event)}"
-        >
-          <summary>Code</summary>
-          ${this.isOpen
-            ? careHtml`<${CodeEditor}
-                lang="${this.language}"
-                .initialCode="${this.code}"
-                @update=${() => this.onCodeUpdate()}
-              ></${CodeEditor}>`
-            : nothing}
-        </details>
-      </div>
+      <slot
+        @slotchange="${(event: Event) => this.onCodeTemplateSlotChange(event)}"
+      ></slot>
+      ${this.error ? html`<pre>${this.error}</pre>` : nothing}
+      <div class="story" style="${this.error ? 'display: none' : ''}"></div>
+      <details
+        @toggle="${(event: { target: HTMLDetailsElement }) =>
+          this.onDetailsToggle(event)}"
+      >
+        <summary>Code</summary>
+        ${this.language && this.initialCode && this.isOpen
+          ? careHtml`<${CodeEditor}
+              class="code-editor"
+              lang="${this.language}"
+              .initialCode="${this.initialCode}"
+              @update=${() => this.onCodeUpdate()}
+            ></${CodeEditor}>`
+          : nothing}
+      </details>
     `;
   }
 
-  protected firstUpdated(): void {
-    this.renderCode();
+  protected onCodeTemplateSlotChange(event: Event): void {
+    if (event.target instanceof HTMLSlotElement) {
+      const template = event.target.assignedElements()[0];
+      if (template instanceof HTMLTemplateElement) {
+        const language =
+          template.content.firstElementChild.tagName === 'SCRIPT'
+            ? 'js'
+            : 'html';
+        let rawCode: string;
+        if (language === 'html') {
+          rawCode = template.innerHTML;
+        } else {
+          rawCode = template.content.firstElementChild.innerHTML;
+        }
+        const rawLines = rawCode.split('\n');
+        const firstNonWhitespaceRawLine = rawLines.find((l) => l.trim() !== '');
+        const firstNonWhitespaceCharMatch =
+          firstNonWhitespaceRawLine.match(/[^\s]/);
+        const rootIndent = firstNonWhitespaceCharMatch.index;
+        const lines = rawCode
+          .trim()
+          .split('\n')
+          .map((line) => {
+            const nonWhitespaceCharMatch = line.match(/[^\s]/);
+            const indent = nonWhitespaceCharMatch?.index ?? line.length;
+            if (indent >= rootIndent) {
+              return line.substring(rootIndent);
+            }
+            return line;
+          })
+          .map((line) => line.trimEnd());
+        this.language = language;
+        this.initialCode = lines.join('\n');
+        this.renderCode();
+      }
+    }
   }
 
   protected onDetailsToggle(event: { target: HTMLDetailsElement }): void {
@@ -125,7 +190,7 @@ export class Playground extends LitElement {
   }
 
   protected getActualCode(): string {
-    return this.querySelectCodeEditor()?.getCode() || this.code;
+    return this.querySelectCodeEditor()?.getCode() || this.initialCode;
   }
 
   protected async renderHtml(code: string): Promise<void> {
@@ -186,10 +251,10 @@ export class Playground extends LitElement {
   }
 
   protected querySelectStoryContainer(): HTMLElement {
-    return this.querySelector<HTMLElement>('.story_padded')!;
+    return this.shadowRoot.querySelector<HTMLElement>('.story')!;
   }
 
   protected querySelectCodeEditor(): CodeEditor | undefined {
-    return this.querySelector('details')!.children[1] as CodeEditor | undefined;
+    return this.shadowRoot.querySelector<CodeEditor>('.code-editor');
   }
 }

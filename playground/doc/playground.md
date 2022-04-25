@@ -13,22 +13,24 @@ Just use `html preview-story` or `js preview-story` to get an editable playgroun
 
 ## HTML
 
-Just define `language` and `code` attributes:
+Just put a template with HTML code:
 
 ```html
-<dockit-playground
-  language="html"
-  code='<button type="submit">Submit</button>'
-></dockit-playground>
+<dockit-playground>
+  <template>
+    <button type="submit" onclick="alert('submit')">Submit</button>
+  </template>
+</dockit-playground>
 ```
 
 This results in:
 
 ```html story
-<dockit-playground
-  language="html"
-  code='<button type="submit">Submit</button>'
-></dockit-playground>
+<dockit-playground>
+  <template>
+    <button type="submit" onclick="alert('submit')">Submit</button>
+  </template>
+</dockit-playground>
 ```
 
 Click the `Code` and try to edit the code in it and see how it is rendering live.
@@ -45,7 +47,6 @@ import { html, render } from 'lit';
 class PlaygroundLit extends Playground {
   constructor() {
     super();
-    this.language = 'js';
     this.defaultScope = { html };
     this.renderStory = (story, container) => {
       return render(story(), container);
@@ -63,7 +64,6 @@ import { html, render } from 'lit';
 class PlaygroundLit extends Playground {
   constructor() {
     super();
-    this.language = 'js';
     this.defaultScope = { html };
     this.renderStory = (story, container) => {
       return render(story(), container);
@@ -84,38 +84,56 @@ Provide a default export containing a JS story function.
 E.g. for Lit it's an `html` template.
 
 ```html
-<dockit-playground-lit
-  code="export default () => html`<input type='email' .value=${'email@example.com'}/>`"
-></dockit-playground-lit>
+<dockit-playground-lit>
+  <template>
+    <script type="module">
+      export default () =>
+        html`<input type="email" .value=${'email@example.com'} />`;
+    </script>
+  </template>
+</dockit-playground-lit>
 ```
 
 ```html story
-<dockit-playground-lit
-  code="export default () => html`<input type='email' .value=${'email@example.com'}/>`"
-></dockit-playground-lit>
+<dockit-playground-lit>
+  <template>
+    <script type="module">
+      export default () =>
+        html`<input type="email" .value=${'email@example.com'} />`;
+    </script>
+  </template>
+</dockit-playground-lit>
 ```
 
 ### Scope
 
-Any external variable that needs to be available in the code can be passed as a scope:
+Any external variables that need to be available in the module can be passed via the `scope` property.
+You can do it by using MDJS and `js story` syntax for that and Lit `html` tag:
 
-```js
-const name = 'username!';
+````js
+//```js story
+import { html } from 'lit';
 export const scopeStory = () => html`
-  <dockit-playground-lit
-    .scope="${{ name }}"
-    code="export default () => html\`<input .value=\${'Hello ' + name}/>\`"
-  ></dockit-playground-lit>
+  <dockit-playground-lit .scope="${{ username: 'username!' }}">
+    <template>
+      <script type="module">
+        export default () => html\`<input .value=\${'Hello ' + username} />\`;
+      </script>
+    </template>
+  </dockit-playground-lit>
 `;
-```
+//```
+````
 
 ```js story
-const name = 'username!';
 export const scopeStory = () => html`
-  <dockit-playground-lit
-    .scope="${{ name }}"
-    code="export default () => html\`<input .value=\${'Hello ' + name}/>\`"
-  ></dockit-playground-lit>
+  <dockit-playground-lit .scope="${{ username: 'username!' }}">
+    <template>
+      <script type="module">
+        export default () => html\`<input .value=\${'Hello ' + username} />\`;
+      </script>
+    </template>
+  </dockit-playground-lit>
 `;
 ```
 
@@ -124,41 +142,63 @@ export const scopeStory = () => html`
 Static:
 
 ```html
-<dockit-playground-lit
-  code="import { setTheme } from 'https://esm.run/@divriots/simba@0.7.0/themes';
-import 'https://esm.run/@divriots/simba@0.7.0/button/define';
-setTheme('amber');
-export default () => html`<simba-button>Button</simba-button>`;"
-></dockit-playground-lit>
+<dockit-playground-lit>
+  <template>
+    <script type="module">
+      import { setTheme } from 'https://esm.run/@divriots/simba@0.7.0/themes';
+      import 'https://esm.run/@divriots/simba@0.7.0/button/define';
+      setTheme('amber');
+      export default () => html`<simba-button>Button</simba-button>`;
+    </script>
+  </template>
+</dockit-playground-lit>
 ```
 
 ```html story
-<dockit-playground-lit
-  code="import { setTheme } from 'https://esm.run/@divriots/simba@0.7.0/themes';
-import 'https://esm.run/@divriots/simba@0.7.0/button/define';
-setTheme('amber');
-export default () => html`<simba-button>Button</simba-button>`;"
-></dockit-playground-lit>
+<dockit-playground-lit>
+  <template>
+    <script type="module">
+      import { setTheme } from 'https://esm.run/@divriots/simba@0.7.0/themes';
+      import 'https://esm.run/@divriots/simba@0.7.0/button/define';
+      setTheme('amber');
+      export default () => html`<simba-button>Button</simba-button>`;
+    </script>
+  </template>
+</dockit-playground-lit>
 ```
 
 Dynamic (top-level await is supported too):
 
 ```html
-<dockit-playground-lit
-  code="const { setTheme } = await import('https://esm.run/@divriots/simba@0.7.0/themes');
-await import('https://esm.run/@divriots/simba@0.7.0/switch/define');
-setTheme('amber');
-export default () => html`<simba-switch style='justify-content: left;'></simba-switch>`;"
-></dockit-playground-lit>
+<dockit-playground-lit>
+  <template>
+    <script type="module">
+      const { setTheme } = await import(
+        'https://esm.run/@divriots/simba@0.7.0/themes'
+      );
+      await import('https://esm.run/@divriots/simba@0.7.0/switch/define');
+      setTheme('amber');
+      export default () =>
+        html`<simba-switch style="justify-content: left;"></simba-switch>`;
+    </script>
+  </template>
+</dockit-playground-lit>
 ```
 
 ```html story
-<dockit-playground-lit
-  code="const { setTheme } = await import('https://esm.run/@divriots/simba@0.7.0/themes');
-await import('https://esm.run/@divriots/simba@0.7.0/switch/define');
-setTheme('amber');
-export default () => html`<simba-switch style='justify-content: left;'></simba-switch>`;"
-></dockit-playground-lit>
+<dockit-playground-lit>
+  <template>
+    <script type="module">
+      const { setTheme } = await import(
+        'https://esm.run/@divriots/simba@0.7.0/themes'
+      );
+      await import('https://esm.run/@divriots/simba@0.7.0/switch/define');
+      setTheme('amber');
+      export default () =>
+        html`<simba-switch style="justify-content: left;"></simba-switch>`;
+    </script>
+  </template>
+</dockit-playground-lit>
 ```
 
 ### Dispose function
