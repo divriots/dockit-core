@@ -23,6 +23,10 @@ export class Do extends InstructionsCard {
       svg {
         color: var(--dockit-do-color);
       }
+
+      slot[name='icon']::slotted(*) {
+        color: var(--dockit-do-color);
+      }
     `,
   ];
 

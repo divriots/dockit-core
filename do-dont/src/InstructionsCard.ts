@@ -7,15 +7,10 @@ type Icon = string | TemplateResult;
 export abstract class InstructionsCard extends LitElement {
   static styles: CSSResultGroup = InstructionsCardStyles;
 
-  /**
-   * Takes string or lit-html template. To render correct color automatically wrap in a function with `color` as a param.
-   * @type string | `lit-html template` | `(color: string) => lit-html template`
-   */
-  @property()
-  icon: Icon;
-
   @property()
   label: string;
+
+  icon: Icon = '';
 
   render() {
     return html`
@@ -26,7 +21,7 @@ export abstract class InstructionsCard extends LitElement {
         <div part="instructions-container" class="instructions-container">
           <div class="background"></div>
           <div class="title-container">
-            ${this.icon}
+            <slot name="icon">${this.icon}</slot>
             <span class="title">${this.label}</span>
           </div>
           <slot name="instructions"></slot>
