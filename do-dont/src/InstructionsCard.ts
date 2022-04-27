@@ -14,11 +14,11 @@ export abstract class InstructionsCard extends LitElement {
 
   render() {
     return html`
-      <div part="container" class="container">
-        <div part="component-container" class="component-container">
+      <div part="container">
+        <div part="component-container">
           <slot name="component"></slot>
         </div>
-        <div part="instructions-container" class="instructions-container">
+        <div part="instructions-container">
           <div class="background"></div>
           <div class="title-container">
             <slot name="icon">${this.icon}</slot>

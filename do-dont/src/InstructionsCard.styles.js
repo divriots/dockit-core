@@ -1,12 +1,12 @@
 import { css } from 'lit';
 
 export const InstructionsCardStyles = css`
-  .container {
+  [part='container'] {
     border-radius: 0.25rem;
     overflow: hidden;
   }
 
-  .component-container {
+  [part='component-container'] {
     background-color: #00000010;
     width: 100%;
     display: flex;
@@ -18,7 +18,7 @@ export const InstructionsCardStyles = css`
     margin: 3rem 0;
   }
 
-  .instructions-container {
+  [part='instructions-container'] {
     border-top-width: 0.2rem;
     border-top-style: solid;
     padding: 1.5rem;

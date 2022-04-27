@@ -4,11 +4,11 @@
     "allowJs": true,
     "allowNonTsExtensions": true,
     "experimentalDecorators": true,
-    "useDefineForClassFields": false,
     "jsx": "react",
     "reactNamespace": "React",
     "module": "ESNext",
     "moduleResolution": "Node",
+    "useDefineForClassFields": false,
     "baseUrl": ".",
     "paths": {
       "~/*": ["*"],

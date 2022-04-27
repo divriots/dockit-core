@@ -12,7 +12,7 @@ export class Do extends InstructionsCard {
         --dockit-do-color: #36b37e;
       }
 
-      .instructions-container {
+      [part='instructions-container'] {
         border-top-color: var(--dockit-do-color);
       }
 

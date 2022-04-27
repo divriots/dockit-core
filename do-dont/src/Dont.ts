@@ -12,7 +12,7 @@ export class Dont extends InstructionsCard {
         --dockit-dont-color: #de350b;
       }
 
-      .instructions-container {
+      [part='instructions-container'] {
         border-top-color: var(--dockit-dont-color);
       }
 

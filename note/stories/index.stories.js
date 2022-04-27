@@ -32,7 +32,7 @@ export const note_error_variant = () => html`
 `;
 
 export const note_custom_color = () => html`
-  <dockit-note color="aqua">
+  <dockit-note style="--dockit-note-color: aqua">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit
   </dockit-note>
 `;

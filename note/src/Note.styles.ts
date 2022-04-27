@@ -1,4 +1,10 @@
-import { css } from 'lit';
+import { css, CSSResult } from 'lit';
+
+export const colors = {
+  info: '#54AEFF66',
+  warning: '#ECE81A66',
+  error: '#FF818266',
+};
 
 export const NoteStyles = css`
   :host {

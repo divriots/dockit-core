@@ -32,7 +32,7 @@ export const getTransitionsHtml = (element, props, mode) => {
   const boxWidth = '12rem';
 
   return /*html*/ `
-<div id="transitionBoxesContainer" class="${styles.boxesContainer}">
+<div class="${styles.boxesContainer}">
   <style>
     .clicked { margin-left: calc(100% - 12rem); }
     .no-anim { animation: none !important; }
