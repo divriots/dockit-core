@@ -8,20 +8,7 @@ import { property } from 'lit/decorators.js';
 export class Columns extends LitElement {
   static styles = ColumnsStyles;
 
-  @property()
-  gap: string;
-
-  getStyle() {
-    return !!this.gap
-      ? html`<style>
-          :host {
-            --dockit-columns-gap: ${this.gap};
-          }
-        </style>`
-      : '';
-  }
-
   render() {
-    return html`${this.getStyle()}<slot></slot>`;
+    return html`<slot></slot>`;
   }
 }

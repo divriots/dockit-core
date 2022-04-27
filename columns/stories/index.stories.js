@@ -31,7 +31,7 @@ export const columns = () => /*html*/ `
 `;
 
 export const columns_custom_gap = () => /*html*/ `
-  <dockit-columns gap="0.5rem">
+  <dockit-columns style="--dockit-columns-gap: 0.5rem">
     <dockit-do>
       <ul slot="instructions">
         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
