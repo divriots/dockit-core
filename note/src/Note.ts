@@ -17,6 +17,8 @@ export class Note extends LitElement {
           --dockit-note-color: ${colors[this.variant] || colors.info};
         }
       </style>
-      <slot></slot>`;
+      <div part="container">
+        <slot></slot>
+      </div>`;
   }
 }

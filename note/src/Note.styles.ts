@@ -7,8 +7,7 @@ export const colors = {
 };
 
 export const NoteStyles = css`
-  :host {
-    display: block;
+  [part='container'] {
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 0.25rem;

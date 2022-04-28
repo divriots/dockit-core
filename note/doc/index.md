@@ -50,7 +50,7 @@ import '@divriots/dockit-core/note/dockit-note.define.js';
 ### Note with custom color
 
 ```html preview-story
-<dockit-note style="--dockit-note-color: BurlyWood">
+<dockit-note style="--dockit-note-color: #fc350390">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit
 </dockit-note>
 ```
@@ -59,9 +59,8 @@ import '@divriots/dockit-core/note/dockit-note.define.js';
 
 ```html preview-story
 <style>
-  dockit-note.themed-note {
-    --dockit-note-color: #ffe133;
-    color: #000000;
+  .themed-note::part(container) {
+    --dockit-note-color: #035efc80;
     padding: 1.5rem;
     border-radius: 0.5rem;
     border-left-width: 1rem;

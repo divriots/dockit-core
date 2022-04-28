@@ -32,15 +32,15 @@ export const note_error_variant = () => html`
 `;
 
 export const note_custom_color = () => html`
-  <dockit-note style="--dockit-note-color: aqua">
+  <dockit-note style="--dockit-note-color: #03e8fc66">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit
   </dockit-note>
 `;
 
 export const note_themed = () => html`
   <style>
-    dockit-note.themed-note {
-      --dockit-note-color: #ffe133;
+    .themed-note::part(container) {
+      --dockit-note-color: #ffe13366;
       padding: 1.5rem;
       border-radius: 0.5rem;
       border-left-width: 0.5rem;
