@@ -1,4 +1,4 @@
-import '@divriots/dockit-core/layout/dockit-layout.define.js';
+import '~/layout/dockit-layout.define.js';
 import { styles } from '@divriots/dockit-core/layout';
 import { setupSpeedyLinks } from '@divriots/dockit-core/speedy-links';
 import '@api-viewer/docs';
@@ -6,7 +6,7 @@ import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import logoSvg from './logo.svg?raw';
 import { search } from '@divriots/dockit-core/search';
-import '@divriots/dockit-core/search/dockit-search.define';
+import '~/search/dockit-search.define.js';
 
 export const docLayoutTemplate = (content, context) => {
   setupSpeedyLinks({

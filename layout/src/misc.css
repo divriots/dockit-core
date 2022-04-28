@@ -16,8 +16,13 @@ dockit-layout [slot='logo'] > :first-child {
   height: var(--private--dockit-layout-logo-height);
 }
 
-dockit-layout :where(h1, h2, h3, h4, h5, h6) {
+.prose :where(h1, h2, h3, h4, h5, h6) {
   scroll-margin-top: calc(var(--private--dockit-layout-header-height) + 1rem);
+}
+
+.prose figcaption {
+  margin: 0.5rem 0;
+  text-align: center;
 }
 
 .prose {

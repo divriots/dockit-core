@@ -1,9 +1,8 @@
 ```js script
-import { html, svg } from 'lit';
-import '@divriots/dockit-core/do-dont/dockit-dont.define';
-import '@divriots/dockit-core/do-dont/dockit-do.define';
+import '@divriots/dockit-core/do-dont/dockit-do.define.js';
+import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
 
-const sampleButton = html`<div
+const sampleButton = `<div
   slot="component"
   style="background-color: #00000030; padding: .5rem; font-weight: 600; border-radius: .25rem;"
 >
@@ -11,7 +10,7 @@ const sampleButton = html`<div
 </div>`;
 ```
 
-# Do/Don't
+# dockit-do & dockit-dont
 
 Component to render general instructions or for a specific component.
 It can take a component in the "component" slot, and instructions html in the "instructions" slot.
@@ -21,16 +20,17 @@ See setup and usage examples below:
 ## Setup
 
 ```js
-import '@divriots/dockit-core/do-dont/dockit-dont.define';
-import '@divriots/dockit-core/do-dont/dockit-do.define';
+import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
+import '@divriots/dockit-core/do-dont/dockit-do.define.js';
 
 // or define all
-import '@divriots/dockit-core/do-dont/define-all';
+import '@divriots/dockit-core/do-dont/define-all.js';
 ```
 
 ## API
 
 ```js story
+import { html } from 'lit';
 import manifest from '../../custom-elements.json';
 export const api = () =>
   html`<api-docs
@@ -54,17 +54,19 @@ export const api = () =>
 </dockit-do>
 ```
 
-#### Do with component
+### Do with component
 
 ```js preview-story
-export const do_with_component = () => html`<dockit-do>
-  ${sampleButton}
-  <ul slot="instructions">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-  </ul>
-</dockit-do>`;
+export const do_with_component = () => `
+  <dockit-do>
+    ${sampleButton}
+    <ul slot="instructions">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+      <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
+      <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+    </ul>
+  </dockit-do
+>`;
 ```
 
 ### Don't
@@ -95,7 +97,7 @@ export const dont_with_component = () => html`<dockit-dont>
 ### Do with custom color and label
 
 ```html preview-story
-<dockit-do color="#fcba03" label="HINTS">
+<dockit-do style="--dockit-do-color: #fcba03" label="HINTS">
   <ul slot="instructions">
     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
     <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
@@ -104,12 +106,17 @@ export const dont_with_component = () => html`<dockit-dont>
 </dockit-do>
 ```
 
+### Do with custom icon
+
+SVGs should define `currentColor` on the needed parts, see example below.
+
 ```js preview-story
-const customIcon = svg`<svg
+const customIcon = `<svg
+  slot="icon"
   width="24"
   height="24"
   viewBox="0 0 16 16"
-  fill="#fcba03"
+  fill="currentColor"
   class="play"
 >
   <path
@@ -124,15 +131,51 @@ const customIcon = svg`<svg
   />
 </svg>`;
 
-export const do_custom = () => html` <dockit-do
-  .color=${'#fcba03'}
-  .icon=${customIcon}
-  .label=${'HINTS'}
+export const do_custom = () => `<dockit-do
+  style="--dockit-do-color: #fcba03"
+  label="HINTS"
 >
+  ${customIcon}
   <ul slot="instructions">
     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
     <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
     <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
   </ul>
 </dockit-do>`;
+```
+
+### Themed component
+
+`dockit-do` and `dockit-dont` support theming and custom styling via `::part()` selector, see example:
+
+```html preview-story
+<style>
+  .themed-do {
+    --dockit-do-color: #000080;
+  }
+  .themed-do::part(container) {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #000080;
+    border-radius: 1rem;
+  }
+  .themed-do::part(component-container) {
+    background-color: #00008020;
+  }
+  .themed-do::part(instructions-container) {
+    background-color: #00008040;
+  }
+</style>
+<div class="themed-do">
+  <dockit-do style="--dockit-do-color: #000080" label="NAVY BLUE">
+    ${sampleButton}
+    <ul slot="instructions">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+      <li>
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      </li>
+      <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+    </ul>
+  </dockit-do>
+</div>
 ```

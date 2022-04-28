@@ -3,43 +3,11 @@
     "dir": "",
     "menu": [
       "introduction",
-      [
-        "TailwindCSS",
-        [
-          "tailwind-showcases"
-        ]
-      ],
-      [
-        "CSS",
-        [
-          "css-showcases"
-        ]
-      ],
-      [
-        "Doc-site",
-        [
-          "layout",
-          "speedy-links"
-        ]
-      ],
-      [
-        "Components",
-        [
-          "box",
-          "clipboard",
-          "text",
-          "showcases",
-          "space",
-          "do-dont",
-          "search"
-        ]
-      ],
-      [
-        "Infra",
-        [
-          "doc-layout"
-        ]
-      ]
+      ["Design Token Showcases", ["tailwind-showcases", "css-showcases"]],
+      ["Components", ["do-dont", "note", "columns"]],
+      ["Layout", ["layout", "speedy-links"]],
+      ["Atoms", ["box", "clipboard", "text", "showcases", "space", "search"]],
+      ["Infra", ["doc-layout"]]
     ]
   }
 }

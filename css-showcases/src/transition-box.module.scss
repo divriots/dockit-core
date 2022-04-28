@@ -1,14 +1,15 @@
-.details {
+.boxLabel {
+  font-family: monospace;
   margin: 0.125rem;
   font-size: 0.75rem;
   color: #fff;
 }
 
-.details-sm {
-  font-size: 0.55rem;
+.boxLabelSmall {
+  font-size: 0.65rem;
 }
 
-.wrapper {
+.boxesContainer {
   display: flex;
   flex-direction: column;
 }
@@ -16,7 +17,6 @@
 .box {
   cursor: pointer;
   height: 6rem;
-  width: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

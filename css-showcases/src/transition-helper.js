@@ -1,25 +1,19 @@
 import styles from './transition-box.module.scss';
 
 export const getTransitionsHtml = (element, props, mode) => {
-  function style(name) {
-    let rules = [];
+  const style = (name) => {
     if (mode === 'animation') {
-      rules.push(`animation: var(${name}) forwards`);
+      return `animation: var(${name}) forwards`;
     } else {
-      rules.push('transition-delay: 0');
-      rules.push(
-        `transition-duration: ${mode === 'time' ? `var(${name})` : '1s'}`
-      );
-      rules.push('transition-property: margin-left');
-      rules.push(
-        `transition-timing-function: ${
+      return `
+        transition-delay: 0;
+        transition-duration: ${mode === 'time' ? `var(${name})` : '1s'};
+        transition-property: margin-left';
+        transition-timing-function: ${
           mode === 'ease' ? `var(${name})` : 'linear'
-        }`
-      );
+        };`;
     }
-
-    return rules.join(';');
-  }
+  };
 
   setTimeout(() => {
     const boxes = element.querySelectorAll('.transitionBox');
@@ -33,23 +27,25 @@ export const getTransitionsHtml = (element, props, mode) => {
     );
   }, 300);
 
+  const getAnimationMode = () => (mode === 'animation' ? 'no-anim' : '');
+
+  const boxWidth = '12rem';
+
   return /*html*/ `
-<div class="${styles.wrapper}">
+<div class="${styles.boxesContainer}">
   <style>
-    .clicked { margin-left: 20rem; }
+    .clicked { margin-left: calc(100% - 12rem); }
     .no-anim { animation: none !important; }
   </style>
   ${props
     .map(
       ([name, value], i) => /*html*/ `
       <div id="transitionBox${i}"
-          class="${styles.box} ${
-        mode === 'animation' ? 'no-anim' : ''
-      } transitionBox"
-          style="${style(name)}"
+          class="${styles.box} ${getAnimationMode()} transitionBox"
+          style="width: ${boxWidth} ${style(name)}"
       >
-        <pre class="${styles.details}">${name}</pre>
-        <pre class="${styles.details} ${styles['details-sm']}">${value}</pre>
+        <div class="${styles.boxLabel}">${name}</div>
+        <div class="${styles.boxLabel} ${styles.boxLabelSmall}">${value}</div>
       </div>`
     )
     .join('\n')}
