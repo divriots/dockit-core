@@ -1,10 +1,10 @@
-import '@divriots/dockit-core/showcases/dockit-showcases.define.js';
+import '~/showcases/dockit-showcases.define.js';
 import { getCssCustomProps } from './css-props';
 import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';
 import { getTransitionsHtml } from './transition-helper';
 import styles from './alerts.module.scss';
-import '@divriots/dockit-core/clipboard/dockit-clipboard.define.js';
+import '~/clipboard/dockit-clipboard.define.js';
 export class CssShowcases extends HTMLElement {
   connectedCallback() {
     const prefix = this.getAttribute('css-props-prefix') || '';

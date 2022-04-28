@@ -1,5 +1,5 @@
-import '@divriots/dockit-core/showcases/dockit-showcases.define.js';
-import '@divriots/dockit-core/clipboard/dockit-clipboard.define.js';
+import '~/showcases/dockit-showcases.define.js';
+import '~/clipboard/dockit-clipboard.define.js';
 import { extractClassSuffixes } from './theme-helpers';
 import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';

@@ -25,7 +25,7 @@ export class Dont extends InstructionsCard {
       }
 
       slot[name='icon']::slotted(*) {
-        color: var(--dockit-do-color);
+        color: var(--dockit-dont-color);
       }
     `,
   ];

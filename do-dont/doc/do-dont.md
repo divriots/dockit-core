@@ -57,13 +57,15 @@ export const api = () =>
 #### Do with component
 
 ```js preview-story
-export const do_with_component = () => `<dockit-do>
-  ${sampleButton}
-  <ul slot="instructions">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-  </ul> </dockit-do
+export const do_with_component = () => `
+  <dockit-do>
+    ${sampleButton}
+    <ul slot="instructions">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+      <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
+      <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+    </ul>
+  </dockit-do
 >`;
 ```
 
@@ -148,19 +150,19 @@ export const do_custom = () => `<dockit-do
 
 ```html preview-story
 <style>
-  dockit-do.themed-do {
+  .themed-do {
     --dockit-do-color: #000080;
   }
-  dockit-do.themed-do::part(container) {
+  .themed-do::part(container) {
     border-style: solid;
     border-width: 2px;
     border-color: #000080;
     border-radius: 1rem;
   }
-  dockit-do.themed-do::part(component-container) {
+  .themed-do::part(component-container) {
     background-color: #00008020;
   }
-  dockit-do.themed-do::part(instructions-container) {
+  .themed-do::part(instructions-container) {
     background-color: #00008040;
   }
 </style>
