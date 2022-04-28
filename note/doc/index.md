@@ -59,8 +59,10 @@ import '@divriots/dockit-core/note/dockit-note.define.js';
 
 ```html preview-story
 <style>
-  .themed-note::part(container) {
+  .themed-note {
     --dockit-note-color: #035efc80;
+  }
+  .themed-note::part(container) {
     padding: 1.5rem;
     border-radius: 0.5rem;
     border-left-width: 1rem;

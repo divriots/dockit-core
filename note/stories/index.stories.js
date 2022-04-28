@@ -39,6 +39,9 @@ export const note_custom_color = () => html`
 
 export const note_themed = () => html`
   <style>
+    .themed-note {
+      --dockit-note-color: #ffe13366;
+    }
     .themed-note::part(container) {
       --dockit-note-color: #ffe13366;
       padding: 1.5rem;

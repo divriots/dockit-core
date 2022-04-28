@@ -20,7 +20,7 @@ dockit-layout :where(h1, h2, h3, h4, h5, h6) {
   scroll-margin-top: calc(var(--private--dockit-layout-header-height) + 1rem);
 }
 
-dockit-layout :where(figcaption) {
+.prose figcaption {
   margin: 0.5rem 0;
   text-align: center;
 }
