@@ -11,7 +11,7 @@ export const NoteStyles = css`
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 0.25rem;
-    border-left: 0.25rem solid var(--dockit-note-color, ${colors.info});
-    background-color: var(--dockit-note-color, ${colors.info});
+    border-left: 0.25rem solid var(--dockit-note-color);
+    background-color: var(--dockit-note-color);
   }
 `;

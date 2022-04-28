@@ -23,7 +23,7 @@ import '@divriots/dockit-core/note/dockit-note.define.js';
 
 ### Variants
 
-#### Info
+### Info
 
 ```html preview-story
 <dockit-note variant="info">
@@ -31,7 +31,7 @@ import '@divriots/dockit-core/note/dockit-note.define.js';
 </dockit-note>
 ```
 
-#### Warning
+### Warning
 
 ```html preview-story
 <dockit-note variant="warning">
@@ -39,7 +39,7 @@ import '@divriots/dockit-core/note/dockit-note.define.js';
 </dockit-note>
 ```
 
-#### Error
+### Error
 
 ```html preview-story
 <dockit-note variant="error">

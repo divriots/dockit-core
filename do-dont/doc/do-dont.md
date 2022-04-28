@@ -54,7 +54,7 @@ export const api = () =>
 </dockit-do>
 ```
 
-#### Do with component
+### Do with component
 
 ```js preview-story
 export const do_with_component = () => `
