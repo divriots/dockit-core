@@ -1,6 +1,6 @@
 ```js script
-import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
 import '@divriots/dockit-core/do-dont/dockit-do.define.js';
+import '@divriots/dockit-core/do-dont/dockit-dont.define.js';
 
 const sampleButton = `<div
   slot="component"
