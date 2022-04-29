@@ -5,6 +5,7 @@ import { getScaleHtml } from './space-helper';
 import { getTransitionsHtml } from './transition-helper';
 import styles from './alerts.module.scss';
 import '~/clipboard/dockit-clipboard.define.js';
+
 export class CssShowcases extends HTMLElement {
   connectedCallback() {
     const prefix = this.getAttribute('css-props-prefix') || '';
@@ -38,12 +39,7 @@ export class CssShowcases extends HTMLElement {
           : prefix.includes('animation')
           ? 'animation'
           : null;
-      this.innerHTML = getTransitionsHtml(
-        this,
-        props,
-        _mode,
-        prefix.includes('transition')
-      );
+      this.innerHTML = getTransitionsHtml(this, props, _mode);
       if (prefix.includes('transition') && !this.hasAttribute('mode'))
         this.innerHTML =
           this.innerHTML +

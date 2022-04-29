@@ -1,3 +1,3 @@
-import { Text } from './src/Text.js';
+import { Text } from './src/Text';
 
 customElements.define('dockit-text', Text);

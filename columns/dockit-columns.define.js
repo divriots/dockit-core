@@ -1,2 +1,2 @@
-import { Columns } from './src';
+import { Columns } from './src/Columns';
 customElements.define('dockit-columns', Columns);

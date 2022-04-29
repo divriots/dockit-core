@@ -9,6 +9,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "useDefineForClassFields": false,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["*"],

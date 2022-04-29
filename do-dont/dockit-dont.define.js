@@ -1,3 +1,3 @@
-import { Dont } from './src/Dont.ts';
+import { Dont } from './src/Dont';
 
 customElements.define('dockit-dont', Dont);

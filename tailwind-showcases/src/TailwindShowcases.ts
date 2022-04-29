@@ -73,6 +73,8 @@ const getClassNames = (suffixes) => ({
 });
 
 export class TailwindShowcases extends HTMLElement {
+  theme: Record<any, any>;
+
   constructor() {
     super();
     this.theme = {};

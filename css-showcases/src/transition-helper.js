@@ -32,22 +32,24 @@ export const getTransitionsHtml = (element, props, mode) => {
   const boxWidth = '12rem';
 
   return /*html*/ `
-<div class="${styles.boxesContainer}">
-  <style>
-    .clicked { margin-left: calc(100% - 12rem); }
-    .no-anim { animation: none !important; }
-  </style>
-  ${props
-    .map(
-      ([name, value], i) => /*html*/ `
-      <div id="transitionBox${i}"
-          class="${styles.box} ${getAnimationMode()} transitionBox"
-          style="width: ${boxWidth} ${style(name)}"
-      >
-        <div class="${styles.boxLabel}">${name}</div>
-        <div class="${styles.boxLabel} ${styles.boxLabelSmall}">${value}</div>
-      </div>`
-    )
-    .join('\n')}
-</div>`;
+    <div class="${styles.boxesContainer}">
+      <style>
+        .clicked { margin-left: calc(100% - ${boxWidth}); }
+        .no-anim { animation: none !important; }
+      </style>
+      ${props
+        .map(
+          ([name, value], i) => /*html*/ `
+          <div id="transitionBox${i}"
+              class="${styles.box} ${getAnimationMode()} transitionBox"
+              style="width: ${boxWidth}; ${style(name)}"
+          >
+            <div class="${styles.boxLabel}">${name}</div>
+            <div class="${styles.boxLabel} ${
+            styles.boxLabelSmall
+          }">${value}</div>
+          </div>`
+        )
+        .join('\n')}
+    </div>`;
 };

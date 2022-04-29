@@ -1,3 +1,3 @@
-import { Do } from './src/Do.ts';
+import { Do } from './src/Do';
 
 customElements.define('dockit-do', Do);

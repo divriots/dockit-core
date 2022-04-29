@@ -18,7 +18,6 @@ export class Showcases extends HTMLElement {
     const showcaseClasses = this.getAttribute('showcase-classes');
     const showcaseStyles = this.getAttribute('showcase-styles');
 
-    const showcaseAttr = showcaseClasses ? 'showcaseClass' : 'showcaseStyle';
     const separator = !!showcaseClasses ? ' ' : ';';
     const showcases = (showcaseClasses || showcaseStyles)
       .split(separator)
@@ -39,7 +38,8 @@ export class Showcases extends HTMLElement {
       ${acc}
       ${renderComponent({
         componentClass,
-        [showcaseAttr]: showcase,
+        showcaseClass: !!showcaseClasses && showcase,
+        showcaseStyle: !showcaseClasses && showcase,
         hasLongText,
         captionWidth,
         hasCheckeredBackground,
