@@ -178,8 +178,7 @@ Dynamic (top-level await is supported too):
       );
       await import('https://esm.run/@divriots/simba@0.7.0/switch/define');
       setTheme('amber');
-      export default () =>
-        html`<simba-switch style="justify-content: left;"></simba-switch>`;
+      export default () => html`<simba-switch-button></simba-switch-button>`;
     </script>
   </template>
 </dockit-playground-lit>
@@ -194,8 +193,7 @@ Dynamic (top-level await is supported too):
       );
       await import('https://esm.run/@divriots/simba@0.7.0/switch/define');
       setTheme('amber');
-      export default () =>
-        html`<simba-switch style="justify-content: left;"></simba-switch>`;
+      export default () => html`<simba-switch-button></simba-switch-button>`;
     </script>
   </template>
 </dockit-playground-lit>
