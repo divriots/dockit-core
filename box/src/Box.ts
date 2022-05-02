@@ -1,4 +1,4 @@
-import styles from './Box.module.css';
+import * as styles from './Box.styles';
 
 export class Box extends HTMLElement {
   connectedCallback() {
@@ -8,12 +8,8 @@ export class Box extends HTMLElement {
     const style = this.getAttribute('showcase-style') || '';
 
     this.innerHTML = /*html*/ `
-      <div class="${styles.wrapper}">
-        ${
-          hasCheckedBackground
-            ? `<div class="${styles.checkered} ${className}"></div>`
-            : ''
-        }
+      <div style="${style};${styles.wrapper}" class="${className}">
+        ${hasCheckedBackground ? `<div style="${styles.checkered}"></div>` : ''}
         <div class="${className}" style="${style}"></div>
       </div>
       `;

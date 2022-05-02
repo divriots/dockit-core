@@ -1,9 +1,12 @@
-.wrapper {
+export const wrapper = /*css*/ `
   position: relative;
   z-index: 0;
-}
+  overflow: hidden;
+  background: none;
+  opacity: 1;
+`;
 
-.checkered {
+export const checkered = /*css*/ `
   opacity: 1;
   background-color: #000000;
   background-image: linear-gradient(
@@ -18,6 +21,8 @@
   background-position: 0 0, 0 0, -0.5rem -0.5rem, 0.5rem 0.5rem;
   position: absolute;
   top: 0px;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   box-shadow: none;
-}
+`;
