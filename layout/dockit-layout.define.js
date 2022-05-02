@@ -1,3 +1,3 @@
-import { Layout } from './src/Layout';
+import { Layout } from './src/Layout.ts';
 
 customElements.define('dockit-layout', Layout);

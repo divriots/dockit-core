@@ -11,7 +11,7 @@ export class Clipboard extends HTMLElement {
     const text = this.shadowRoot
       .querySelector('slot')
       .assignedNodes()[0]?.textContent;
-    copyTextToClipboard(text);
+    copyTextToClipboard.call(text);
 
     const tooltip = this.shadowRoot.querySelector(`.tooltip`);
     tooltip.textContent = 'Copied';
