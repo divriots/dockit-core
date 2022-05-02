@@ -17,5 +17,5 @@ import '@divriots/dockit-core/clipboard/dockit-clipboard.define.js';
 Hover and click to `copy`.
 
 ```html preview-story
-<dockit-clipboard>test clipboard</dockit-clipboard>
+<dockit-clipboard><pre>test clipboard</pre></dockit-clipboard>
 ```

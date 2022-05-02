@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 1.15rem;
+  top: -1.15rem;
   font-size: 0.8rem;
   border-radius: 0.3rem;
   background-color: rgb(45, 55, 72);
