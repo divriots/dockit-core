@@ -38,11 +38,12 @@ export class Showcases extends HTMLElement {
       ${acc}
       ${renderComponent({
         componentClass,
-        showcaseClass: !!showcaseClasses && showcase,
-        showcaseStyle: !showcaseClasses && showcase,
         hasLongText,
         captionWidth,
         hasCheckeredBackground,
+        ...(!!showcaseClasses
+          ? { showcaseClass: showcase, showcaseStyle: undefined }
+          : { showcaseClass: undefined, showcaseStyle: showcase }),
       })}
     `,
       ''
