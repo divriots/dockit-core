@@ -33,6 +33,8 @@ export class Showcases extends HTMLElement {
 
     const captionWidth = `${1 + longestName / 2}rem`;
 
+    const showcaseAttr = showcaseClasses ? 'showcaseClass' : 'showcaseStyle';
+
     const showcaseComponents = showcases.reduce(
       (acc, showcase) => /*html*/ `
       ${acc}
@@ -41,9 +43,7 @@ export class Showcases extends HTMLElement {
         hasLongText,
         captionWidth,
         hasCheckeredBackground,
-        ...(!!showcaseClasses
-          ? { showcaseClass: showcase, showcaseStyle: undefined }
-          : { showcaseClass: undefined, showcaseStyle: showcase }),
+        [showcaseAttr]: showcase,
       })}
     `,
       ''

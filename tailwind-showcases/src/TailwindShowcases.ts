@@ -4,6 +4,7 @@ import { extractClassSuffixes } from './theme-helpers';
 import { getZIndexHtml } from './z-index-helper';
 import { getScaleHtml } from './space-helper';
 import resolveConfig from 'tailwindcss/resolveConfig';
+import { TailwindTheme } from 'tailwindcss/tailwind-config';
 
 const getClassSuffixes = (theme) => ({
   colors: extractClassSuffixes('colors', theme),
@@ -73,7 +74,7 @@ const getClassNames = (suffixes) => ({
 });
 
 export class TailwindShowcases extends HTMLElement {
-  theme: Record<any, any>;
+  theme: TailwindTheme;
 
   constructor() {
     super();

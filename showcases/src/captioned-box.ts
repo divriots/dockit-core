@@ -13,7 +13,13 @@ export const renderCaptionedBox = ({
   showcaseStyle,
   captionWidth,
   componentClass,
-  hasCheckeredBackground,
+  hasCheckeredBackground = false,
+}: {
+  showcaseClass?: string;
+  showcaseStyle?: string;
+  captionWidth?: string;
+  componentClass?: string;
+  hasCheckeredBackground: boolean;
 }) => /*html*/ `
 <div style="${style}">
   <dockit-box
