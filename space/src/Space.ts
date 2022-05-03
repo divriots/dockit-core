@@ -1,5 +1,5 @@
 export class Space extends HTMLElement {
-  scale: any[] | Record<any, any>;
+  scale: (number | string)[] | Record<string, number | string>;
 
   constructor() {
     super();
