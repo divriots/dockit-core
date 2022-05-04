@@ -11,7 +11,12 @@ export const renderCaptionedText = ({
   showcaseClass,
   showcaseStyle,
   captionWidth,
-  hasLongText,
+  hasLongText = false,
+}: {
+  showcaseClass?: string;
+  showcaseStyle?: string;
+  captionWidth?: string;
+  hasLongText: boolean;
 }) => /*html*/ `
 <div style="${style}">
   <dockit-clipboard

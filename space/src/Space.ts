@@ -1,4 +1,6 @@
 export class Space extends HTMLElement {
+  scale: (number | string)[] | Record<string, number | string>;
+
   constructor() {
     super();
     this.scale = [];
