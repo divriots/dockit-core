@@ -9,11 +9,7 @@ export class Box extends HTMLElement {
 
     this.innerHTML = /*html*/ `
       <div class="${styles.wrapper}">
-        ${
-          hasCheckedBackground
-            ? `<div class="${styles.checkered} ${className}"></div>`
-            : ''
-        }
+        ${hasCheckedBackground ? `<div class="${styles.checkered}"></div>` : ''}
         <div class="${className}" style="${style}"></div>
       </div>
       `;

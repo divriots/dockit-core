@@ -4,8 +4,6 @@
 }
 
 .checkered {
-  opacity: 1;
-  background-color: #000000;
   background-image: linear-gradient(
       45deg,
       rgb(153, 153, 153) 25%,
@@ -20,4 +18,6 @@
   top: 0px;
   z-index: -1;
   box-shadow: none;
+  width: 100%;
+  height: 100%;
 }
