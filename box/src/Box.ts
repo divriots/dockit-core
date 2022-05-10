@@ -1,4 +1,5 @@
 import styles from './Box.module.css';
+import { checkeredBackground } from './Box.styles';
 
 export class Box extends HTMLElement {
   connectedCallback() {
@@ -9,7 +10,11 @@ export class Box extends HTMLElement {
 
     this.innerHTML = /*html*/ `
       <div class="${styles.wrapper}">
-        ${hasCheckedBackground ? `<div class="${styles.checkered}"></div>` : ''}
+        ${
+          hasCheckedBackground
+            ? `<div style="${style}; ${checkeredBackground}" class="${className}"></div>`
+            : ''
+        }
         <div class="${className}" style="${style}"></div>
       </div>
       `;
