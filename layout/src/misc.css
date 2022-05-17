@@ -54,6 +54,10 @@ dockit-layout [slot='logo'] > :first-child {
   line-height: inherit;
 }
 
+.story_padded {
+  line-height: initial;
+}
+
 .preview-story {
   border: 1px solid #404040;
   border-radius: 6px;
