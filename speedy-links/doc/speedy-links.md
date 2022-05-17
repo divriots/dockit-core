@@ -172,10 +172,10 @@ setupSpeedyLinks({
 
 ## Rationale and sources of inspiration
 
-The inspiraton comes from [turbo](https://github.com/hotwired/turbo) (new library from the authors of [turbolinks](https://github.com/turbolinks/turbolinks/)) and [pjax](https://github.com/MoOx/pjax).
+The inspiration comes from [turbo](https://github.com/hotwired/turbo) (new library from the authors of [turbolinks](https://github.com/turbolinks/turbolinks/)) and [pjax](https://github.com/MoOx/pjax).
 These libraries might be better alternatives for static websites where all documents can be compiled to static HTML.
 
-Backlight is different here and therefore we needed smth similar, but more flexible and able to use dynamic JS code where static HTML is not sufficient, e.g. for interactive stories in Markdown files.
+Backlight is different here and therefore we needed something similar, but more flexible and able to use dynamic JS code where static HTML is not sufficient, e.g. for interactive stories in Markdown files.
 On top of that it has to support multiple technologies at the same time, often mixed up with each other in a single project.
 That's why we don't make any assumptions about how rendering is implemented, whether it's just static HTML string or JS code with dynamic variables, whether it can just be set as `innerHTML` or requires a framework or library to render.
 

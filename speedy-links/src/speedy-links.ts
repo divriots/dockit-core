@@ -30,7 +30,7 @@ async function onClick(event: MouseEvent): Promise<void> {
     const url = link.href;
     const hash = new URL(url).hash;
 
-    if (isDifferentOriginUrl(url)) {
+    if (!isSameProjectURL(url)) {
       return;
     }
 
@@ -53,8 +53,16 @@ async function onPopState(): Promise<void> {
   await renderPage(location.href);
 }
 
-function isDifferentOriginUrl(url: string): boolean {
-  return new URL(url).origin !== location.origin;
+function isSameProjectURL(url: string): boolean {
+  const _url = new URL(url);
+  // Compare path prefixes, typically /doc/{projectId}
+  const currentRoot = location.pathname.slice(1).split('/');
+  const targetRoot = _url.pathname.slice(1).split('/');
+  return (
+    _url.origin === location.origin &&
+    currentRoot[0] === targetRoot[0] &&
+    currentRoot[1] === targetRoot[1]
+  );
 }
 
 function isSamePageUrl(url: string): boolean {
