@@ -8,12 +8,13 @@ export class Clipboard extends HTMLElement {
   }
 
   copy() {
-    const text = this.shadowRoot
-      .querySelector('slot')
-      .assignedNodes()[0]?.textContent;
+    const text =
+      this.shadowRoot!.querySelector<HTMLSlotElement>(
+        'slot'
+      )!.assignedNodes()[0]?.textContent || '';
     copyTextToClipboard(text);
 
-    const tooltip = this.shadowRoot.querySelector(`.tooltip`);
+    const tooltip = this.shadowRoot!.querySelector(`.tooltip`)!;
     tooltip.textContent = 'Copied';
     setTimeout(() => (tooltip.textContent = 'Copy'), 2000);
   }
@@ -24,7 +25,7 @@ export class Clipboard extends HTMLElement {
     const width = this.getAttribute('width');
     const widthStyle = width ? `style="width:${width};"` : '';
 
-    this.shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot!.innerHTML = /*html*/ `
       <style>${clipboardStyles}</style>
       <div class="wrapper" ${widthStyle}>
         <div class="slotContainer">

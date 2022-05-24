@@ -1,5 +1,7 @@
 export interface ActivateLinksOptions {
-  mapLinkUrlToModuleUrl: (url: string) => string | Promise<string>;
+  mapLinkUrlToModuleUrl: (
+    url: string
+  ) => string | undefined | Promise<string | undefined>;
   linkSelector?: string;
   moduleExecutor?: (module: any) => Promise<void>;
 }
@@ -84,6 +86,10 @@ async function renderPage(url: string): Promise<void> {
   let module = modulesCache[urlWithoutHash];
   if (!module) {
     const moduleUrl = await opts.mapLinkUrlToModuleUrl(urlWithoutHash);
+    if (!moduleUrl) {
+      location.href = url;
+      return;
+    }
     module = await import(moduleUrl);
     modulesCache[urlWithoutHash] = module;
   }

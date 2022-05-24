@@ -1,3 +1,4 @@
+import type { SearchResult } from 'minisearch';
 import { LitElement, html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { SearchStyles } from './Search.styles';
@@ -9,24 +10,27 @@ const markChar = '\0';
 export class Search extends LitElement {
   static styles = SearchStyles;
 
-  public search = null;
-  private hits = null;
-  private keydownListener = null;
+  search: (query: string) => Promise<SearchResult[]>;
+
+  private hits: null | SearchResult[] = null;
+  private keydownListener?: (e: KeyboardEvent) => void;
 
   connectedCallback() {
     super.connectedCallback();
-    this.keydownListener = (e: Event) => {
+    this.keydownListener = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
         this.updateHits();
-      } else if (e.key === 'Escape') this.hideHits();
+      } else if (e.key === 'Escape') {
+        this.hideHits();
+      }
     };
     addEventListener('keydown', this.keydownListener);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    removeEventListener('keydown', this.keydownListener);
+    removeEventListener('keydown', this.keydownListener!);
   }
 
   render() {
@@ -101,7 +105,7 @@ export class Search extends LitElement {
     this.requestUpdate();
   }
 
-  private mark(hit) {
+  private mark(hit: SearchResult) {
     for (const t of hit.terms.sort((a, b) => b.length - a.length))
       for (const m of hit.match[t])
         hit[m] = hit[m]
@@ -143,14 +147,16 @@ export class Search extends LitElement {
   }
 
   private get searchInput(): HTMLInputElement {
-    return this.shadowRoot.querySelector('input[type="search"]');
+    return this.shadowRoot!.querySelector<HTMLInputElement>(
+      'input[type="search"]'
+    )!;
   }
 
   private get searchHits(): HTMLUListElement {
-    return this.shadowRoot.querySelector('.hits');
+    return this.shadowRoot!.querySelector<HTMLUListElement>('.hits')!;
   }
 
   private get searchOverlay(): HTMLDivElement {
-    return this.shadowRoot.querySelector('.overlay');
+    return this.shadowRoot!.querySelector<HTMLDivElement>('.overlay')!;
   }
 }
