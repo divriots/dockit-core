@@ -5,51 +5,12 @@ It's a lightweight solution to speed up page loading and prevent a flash of unst
 ## Backlight documentation integration
 
 `speedy-links` was originally designed to be used in [Backlight](https://backlight.dev) to improve documentation experience.
-Below you can find a quick setup code for different documentation technologies supported in Backlight.
 
-### MDJS layout
+It's active by default if you use [`<dockit-layout>` with `context` property](../../layout/doc/layout.md#context).
 
-```js
-// mdjs.config.js
-import '@divriots/dockit-core/layout/dockit-layout.define.js';
-import { setupSpeedyLinks } from '@divriots/dockit-core/speedy-links';
-import { html } from 'lit';
+## Explainer
 
-export default {
-  layout: (content, context) => {
-    setupSpeedyLinks({
-      mapLinkUrlToModuleUrl: (url) => {
-        return context.mapPageUrlToRenderModuleUrl(url);
-      },
-    });
-    return html`<dockit-layout>...</dockit-layout>`;
-  },
-};
-```
-
-### MDX layout
-
-```jsx
-// layout.jsx
-import { setupSpeedyLinks } from '@divriots/dockit-core/speedy-links';
-import { MDXProvider } from '@mdx-js/react';
-import React from 'react';
-
-export const Layout = (props) => {
-  setupSpeedyLinks({
-    mapLinkUrlToModuleUrl: (url) => {
-      return props.__context.mapPageUrlToRenderModuleUrl(url);
-    },
-  });
-  return <MDXProvider>...</MDXProvider>;
-};
-```
-
-Then use `Layout` in your MDX files.
-
-## Generic usage
-
-To use `speedy-links` outside of Backlight it's good to know how it works under the hood.
+To customize `speedy-links` or use outside of Backlight it's good to know how it works under the hood.
 
 `setupSpeedyLinks` is a function that requires at least one parameter `mapLinkUrlToModuleUrl`.
 
@@ -63,8 +24,11 @@ setupSpeedyLinks({
 });
 ```
 
-Call to `setupSpeedyLinks` executes the setup code only once, all following calls are ignored, so once setup is finished, you can't change or disable it.
-It adds a `click` listener on all page links (currently present or added later) via delegation to the body element.
+Call to `setupSpeedyLinks` executes the setup code and returns a function to disable it.
+If you call it multiple times then nothing happens, even if you provide different arguments.
+But as soon as you used the returned function to disable, then you can enable again with other arguments.
+
+`speedy-links` adds a `click` listener on all page links (currently present or added later) via delegation to the body element.
 
 There is one exception: links pointing to another origin (`location.origin`) will be always ignored and processed natively by the browser as a result.
 

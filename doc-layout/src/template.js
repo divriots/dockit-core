@@ -1,6 +1,5 @@
 import '~/layout/dockit-layout.define.js';
 import { styles } from '@divriots/dockit-core/layout';
-import { setupSpeedyLinks } from '@divriots/dockit-core/speedy-links';
 import '@api-viewer/docs';
 import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
@@ -9,11 +8,6 @@ import { search } from '@divriots/dockit-core/search';
 import '~/search/dockit-search.define.js';
 
 export const docLayoutTemplate = (content, context) => {
-  setupSpeedyLinks({
-    mapLinkUrlToModuleUrl: (url) => {
-      return context.mapPageUrlToRenderModuleUrl(url);
-    },
-  });
   return html`
     <style>
       ${unsafeHTML(styles)} .logo {
