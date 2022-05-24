@@ -12,7 +12,7 @@ The main files to check are:
 - `mdjs.config.js` which configures the global template for all Markdown files
 - `doc-layout/src/template.js` contains the global template itself, all necessary imports and the code specific to this project which gives it a unique touch
 
-## mdjs.config.js and template library
+## `mdjs.config.js` and template library
 
 `<dockit-layout>` was designed for usage within any Design System documentation, but it is especially handy when used within Backlight, because it's a perfect fit for it and has some specific features.
 Therefore all examples in this documentation will be using `mdjs.config.js` which allows to define a default template for all Markdown files in the Backlight project.
@@ -201,19 +201,19 @@ You can also disable color scheme changing, e.g. when your design system has onl
 <dockit-layout disable-color-scheme-change></dockit-layout>
 ```
 
-## Custom themeing
+## Custom theming
 
 ### Content theme
 
 Content is part of the Light DOM and can be styled directly.
 The `styles` imported from `@divriots/dockit-core/layout` include styles for the content typography (including light/dark modes), Prism theme for the code highlighting, code block styles (including live demo wrappers based on MDJS stories), and some other styles for various things.
 As such `styles` is quite opinionated, but it is mostly composed of other individual libraries which you can import separately and adjust to your own needs.
-We recommened checking the content of `styles` to learn more about the default setup.
+We recommend checking the content of `styles` to learn more about the default setup.
 
 ### Shell theme
 
 All shell-related elements (layout, topbar, left navigation, buttons...) are part of the `<dockit-layout>` Shadow DOM and can't be styled directly.
-For the sake of themeing and flexibility, we provide a few CSS custom properties to change the theme:
+For the sake of theming and flexibility, we provide a few CSS custom properties to change the theme:
 
 - `--dockit-layout-bg` - page background color
 - `--dockit-layout-header-border-color` - border color below the header
