@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.7",
-    "@divriots/studio-doc-compiler": "^0.0.31",
+    "@divriots/studio-doc-compiler": "^0.0.32",
     "@types/tailwindcss": "^3.0.10",
     "twind": "^0.16.16"
   }

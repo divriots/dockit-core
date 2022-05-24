@@ -10,6 +10,7 @@
     "moduleResolution": "Node",
     "useDefineForClassFields": false,
     "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["*"],

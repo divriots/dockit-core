@@ -19,7 +19,7 @@ export class Showcases extends HTMLElement {
     const showcaseStyles = this.getAttribute('showcase-styles');
 
     const separator = !!showcaseClasses ? ' ' : ';';
-    const showcases = (showcaseClasses || showcaseStyles)
+    const showcases = ((showcaseClasses || showcaseStyles) as string)
       .split(separator)
       .filter((c) => !!c)
       .map((c) => c.trim());
@@ -27,7 +27,10 @@ export class Showcases extends HTMLElement {
     const hasLongText = this.hasAttribute('long-text');
     const longestName = showcases
       .map((val) =>
-        getCaption(!!showcaseClasses && val, !!showcaseStyles && val)
+        getCaption(
+          showcaseClasses ? val : undefined,
+          showcaseStyles ? val : undefined
+        )
       )
       .reduce((max, e) => Math.max(e.length, max), 0);
 
@@ -39,7 +42,7 @@ export class Showcases extends HTMLElement {
       (acc, showcase) => /*html*/ `
       ${acc}
       ${renderComponent({
-        componentClass,
+        componentClass: componentClass || undefined,
         hasLongText,
         captionWidth,
         hasCheckeredBackground,

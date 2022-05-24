@@ -85,7 +85,7 @@ export class TailwindShowcases extends HTMLElement {
     const partialTheme = this.theme;
     const { theme } = resolveConfig({ theme: partialTheme });
 
-    const showcaseKey = this.getAttribute('showcase-key');
+    const showcaseKey = this.getAttribute('showcase-key')!;
     if (showcaseKey === 'zIndex') {
       this.innerHTML = getZIndexHtml(theme);
       return;

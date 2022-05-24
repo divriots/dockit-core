@@ -122,37 +122,34 @@ export class Layout extends LitElement {
                 >
                   <nav class="navigation">
                     <ul>
-                      ${this.context.pagesGraph
-                        .filter(
-                          (group) =>
-                            !group.children || group.children.length > 0
-                        )
-                        .map(
-                          (group) => html`<li>
-                            ${group.children
-                              ? html`<span>${group.key}</span>`
-                              : nothing}
-                            <ul>
-                              ${(group.children ? group.children : [group]).map(
-                                (item) => html`<li>
-                                  <a
-                                    href="${this.getPageUrlWithoutOrigin(
-                                      item.page
-                                    )}"
-                                    aria-current="${ifDefined(
-                                      this.locationPathname ===
-                                        this.getPageUrlWithoutOrigin(item.page)
-                                        ? 'location'
-                                        : undefined
-                                    )}"
-                                  >
-                                    ${item.key}
-                                  </a>
-                                </li>`
-                              )}
-                            </ul>
-                          </li>`
-                        )}
+                      ${this.context!.pagesGraph.filter(
+                        (group) => !group.children || group.children.length > 0
+                      ).map(
+                        (group) => html`<li>
+                          ${group.children
+                            ? html`<span>${group.key}</span>`
+                            : nothing}
+                          <ul>
+                            ${(group.children ? group.children : [group]).map(
+                              (item) => html`<li>
+                                <a
+                                  href="${this.getPageUrlWithoutOrigin(
+                                    item.page!
+                                  )}"
+                                  aria-current="${ifDefined(
+                                    this.locationPathname ===
+                                      this.getPageUrlWithoutOrigin(item.page!)
+                                      ? 'location'
+                                      : undefined
+                                  )}"
+                                >
+                                  ${item.key}
+                                </a>
+                              </li>`
+                            )}
+                          </ul>
+                        </li>`
+                      )}
                     </ul>
                   </nav>
                 </div>`
@@ -205,12 +202,16 @@ export class Layout extends LitElement {
   }
 
   private getLogoHref() {
-    let page = '';
-    if (this.hasNavigation && this.context.pagesGraph?.length > 0) {
+    let page: Page | undefined;
+    if (
+      this.hasNavigation &&
+      this.context &&
+      this.context.pagesGraph?.length > 0
+    ) {
       const pageGraph = this.context.pagesGraph[0];
       page =
         pageGraph.page ||
-        (pageGraph.children?.length > 0 ? pageGraph.children[0].page : '');
+        (pageGraph.children?.length ? pageGraph.children[0].page : undefined);
     }
     return page ? this.getPageUrlWithoutOrigin(page) : '';
   }
@@ -220,7 +221,7 @@ export class Layout extends LitElement {
   }
 
   private getPageUrlWithoutOrigin(page: Page): string {
-    return this.context.base + page.url;
+    return (this.context?.base || '') + page.url;
   }
 
   private toggleColorScheme(): void {
