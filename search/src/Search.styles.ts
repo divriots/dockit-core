@@ -7,8 +7,10 @@ export const SearchStyles = css`
   margin: 0 4rem 0 1rem;
 }
 
-@media only screen and (max-width: 1024px) :host {
-  margin: 0px;
+@media only screen and (max-width: 1024px) {
+  :host {
+    margin: 0px;
+  }
 }
 
 form {
@@ -24,7 +26,7 @@ form label {
 
 form label:before {
   content: '';
-  z-index: 12;s
+  z-index: 12;
   position: absolute;
   left: 10px;
   top: 0;
