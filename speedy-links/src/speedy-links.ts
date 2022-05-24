@@ -1,4 +1,4 @@
-export interface ActivateLinksOptions {
+export interface SpeedyLinksOptions {
   mapLinkUrlToModuleUrl: (
     url: string
   ) => string | undefined | Promise<string | undefined>;
@@ -7,11 +7,11 @@ export interface ActivateLinksOptions {
 }
 
 let hasBeenSetup = false;
-let opts: ActivateLinksOptions;
+let opts: SpeedyLinksOptions;
 let linkSelector: string;
 const modulesCache = {};
 
-export function setupSpeedyLinks(options: ActivateLinksOptions): void {
+export function setupSpeedyLinks(options: SpeedyLinksOptions): void {
   if (hasBeenSetup) {
     return;
   }
