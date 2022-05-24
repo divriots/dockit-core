@@ -3,6 +3,7 @@ import { html, LitElement, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { setupSpeedyLinks } from '~/speedy-links';
 import { LayoutStyles } from './Layout.styles';
 import menuSvg from './menu.svg?raw';
 import moonSvg from './moon.svg?raw';
@@ -27,6 +28,9 @@ export class Layout extends LitElement {
 
   @property({ attribute: false })
   context?: Context;
+
+  @property({ type: Boolean, attribute: 'disable-speedy-links' })
+  disableSpeedyLinks?: boolean = false;
 
   @property({ type: Boolean, attribute: 'disable-color-scheme-change' })
   disableColorSchemeChange: boolean = false;
@@ -194,6 +198,16 @@ export class Layout extends LitElement {
     this.listenerRemovers.push(() => {
       window.removeEventListener('keydown', windowKeydownListener);
     });
+    if (this.context && !this.disableSpeedyLinks) {
+      const context = this.context;
+      this.listenerRemovers.push(
+        setupSpeedyLinks({
+          mapLinkUrlToModuleUrl: (url) => {
+            return context.mapPageUrlToRenderModuleUrl(url);
+          },
+        })
+      );
+    }
   }
 
   private teardownWindowEvents() {

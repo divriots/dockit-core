@@ -85,11 +85,16 @@ export default {
 };
 ```
 
-## Context: left navigation and logo link
+## Context
 
 This is optional.
 
-Yet very easy and helpful when used within Backlight: just configure one property `context` on the `<dockit-layout>` and get a responsive left navigation with links to component documentation entry points reflecting your `studio.config.json` menu, as well as wrap the logo with a link to the first entry point.
+Yet very easy and helpful when used within Backlight.
+Just configure one property `context` on the `<dockit-layout>` and get a few things out of the box:
+
+- get a responsive left navigation with links to component documentation entry points reflecting your `studio.config.json` menu
+- wrap the logo with a link to the first entry point
+- upgrade all links with [speedy-links](../../speedy-links/doc/speedy-links.md) fast page loading mechanism
 
 ```js
 // mdjs.config.js
@@ -98,6 +103,28 @@ import { html } from 'lit';
 export default {
   layout: (content, context) =>
     html`...<dockit-layout .context="${context}">...</dockit-layout>`,
+};
+```
+
+### Disable or customize `speedy-links`
+
+In some cases you might want to disable or customize `speedy-links`.
+We provide `disable-speedy-links` attribute for that case.
+When this attribute is set, you can import `setupSpeedyLinks` and call it with your own [config](../../speedy-links/doc/speedy-links.md#explainer).
+
+```js
+// mdjs.config.js
+import '@divriots/dockit-core/layout/dockit-layout.define.js';
+import { setupSpeedyLinks } from '@divriots/dockit-core/speedy-links';
+import { html } from 'lit';
+
+export default {
+  layout: (content, context) => {
+    setupSpeedyLinks(...your config...);
+    return html`<dockit-layout .context="${context}" disable-speedy-links>
+      ...
+    </dockit-layout>`;
+  },
 };
 ```
 

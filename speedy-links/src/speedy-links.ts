@@ -6,20 +6,25 @@ export interface SpeedyLinksOptions {
   moduleExecutor?: (module: any) => Promise<void>;
 }
 
-let hasBeenSetup = false;
+let teardownSpeedyLinks: undefined | VoidFunction;
 let opts: SpeedyLinksOptions;
 let linkSelector: string;
 const modulesCache = {};
 
-export function setupSpeedyLinks(options: SpeedyLinksOptions): void {
-  if (hasBeenSetup) {
-    return;
+export function setupSpeedyLinks(options: SpeedyLinksOptions): VoidFunction {
+  if (teardownSpeedyLinks) {
+    return teardownSpeedyLinks;
   }
-  hasBeenSetup = true;
   opts = options;
   linkSelector = opts.linkSelector ? opts.linkSelector : 'a';
   document.body.addEventListener('click', onClick);
   window.addEventListener('popstate', onPopState);
+  teardownSpeedyLinks = () => {
+    teardownSpeedyLinks = undefined;
+    document.body.removeEventListener('click', onClick);
+    window.removeEventListener('popstate', onPopState);
+  };
+  return teardownSpeedyLinks;
 }
 
 async function onClick(event: MouseEvent): Promise<void> {
