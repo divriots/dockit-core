@@ -78,8 +78,11 @@ form input[type='search']:focus {
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
-@media only screen and (max-width: 768px) hits{
-  position: fixed;
+
+@media only screen and (max-width: 768px) {
+  .hits {
+    position: fixed;
+  }
 }
 
 .hits a {
