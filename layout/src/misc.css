@@ -16,6 +16,12 @@ dockit-layout [slot='logo'] > :first-child {
   height: var(--private--dockit-layout-logo-height);
 }
 
+dockit-layout
+  dockit-search[slot='topbar']
+  + dockit-version-selector[slot='topbar'] {
+  margin-left: 1em;
+}
+
 .prose :where(h1, h2, h3, h4, h5, h6) {
   scroll-margin-top: calc(var(--private--dockit-layout-header-height) + 1rem);
 }

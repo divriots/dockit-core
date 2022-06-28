@@ -5,13 +5,6 @@ export const SearchStyles = css`
   :host {
     position: relative;
     flex-grow: 1;
-    margin: 0 4rem 0 1rem;
-  }
-
-  @media only screen and (max-width: ${unsafeCSS(breakpoints.lg)}) {
-    :host {
-      margin: 0px;
-    }
   }
 
   form {
