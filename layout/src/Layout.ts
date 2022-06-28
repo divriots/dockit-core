@@ -235,7 +235,9 @@ export class Layout extends LitElement {
   }
 
   private getPageUrlWithoutOrigin(page: Page): string {
-    return (this.context?.base || '') + page.url;
+    const baseUrl = new URL(this.context?.base || '/', location.href);
+    const pageUrl = new URL(page.url, baseUrl);
+    return pageUrl.href.replace(location.origin, '');
   }
 
   private toggleColorScheme(): void {
