@@ -6,7 +6,7 @@ It's a lightweight solution to speed up page loading and prevent a flash of unst
 
 `speedy-links` was originally designed to be used in [Backlight](https://backlight.dev) to improve documentation experience.
 
-It's active by default if you use [`<dockit-layout>` with `context` property](../../layout/doc/layout.md#context).
+It's active by default if you use [`<dockit-layout>` with `context` property](../../layout/doc/index.md#context).
 
 ## Explainer
 

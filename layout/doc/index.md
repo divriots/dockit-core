@@ -94,7 +94,7 @@ Just configure one property `context` on the `<dockit-layout>` and get a few thi
 
 - get a responsive left navigation with links to component documentation entry points reflecting your `studio.config.json` menu
 - wrap the logo with a link to the first entry point
-- upgrade all links with [speedy-links](../../speedy-links/doc/speedy-links.md) fast page loading mechanism
+- upgrade all links with [speedy-links](../../speedy-links/doc/index.md) fast page loading mechanism
 
 ```js
 // mdjs.config.js
@@ -110,7 +110,7 @@ export default {
 
 In some cases you might want to disable or customize `speedy-links`.
 We provide `disable-speedy-links` attribute for that case.
-When this attribute is set, you can import `setupSpeedyLinks` and call it with your own [config](../../speedy-links/doc/speedy-links.md#explainer).
+When this attribute is set, you can import `setupSpeedyLinks` and call it with your own [config](../../speedy-links/doc/index.md#explainer).
 
 ```js
 // mdjs.config.js
