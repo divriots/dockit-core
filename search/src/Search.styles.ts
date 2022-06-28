@@ -1,4 +1,5 @@
-import { css } from 'lit';
+import { css, unsafeCSS } from 'lit';
+import { breakpoints } from '@divriots/dockit-core/layout';
 
 export const SearchStyles = css`
 :host {
@@ -7,7 +8,7 @@ export const SearchStyles = css`
   margin: 0 4rem 0 1rem;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: ${unsafeCSS(breakpoints.lg)}) {
   :host {
     margin: 0px;
   }
@@ -79,7 +80,7 @@ form input[type='search']:focus {
   padding: 0.5rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: ${unsafeCSS(breakpoints.md)}) {
   .hits {
     position: fixed;
   }
