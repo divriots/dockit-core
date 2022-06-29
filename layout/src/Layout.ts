@@ -180,6 +180,11 @@ export class Layout extends LitElement {
     } else {
       this.removeAttribute('data-is-navigation-shown');
     }
+    if (this.disableColorSchemeChange) {
+      this.removeAttribute('data-has-color-schema-toggle');
+    } else {
+      this.setAttribute('data-has-color-schema-toggle', '');
+    }
     this.setAttribute('data-color-scheme', this.colorScheme);
   }
 

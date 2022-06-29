@@ -3,11 +3,26 @@ import { styles } from '@divriots/dockit-core/layout';
 import '@api-viewer/docs';
 import { html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { until } from 'lit/directives/until.js';
 import logoSvg from './logo.svg?raw';
 import { search } from '@divriots/dockit-core/search';
-import '~/search/dockit-search.define.js';
+import '@divriots/dockit-core/search/dockit-search.define.js';
+import '@divriots/dockit-core/version-selector/dockit-version-selector.define.js';
 
 export const docLayoutTemplate = (content, context) => {
+  // TODO: remove when Backlight is released with new functionality
+  const isMultiverseSupported = context.isLive !== undefined;
+
+  let versionsPromise;
+  if (isMultiverseSupported) {
+    if (context.isLive) {
+      versionsPromise = Promise.resolve([context.version]);
+    } else {
+      versionsPromise = import(new URL('/docs-shared.mjs', location.href)).then(
+        (m) => m.versions
+      );
+    }
+  }
   return html`
     <style>
       ${unsafeHTML(styles)} .logo {
@@ -35,6 +50,35 @@ export const docLayoutTemplate = (content, context) => {
       </div>
       <dockit-search slot="topbar" .search=${(query) => search(query, context)}>
       </dockit-search>
+      ${isMultiverseSupported
+        ? until(
+            versionsPromise.then((versions) => {
+              const isLatestVersion =
+                context.version === versions[versions.length - 1];
+              return html`
+                <dockit-version-selector
+                  slot="topbar"
+                  .versions=${versions}
+                  selected=${context.version}
+                  @select=${(event) => {
+                    if (!context.isLive) {
+                      const baseUrl = new URL(
+                        isLatestVersion ? './' : '../',
+                        new URL(context.base, location.href)
+                      );
+                      location.href = new URL(
+                        event.detail.isLatest
+                          ? './'
+                          : `./${event.detail.version}/`,
+                        baseUrl
+                      ).href;
+                    }
+                  }}
+                ></dockit-version-selector>
+              `;
+            })
+          )
+        : null}
       <div class="prose dark:prose-invert">${unsafeHTML(content)}</div>
     </dockit-layout>
   `;

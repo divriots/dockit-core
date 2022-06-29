@@ -10,6 +10,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "css-showcases/dockit-css-showcases.define.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "dockit-css-showcases",
+          "declaration": {
+            "name": "CssShowcases",
+            "module": "/css-showcases/src/CssShowcases.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "css-showcases/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CssShowcases",
+          "declaration": {
+            "name": "CssShowcases",
+            "module": "./src/CssShowcases"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "box/dockit-box.define.js",
       "declarations": [],
       "exports": [
@@ -18,7 +48,52 @@
           "name": "dockit-box",
           "declaration": {
             "name": "Box",
-            "module": "/box/src/Box.js"
+            "module": "/box/src/Box.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "box/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Box",
+          "declaration": {
+            "name": "Box",
+            "module": "./src/Box"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "columns/dockit-columns.define.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "dockit-columns",
+          "declaration": {
+            "name": "Columns",
+            "module": "/columns/src/Columns.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "columns/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Columns",
+          "declaration": {
+            "name": "Columns",
+            "module": "./src/Columns"
           }
         }
       ]
@@ -33,22 +108,22 @@
           "name": "dockit-clipboard",
           "declaration": {
             "name": "Clipboard",
-            "module": "/clipboard/src/Clipboard.js"
+            "module": "/clipboard/src/Clipboard.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "css-showcases/dockit-css-showcases.define.js",
+      "path": "clipboard/index.ts",
       "declarations": [],
       "exports": [
         {
-          "kind": "custom-element-definition",
-          "name": "dockit-css-showcases",
+          "kind": "js",
+          "name": "Clipboard",
           "declaration": {
-            "name": "CssShowcases",
-            "module": "/css-showcases/src/CssShowcases.js"
+            "name": "Clipboard",
+            "module": "./src/Clipboard"
           }
         }
       ]
@@ -91,15 +166,23 @@
     },
     {
       "kind": "javascript-module",
-      "path": "do-dont/index.js",
+      "path": "do-dont/index.ts",
       "declarations": [],
       "exports": [
         {
           "kind": "js",
-          "name": "*",
+          "name": "Do",
           "declaration": {
-            "name": "*",
-            "package": "./src/index"
+            "name": "Do",
+            "module": "./src/Do"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Dont",
+          "declaration": {
+            "name": "Dont",
+            "module": "./src/Dont"
           }
         }
       ]
@@ -152,6 +235,66 @@
     },
     {
       "kind": "javascript-module",
+      "path": "showcases/dockit-showcases.define.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "dockit-showcases",
+          "declaration": {
+            "name": "Showcases",
+            "module": "/showcases/src/Showcases.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "showcases/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Showcases",
+          "declaration": {
+            "name": "Showcases",
+            "module": "./src/Showcases"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "space/dockit-space.define.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "dockit-space",
+          "declaration": {
+            "name": "Space",
+            "module": "/space/src/Space.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "space/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Space",
+          "declaration": {
+            "name": "Space",
+            "module": "./src/Space"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "search/dockit-search.define.js",
       "declarations": [
         {
@@ -169,10 +312,8 @@
               "kind": "field",
               "name": "search",
               "type": {
-                "text": "null"
+                "text": "(query: string) => Promise<SearchResult[]>"
               },
-              "privacy": "public",
-              "default": "null",
               "inheritedFrom": {
                 "name": "Search",
                 "module": "search/src/Search.ts"
@@ -182,7 +323,7 @@
               "kind": "field",
               "name": "hits",
               "type": {
-                "text": "null"
+                "text": "null | SearchResult[]"
               },
               "privacy": "private",
               "default": "null",
@@ -195,10 +336,9 @@
               "kind": "field",
               "name": "keydownListener",
               "type": {
-                "text": "null"
+                "text": "(e: KeyboardEvent) => void | undefined"
               },
               "privacy": "private",
-              "default": "null",
               "inheritedFrom": {
                 "name": "Search",
                 "module": "search/src/Search.ts"
@@ -242,7 +382,10 @@
               "privacy": "private",
               "parameters": [
                 {
-                  "name": "hit"
+                  "name": "hit",
+                  "type": {
+                    "text": "SearchResult"
+                  }
                 }
               ],
               "inheritedFrom": {
@@ -345,7 +488,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "search/index.js",
+      "path": "search/index.ts",
       "declarations": [],
       "exports": [
         {
@@ -353,7 +496,7 @@
           "name": "search",
           "declaration": {
             "name": "search",
-            "module": "./src/indexer.ts"
+            "module": "./src/indexer"
           }
         },
         {
@@ -361,37 +504,112 @@
           "name": "Search",
           "declaration": {
             "name": "Search",
-            "module": "./src/Search.ts"
+            "module": "./src/Search"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "showcases/dockit-showcases.define.js",
+      "path": "note/dockit-note.define.js",
       "declarations": [],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "dockit-showcases",
+          "name": "dockit-note",
           "declaration": {
-            "name": "Showcases",
-            "module": "/showcases/src/Showcases.js"
+            "name": "Note",
+            "module": "/note/src/Note.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "space/dockit-space.define.js",
+      "path": "note/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Note",
+          "declaration": {
+            "name": "Note",
+            "module": "./src/Note"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "tailwind-showcases/dockit-tailwind-showcases.define.js",
       "declarations": [],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "dockit-space",
+          "name": "dockit-tailwind-showcases",
           "declaration": {
-            "name": "Space",
-            "module": "/space/src/Space.js"
+            "name": "TailwindShowcases",
+            "module": "/tailwind-showcases/src/TailwindShowcases.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "tailwind-showcases/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TailwindShowcases",
+          "declaration": {
+            "name": "TailwindShowcases",
+            "module": "./src/TailwindShowcases"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "text/dockit-text.define.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "dockit-text",
+          "declaration": {
+            "name": "Text",
+            "module": "/text/src/Text.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "text/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Text",
+          "declaration": {
+            "name": "Text",
+            "module": "./src/Text"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "version-selector/dockit-version-selector.define.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "dockit-version-selector",
+          "declaration": {
+            "name": "VersionSelector",
+            "module": "/version-selector/src/VersionSelector.ts"
           }
         }
       ]
@@ -403,9 +621,9 @@
       "exports": [
         {
           "kind": "js",
-          "name": "ActivateLinksOptions",
+          "name": "SpeedyLinksOptions",
           "declaration": {
-            "name": "ActivateLinksOptions",
+            "name": "SpeedyLinksOptions",
             "module": "./src/speedy-links"
           }
         },
@@ -421,185 +639,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "tailwind-showcases/dockit-tailwind-showcases.define.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "dockit-tailwind-showcases",
-          "declaration": {
-            "name": "TailwindShowcases",
-            "module": "/tailwind-showcases/src/TailwindShowcases.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "text/dockit-text.define.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "dockit-text",
-          "declaration": {
-            "name": "Text",
-            "module": "/text/src/Text.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "box/src/Box.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "Box",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "dockit-box",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Box",
-          "declaration": {
-            "name": "Box",
-            "module": "box/src/Box.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "box/stories/box.stories.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "box"
-        },
-        {
-          "kind": "function",
-          "name": "box_background"
-        },
-        {
-          "kind": "function",
-          "name": "box_background_opacity"
-        },
-        {
-          "kind": "function",
-          "name": "box_background_roundness"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "box/stories/box.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "box",
-          "declaration": {
-            "name": "box",
-            "module": "box/stories/box.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "box_background",
-          "declaration": {
-            "name": "box_background",
-            "module": "box/stories/box.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "box_background_opacity",
-          "declaration": {
-            "name": "box_background_opacity",
-            "module": "box/stories/box.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "box_background_roundness",
-          "declaration": {
-            "name": "box_background_roundness",
-            "module": "box/stories/box.stories.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "clipboard/src/Clipboard.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "Clipboard",
-          "members": [
-            {
-              "kind": "method",
-              "name": "copy"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "dockit-clipboard",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Clipboard",
-          "declaration": {
-            "name": "Clipboard",
-            "module": "clipboard/src/Clipboard.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "clipboard/stories/index.stories.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "clipboard"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "clipboard/stories/index.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "clipboard",
-          "declaration": {
-            "name": "clipboard",
-            "module": "clipboard/stories/index.stories.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "css-showcases/src/CssShowcases.js",
+      "path": "css-showcases/src/CssShowcases.ts",
       "declarations": [
         {
           "kind": "class",
@@ -618,7 +658,7 @@
           "name": "CssShowcases",
           "declaration": {
             "name": "CssShowcases",
-            "module": "css-showcases/src/CssShowcases.js"
+            "module": "css-showcases/src/CssShowcases.ts"
           }
         }
       ]
@@ -972,6 +1012,315 @@
     },
     {
       "kind": "javascript-module",
+      "path": "box/src/Box.styles.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "checkeredBackground",
+          "default": "`\n  background-color: #ffffff;\n  background-image: linear-gradient(\n      45deg,\n      rgb(153, 153, 153) 25%,\n      transparent 25%\n    ),\n    linear-gradient(45deg, transparent 75%, rgb(153, 153, 153) 75%),\n    linear-gradient(45deg, transparent 75%, rgb(153, 153, 153) 75%),\n    linear-gradient(45deg, rgb(153, 153, 153) 25%, rgb(255, 255, 255) 25%);\n  background-size: 1rem 1rem;\n  background-position: 0 0, 0 0, -0.5rem -0.5rem, 0.5rem 0.5rem;\n  position: absolute;\n  top: 0px;\n  z-index: -1;\n  box-shadow: none;\n  width: 100%;\n  height: 100%;\n  opacity: 1;\n`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "checkeredBackground",
+          "declaration": {
+            "name": "checkeredBackground",
+            "module": "box/src/Box.styles.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "box/src/Box.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Box",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dockit-box",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Box",
+          "declaration": {
+            "name": "Box",
+            "module": "box/src/Box.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "box/stories/box.stories.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "box"
+        },
+        {
+          "kind": "function",
+          "name": "box_background"
+        },
+        {
+          "kind": "function",
+          "name": "box_background_opacity"
+        },
+        {
+          "kind": "function",
+          "name": "box_background_roundness"
+        },
+        {
+          "kind": "function",
+          "name": "box_background_roundness_opacity"
+        },
+        {
+          "kind": "function",
+          "name": "box_background_roundness_opacity_by_style"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "box/stories/box.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "box",
+          "declaration": {
+            "name": "box",
+            "module": "box/stories/box.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "box_background",
+          "declaration": {
+            "name": "box_background",
+            "module": "box/stories/box.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "box_background_opacity",
+          "declaration": {
+            "name": "box_background_opacity",
+            "module": "box/stories/box.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "box_background_roundness",
+          "declaration": {
+            "name": "box_background_roundness",
+            "module": "box/stories/box.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "box_background_roundness_opacity",
+          "declaration": {
+            "name": "box_background_roundness_opacity",
+            "module": "box/stories/box.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "box_background_roundness_opacity_by_style",
+          "declaration": {
+            "name": "box_background_roundness_opacity_by_style",
+            "module": "box/stories/box.stories.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "columns/src/Columns.styles.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "ColumnsStyles",
+          "default": "css`\n  :host {\n    display: flex;\n    flex-direction: row;\n    gap: var(--dockit-columns-gap, 1rem);\n  }\n`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColumnsStyles",
+          "declaration": {
+            "name": "ColumnsStyles",
+            "module": "columns/src/Columns.styles.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "columns/src/Columns.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Component to render children in a row.",
+          "name": "Columns",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "dockit-columns",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Columns",
+          "declaration": {
+            "name": "Columns",
+            "module": "columns/src/Columns.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "columns/stories/index.stories.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "columns"
+        },
+        {
+          "kind": "function",
+          "name": "columns_custom_gap"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "columns/stories/index.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "columns",
+          "declaration": {
+            "name": "columns",
+            "module": "columns/stories/index.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "columns_custom_gap",
+          "declaration": {
+            "name": "columns_custom_gap",
+            "module": "columns/stories/index.stories.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "clipboard/src/Clipboard.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Clipboard",
+          "members": [
+            {
+              "kind": "method",
+              "name": "copy"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dockit-clipboard",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Clipboard",
+          "declaration": {
+            "name": "Clipboard",
+            "module": "clipboard/src/Clipboard.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "clipboard/stories/index.stories.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "clipboard"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "clipboard/stories/index.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "clipboard",
+          "declaration": {
+            "name": "clipboard",
+            "module": "clipboard/stories/index.stories.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "doc-layout/src/template.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "docLayoutTemplate",
+          "parameters": [
+            {
+              "name": "content"
+            },
+            {
+              "name": "context"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "docLayoutTemplate",
+          "declaration": {
+            "name": "docLayoutTemplate",
+            "module": "doc-layout/src/template.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "do-dont/src/Do.ts",
       "declarations": [
         {
@@ -981,25 +1330,11 @@
           "members": [
             {
               "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "color",
-              "default": "'#36B37E'",
-              "inheritedFrom": {
-                "name": "InstructionsCard",
-                "module": "do-dont/src/InstructionsCard.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "icon",
               "type": {
-                "text": "string | `lit-html template` | `(color: string) => lit-html template`"
+                "text": "Icon"
               },
-              "description": "Takes string or lit-html template. To render correct color automatically wrap in a function with `color` as a param.",
-              "attribute": "icon",
+              "default": "html`\n    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n      <path\n        fill=\"currentColor\"\n        d=\"M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z\"\n      />\n    </svg>\n  `",
               "inheritedFrom": {
                 "name": "InstructionsCard",
                 "module": "do-dont/src/InstructionsCard.ts"
@@ -1026,29 +1361,6 @@
           "tagName": "dockit-do",
           "customElement": true,
           "attributes": [
-            {
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "color",
-              "inheritedFrom": {
-                "name": "InstructionsCard",
-                "module": "do-dont/src/InstructionsCard.ts"
-              }
-            },
-            {
-              "name": "icon",
-              "type": {
-                "text": "string | `lit-html template` | `(color: string) => lit-html template`"
-              },
-              "description": "Takes string or lit-html template. To render correct color automatically wrap in a function with `color` as a param.",
-              "fieldName": "icon",
-              "inheritedFrom": {
-                "name": "InstructionsCard",
-                "module": "do-dont/src/InstructionsCard.ts"
-              }
-            },
             {
               "name": "label",
               "type": {
@@ -1085,25 +1397,11 @@
           "members": [
             {
               "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "color",
-              "default": "'#DE350B'",
-              "inheritedFrom": {
-                "name": "InstructionsCard",
-                "module": "do-dont/src/InstructionsCard.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "icon",
               "type": {
-                "text": "string | `lit-html template` | `(color: string) => lit-html template`"
+                "text": "Icon"
               },
-              "description": "Takes string or lit-html template. To render correct color automatically wrap in a function with `color` as a param.",
-              "attribute": "icon",
+              "default": "html`\n    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n      <path\n        fill=\"currentColor\"\n        d=\"M8.27, 3L3, 8.27V15.73L8.27, 21H15.73L21, 15.73V8.27L15.73, 3M8.41, 7L12, 10.59L15.59, 7L17, 8.41L13.41, 12L17, 15.59L15.59, 17L12, 13.41L8.41, 17L7, 15.59L10.59, 12L7, 8.41\"\n      />\n    </svg>\n  `",
               "inheritedFrom": {
                 "name": "InstructionsCard",
                 "module": "do-dont/src/InstructionsCard.ts"
@@ -1130,29 +1428,6 @@
           "tagName": "dockit-dont",
           "customElement": true,
           "attributes": [
-            {
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "color",
-              "inheritedFrom": {
-                "name": "InstructionsCard",
-                "module": "do-dont/src/InstructionsCard.ts"
-              }
-            },
-            {
-              "name": "icon",
-              "type": {
-                "text": "string | `lit-html template` | `(color: string) => lit-html template`"
-              },
-              "description": "Takes string or lit-html template. To render correct color automatically wrap in a function with `color` as a param.",
-              "fieldName": "icon",
-              "inheritedFrom": {
-                "name": "InstructionsCard",
-                "module": "do-dont/src/InstructionsCard.ts"
-              }
-            },
             {
               "name": "label",
               "type": {
@@ -1185,7 +1460,7 @@
         {
           "kind": "variable",
           "name": "InstructionsCardStyles",
-          "default": "css`\n  .container {\n    border-radius: 0.25rem;\n    overflow: hidden;\n  }\n\n  .component-container {\n    background-color: #00000010;\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  ::slotted(*[slot='component']) {\n    margin: 3rem 0;\n  }\n\n  .instructions-container {\n    border-top-width: 0.2rem;\n    border-top-style: solid;\n    padding: 1.5rem;\n    position: relative;\n  }\n\n  .background {\n    position: absolute;\n    opacity: 0.1;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n  }\n\n  .title-container {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n  }\n\n  .title {\n    margin-left: 0.5rem;\n  }\n\n  .instructions-wrapper {\n    margin-top: 1rem;\n  }\n`"
+          "default": "css`\n  [part='container'] {\n    border-radius: 0.25rem;\n    overflow: hidden;\n  }\n\n  [part='component-container'] {\n    background-color: #00000010;\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  ::slotted(*[slot='component']) {\n    margin: 3rem 0;\n  }\n\n  [part='instructions-container'] {\n    border-top-width: 0.2rem;\n    border-top-style: solid;\n    padding: 1.5rem;\n    position: relative;\n  }\n\n  .background {\n    position: absolute;\n    opacity: 0.1;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n  }\n\n  .title-container {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    margin-bottom: 1rem;\n  }\n\n  .title {\n    margin-left: 0.5rem;\n  }\n`"
         }
       ],
       "exports": [
@@ -1210,46 +1485,22 @@
           "members": [
             {
               "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "color"
-            },
-            {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "string | `lit-html template` | `(color: string) => lit-html template`"
-              },
-              "description": "Takes string or lit-html template. To render correct color automatically wrap in a function with `color` as a param.",
-              "attribute": "icon"
-            },
-            {
-              "kind": "field",
               "name": "label",
               "type": {
                 "text": "string"
               },
               "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "Icon"
+              },
+              "default": "''"
             }
           ],
           "attributes": [
-            {
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "color"
-            },
-            {
-              "name": "icon",
-              "type": {
-                "text": "string | `lit-html template` | `(color: string) => lit-html template`"
-              },
-              "description": "Takes string or lit-html template. To render correct color automatically wrap in a function with `color` as a param.",
-              "fieldName": "icon"
-            },
             {
               "name": "label",
               "type": {
@@ -1290,11 +1541,11 @@
         },
         {
           "kind": "function",
-          "name": "donts"
+          "name": "dont"
         },
         {
           "kind": "function",
-          "name": "donts_with_component"
+          "name": "dont_with_component"
         },
         {
           "kind": "function",
@@ -1303,6 +1554,10 @@
         {
           "kind": "function",
           "name": "do_custom_color"
+        },
+        {
+          "kind": "function",
+          "name": "do_themed"
         }
       ],
       "exports": [
@@ -1331,17 +1586,17 @@
         },
         {
           "kind": "js",
-          "name": "donts",
+          "name": "dont",
           "declaration": {
-            "name": "donts",
+            "name": "dont",
             "module": "do-dont/stories/index.stories.js"
           }
         },
         {
           "kind": "js",
-          "name": "donts_with_component",
+          "name": "dont_with_component",
           "declaration": {
-            "name": "donts_with_component",
+            "name": "dont_with_component",
             "module": "do-dont/stories/index.stories.js"
           }
         },
@@ -1360,33 +1615,13 @@
             "name": "do_custom_color",
             "module": "do-dont/stories/index.stories.js"
           }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "doc-layout/src/template.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "docLayoutTemplate",
-          "parameters": [
-            {
-              "name": "content"
-            },
-            {
-              "name": "context"
-            }
-          ]
-        }
-      ],
-      "exports": [
+        },
         {
           "kind": "js",
-          "name": "docLayoutTemplate",
+          "name": "do_themed",
           "declaration": {
-            "name": "docLayoutTemplate",
-            "module": "doc-layout/src/template.js"
+            "name": "do_themed",
+            "module": "do-dont/stories/index.stories.js"
           }
         }
       ]
@@ -1398,7 +1633,7 @@
         {
           "kind": "variable",
           "name": "LayoutStyles",
-          "default": "css`\n  :host {\n    --proxy--dockit-layout-bg: var(--dockit-layout-bg);\n    --proxy--dockit-layout-header-border-color: var(\n      --dockit-layout-header-border-color\n    );\n    --proxy--dockit-layout-toggle-button-bg: var(\n      --dockit-layout-toggle-button-bg\n    );\n    --proxy--dockit-layout-toggle-button-color: var(\n      --dockit-layout-toggle-button-color\n    );\n    --proxy--dockit-layout-navigation-group-heading-color: var(\n      --dockit-layout-navigation-group-heading-color\n    );\n    --proxy--dockit-layout-navigation-link-color: var(\n      --dockit-layout-navigation-link-color\n    );\n    --proxy--dockit-layout-navigation-current-link-color: var(\n      --dockit-layout-navigation-current-link-color\n    );\n  }\n\n  :host([data-color-scheme='light']) .root {\n    --dockit-layout-bg: var(--proxy--dockit-layout-bg, #ffffff);\n    --dockit-layout-header-border-color: var(\n      --proxy--dockit-layout-header-border-color,\n      #e5e5e5\n    );\n    --dockit-layout-toggle-button-bg: var(\n      --proxy--dockit-layout-toggle-button-bg,\n      #737373\n    );\n    --dockit-layout-toggle-button-color: var(\n      --proxy--dockit-layout-toggle-button-color,\n      #ffffff\n    );\n    --dockit-layout-navigation-group-heading-color: var(\n      --proxy--dockit-layout-navigation-group-heading-color,\n      #404040\n    );\n    --dockit-layout-navigation-link-color: var(\n      --proxy--dockit-layout-navigation-link-color,\n      #171717\n    );\n    --dockit-layout-navigation-current-link-color: var(\n      --proxy--dockit-layout-navigation-current-link-color,\n      #e5e5e5\n    );\n  }\n\n  :host([data-color-scheme='dark']) .root {\n    --dockit-layout-bg: var(--proxy--dockit-layout-bg, #171717);\n    --dockit-layout-header-border-color: var(\n      --proxy--dockit-layout-header-border-color,\n      #404040\n    );\n    --dockit-layout-toggle-button-bg: var(\n      --proxy--dockit-layout-toggle-button-bg,\n      #737373\n    );\n    --dockit-layout-toggle-button-color: var(\n      --proxy--dockit-layout-toggle-button-color,\n      #ffffff\n    );\n    --dockit-layout-navigation-group-heading-color: var(\n      --proxy--dockit-layout-navigation-group-heading-color,\n      #a3a3a3\n    );\n    --dockit-layout-navigation-link-color: var(\n      --proxy--dockit-layout-navigation-link-color,\n      #ffffff\n    );\n    --dockit-layout-navigation-current-link-color: var(\n      --proxy--dockit-layout-navigation-current-link-color,\n      #404040\n    );\n  }\n\n  :host {\n    display: block;\n    --private--dockit-layout-spacer: 1rem;\n    --private--dockit-layout-header-content-height: 3rem;\n    --private--dockit-layout-header-height: calc(\n      var(--private--dockit-layout-header-content-height) + 2 *\n        var(--private--dockit-layout-spacer)\n    );\n    --private--dockit-layout-logo-height: var(\n      --private--dockit-layout-header-content-height\n    );\n    --private--dockit-layout-navigation-width: 244px;\n  }\n\n  .root {\n    background-color: var(--dockit-layout-bg);\n    width: 100%;\n    min-height: 100vh;\n    overflow: hidden;\n  }\n\n  .fixed-container {\n    position: fixed;\n    width: 100%;\n    z-index: 2;\n  }\n\n  .relative-container {\n    position: relative;\n    max-width: 1280px;\n    margin: 0 auto;\n  }\n\n  .header {\n    display: flex;\n    background-color: var(--dockit-layout-bg);\n    height: var(--private--dockit-layout-header-height);\n  }\n\n  .logo-container {\n    display: flex;\n    height: var(--private--dockit-layout-header-content-height);\n    padding: var(--private--dockit-layout-spacer);\n    border-bottom: 1px solid var(--dockit-layout-header-border-color);\n  }\n\n  .logo-link {\n    display: flex;\n    text-decoration: none;\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    :host([data-has-navigation]) .logo-container {\n      flex: none;\n      width: calc(\n        var(--private--dockit-layout-navigation-width) - 2 *\n          var(--private--dockit-layout-spacer)\n      );\n      border-bottom-color: transparent;\n    }\n  }\n\n  .topbar-container {\n    flex: 1;\n    display: flex;\n    align-items: center;\n    height: var(--private--dockit-layout-header-content-height);\n    padding: var(--private--dockit-layout-spacer);\n    border-bottom: 1px solid var(--dockit-layout-header-border-color);\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    :host([data-has-navigation]) .topbar-container {\n      margin-left: calc(2 * var(--private--dockit-layout-spacer));\n      margin-right: var(--private--dockit-layout-spacer);\n      padding: var(--private--dockit-layout-spacer) 0;\n    }\n  }\n\n  .buttons-container {\n    display: flex;\n    position: fixed;\n    bottom: var(--private--dockit-layout-spacer);\n    right: 0;\n  }\n\n  .color-scheme-toggle,\n  .navigation-toggle {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background-color: var(--dockit-layout-toggle-button-bg);\n    color: var(--dockit-layout-toggle-button-color);\n    cursor: pointer;\n    margin-right: var(--private--dockit-layout-spacer);\n    width: var(--private--dockit-layout-header-content-height);\n    height: var(--private--dockit-layout-header-content-height);\n    line-height: var(--private--dockit-layout-header-content-height);\n    text-align: center;\n    border: 0;\n    padding: 0;\n    border-radius: 50%;\n  }\n\n  .color-scheme-toggle > svg,\n  .navigation-toggle > svg {\n    width: 1.5rem;\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    .buttons-container {\n      position: absolute;\n      top: var(--private--dockit-layout-spacer);\n      bottom: unset;\n    }\n\n    .navigation-toggle {\n      display: none;\n    }\n  }\n\n  .navigation-wrapper {\n    display: none;\n    position: absolute;\n  }\n\n  :host([data-is-navigation-shown]) .navigation-wrapper {\n    display: block;\n    background-color: rgba(0, 0, 0, 0.5);\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100vh;\n    z-index: 9999;\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    :host([data-has-navigation]) .navigation-wrapper {\n      display: block;\n    }\n\n    .navigation-wrapper::before {\n      content: '';\n      background-image: linear-gradient(\n        to bottom,\n        var(--dockit-layout-bg),\n        #ffffff00\n      );\n      height: 20px;\n      position: absolute;\n    }\n\n    :host([data-is-navigation-shown]) .navigation-wrapper {\n      background-color: transparent;\n      position: static;\n      height: auto;\n    }\n\n    .navigation-wrapper,\n    :host([data-is-navigation-shown]) .navigation-wrapper,\n    .navigation-wrapper::before {\n      width: var(--private--dockit-layout-navigation-width);\n    }\n  }\n\n  .navigation {\n    background-color: var(--dockit-layout-bg);\n    width: var(--private--dockit-layout-navigation-width);\n    height: 100vh;\n    overflow-y: auto;\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    .navigation {\n      height: calc(100vh - var(--private--dockit-layout-header-height));\n    }\n  }\n\n  :host([data-color-scheme='light']) .navigation {\n    color-scheme: light;\n  }\n\n  :host([data-color-scheme='dark']) .navigation {\n    color-scheme: dark;\n  }\n\n  .navigation ul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n  }\n\n  .navigation > ul {\n    padding: var(--private--dockit-layout-spacer);\n    padding-right: calc(2 * var(--private--dockit-layout-spacer));\n  }\n\n  .navigation ul > li {\n    margin: var(--private--dockit-layout-spacer) 0;\n    padding: 0;\n  }\n\n  .navigation > ul > li {\n    margin: calc(2 * var(--private--dockit-layout-spacer)) 0;\n  }\n\n  .navigation > ul > li:first-child {\n    margin-top: 0;\n  }\n\n  .navigation > ul > li:last-child {\n    margin-bottom: 0;\n  }\n\n  .navigation > ul > li > span {\n    color: var(--dockit-layout-navigation-group-heading-color);\n    text-transform: uppercase;\n  }\n\n  .navigation a {\n    color: var(--dockit-layout-navigation-link-color);\n    padding: calc(var(--private--dockit-layout-spacer) / 2);\n    margin-left: calc(-1 * var(--private--dockit-layout-spacer) / 2);\n    text-decoration: none;\n  }\n\n  .navigation a[aria-current='location'] {\n    background-color: var(--dockit-layout-navigation-current-link-color);\n  }\n\n  .main-container {\n    max-width: 1280px;\n    margin: 0 auto;\n    padding-top: calc(var(--private--dockit-layout-header-height));\n    position: relative;\n    z-index: 1;\n  }\n\n  .content {\n    padding: var(--private--dockit-layout-spacer);\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    :host([data-has-navigation]) .content {\n      padding-left: var(--private--dockit-layout-navigation-width);\n    }\n\n    :host([data-has-navigation]) .content > slot {\n      display: block;\n      padding-left: calc(2 * var(--private--dockit-layout-spacer));\n    }\n  }\n`"
+          "default": "css`\n  :host {\n    --proxy--dockit-layout-bg: var(--dockit-layout-bg);\n    --proxy--dockit-layout-header-border-color: var(\n      --dockit-layout-header-border-color\n    );\n    --proxy--dockit-layout-toggle-button-bg: var(\n      --dockit-layout-toggle-button-bg\n    );\n    --proxy--dockit-layout-toggle-button-color: var(\n      --dockit-layout-toggle-button-color\n    );\n    --proxy--dockit-layout-navigation-group-heading-color: var(\n      --dockit-layout-navigation-group-heading-color\n    );\n    --proxy--dockit-layout-navigation-link-color: var(\n      --dockit-layout-navigation-link-color\n    );\n    --proxy--dockit-layout-navigation-current-link-color: var(\n      --dockit-layout-navigation-current-link-color\n    );\n  }\n\n  :host([data-color-scheme='light']) .root {\n    --dockit-layout-bg: var(--proxy--dockit-layout-bg, #ffffff);\n    --dockit-layout-header-border-color: var(\n      --proxy--dockit-layout-header-border-color,\n      #e5e5e5\n    );\n    --dockit-layout-toggle-button-bg: var(\n      --proxy--dockit-layout-toggle-button-bg,\n      #737373\n    );\n    --dockit-layout-toggle-button-color: var(\n      --proxy--dockit-layout-toggle-button-color,\n      #ffffff\n    );\n    --dockit-layout-navigation-group-heading-color: var(\n      --proxy--dockit-layout-navigation-group-heading-color,\n      #404040\n    );\n    --dockit-layout-navigation-link-color: var(\n      --proxy--dockit-layout-navigation-link-color,\n      #171717\n    );\n    --dockit-layout-navigation-current-link-color: var(\n      --proxy--dockit-layout-navigation-current-link-color,\n      #e5e5e5\n    );\n  }\n\n  :host([data-color-scheme='dark']) .root {\n    --dockit-layout-bg: var(--proxy--dockit-layout-bg, #171717);\n    --dockit-layout-header-border-color: var(\n      --proxy--dockit-layout-header-border-color,\n      #404040\n    );\n    --dockit-layout-toggle-button-bg: var(\n      --proxy--dockit-layout-toggle-button-bg,\n      #737373\n    );\n    --dockit-layout-toggle-button-color: var(\n      --proxy--dockit-layout-toggle-button-color,\n      #ffffff\n    );\n    --dockit-layout-navigation-group-heading-color: var(\n      --proxy--dockit-layout-navigation-group-heading-color,\n      #a3a3a3\n    );\n    --dockit-layout-navigation-link-color: var(\n      --proxy--dockit-layout-navigation-link-color,\n      #ffffff\n    );\n    --dockit-layout-navigation-current-link-color: var(\n      --proxy--dockit-layout-navigation-current-link-color,\n      #404040\n    );\n  }\n\n  :host {\n    display: block;\n    --private--dockit-layout-spacer: 1rem;\n    --private--dockit-layout-header-content-height: 3rem;\n    --private--dockit-layout-header-height: calc(\n      var(--private--dockit-layout-header-content-height) + 2 *\n        var(--private--dockit-layout-spacer)\n    );\n    --private--dockit-layout-logo-height: var(\n      --private--dockit-layout-header-content-height\n    );\n    --private--dockit-layout-navigation-width: 244px;\n  }\n\n  .root {\n    background-color: var(--dockit-layout-bg);\n    width: 100%;\n    min-height: 100vh;\n    overflow: hidden;\n  }\n\n  .fixed-container {\n    position: fixed;\n    width: 100%;\n    z-index: 2;\n  }\n\n  .relative-container {\n    position: relative;\n    max-width: 1280px;\n    margin: 0 auto;\n  }\n\n  .header {\n    display: flex;\n    background-color: var(--dockit-layout-bg);\n    height: var(--private--dockit-layout-header-height);\n  }\n\n  .logo-container {\n    display: flex;\n    height: var(--private--dockit-layout-header-content-height);\n    padding: var(--private--dockit-layout-spacer);\n    border-bottom: 1px solid var(--dockit-layout-header-border-color);\n  }\n\n  .logo-link {\n    display: flex;\n    text-decoration: none;\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    :host([data-has-navigation]) .logo-container {\n      flex: none;\n      width: calc(\n        var(--private--dockit-layout-navigation-width) - 2 *\n          var(--private--dockit-layout-spacer)\n      );\n      border-bottom-color: transparent;\n    }\n  }\n\n  .topbar-container {\n    flex: 1;\n    display: flex;\n    align-items: center;\n    height: var(--private--dockit-layout-header-content-height);\n    padding: var(--private--dockit-layout-spacer);\n    border-bottom: 1px solid var(--dockit-layout-header-border-color);\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    :host([data-has-navigation]) .topbar-container {\n      margin-left: calc(2 * var(--private--dockit-layout-spacer));\n      margin-right: var(--private--dockit-layout-spacer);\n      padding: var(--private--dockit-layout-spacer) 0;\n    }\n\n    :host([data-has-color-schema-toggle]) .topbar-container {\n      padding-right: calc(\n        var(--private--dockit-layout-spacer) +\n          var(--private--dockit-layout-header-content-height)\n      );\n    }\n  }\n\n  .buttons-container {\n    display: flex;\n    position: fixed;\n    bottom: var(--private--dockit-layout-spacer);\n    right: 0;\n  }\n\n  .color-scheme-toggle,\n  .navigation-toggle {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background-color: var(--dockit-layout-toggle-button-bg);\n    color: var(--dockit-layout-toggle-button-color);\n    cursor: pointer;\n    margin-right: var(--private--dockit-layout-spacer);\n    width: var(--private--dockit-layout-header-content-height);\n    height: var(--private--dockit-layout-header-content-height);\n    line-height: var(--private--dockit-layout-header-content-height);\n    text-align: center;\n    border: 0;\n    padding: 0;\n    border-radius: 50%;\n  }\n\n  .color-scheme-toggle > svg,\n  .navigation-toggle > svg {\n    width: 1.5rem;\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    .buttons-container {\n      position: absolute;\n      top: var(--private--dockit-layout-spacer);\n      bottom: unset;\n    }\n\n    .navigation-toggle {\n      display: none;\n    }\n  }\n\n  .navigation-wrapper {\n    display: none;\n    position: absolute;\n  }\n\n  :host([data-is-navigation-shown]) .navigation-wrapper {\n    display: block;\n    background-color: rgba(0, 0, 0, 0.5);\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100vh;\n    z-index: 9999;\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    :host([data-has-navigation]) .navigation-wrapper {\n      display: block;\n    }\n\n    .navigation-wrapper::before {\n      content: '';\n      background-image: linear-gradient(\n        to bottom,\n        var(--dockit-layout-bg),\n        #ffffff00\n      );\n      height: 20px;\n      position: absolute;\n    }\n\n    :host([data-is-navigation-shown]) .navigation-wrapper {\n      background-color: transparent;\n      position: static;\n      height: auto;\n    }\n\n    .navigation-wrapper,\n    :host([data-is-navigation-shown]) .navigation-wrapper,\n    .navigation-wrapper::before {\n      width: var(--private--dockit-layout-navigation-width);\n    }\n  }\n\n  .navigation {\n    background-color: var(--dockit-layout-bg);\n    width: var(--private--dockit-layout-navigation-width);\n    height: 100vh;\n    overflow-y: auto;\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    .navigation {\n      height: calc(100vh - var(--private--dockit-layout-header-height));\n    }\n  }\n\n  :host([data-color-scheme='light']) .navigation {\n    color-scheme: light;\n  }\n\n  :host([data-color-scheme='dark']) .navigation {\n    color-scheme: dark;\n  }\n\n  .navigation ul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n  }\n\n  .navigation > ul {\n    padding: var(--private--dockit-layout-spacer);\n    padding-right: calc(2 * var(--private--dockit-layout-spacer));\n  }\n\n  .navigation ul > li {\n    margin: var(--private--dockit-layout-spacer) 0;\n    padding: 0;\n  }\n\n  .navigation > ul > li {\n    margin: calc(2 * var(--private--dockit-layout-spacer)) 0;\n  }\n\n  .navigation > ul > li:first-child {\n    margin-top: 0;\n  }\n\n  .navigation > ul > li:last-child {\n    margin-bottom: 0;\n  }\n\n  .navigation > ul > li > span {\n    color: var(--dockit-layout-navigation-group-heading-color);\n    text-transform: uppercase;\n  }\n\n  .navigation a {\n    color: var(--dockit-layout-navigation-link-color);\n    padding: calc(var(--private--dockit-layout-spacer) / 2);\n    margin-left: calc(-1 * var(--private--dockit-layout-spacer) / 2);\n    text-decoration: none;\n  }\n\n  .navigation a[aria-current='location'] {\n    background-color: var(--dockit-layout-navigation-current-link-color);\n  }\n\n  .main-container {\n    max-width: 1280px;\n    margin: 0 auto;\n    padding-top: calc(var(--private--dockit-layout-header-height));\n    position: relative;\n    z-index: 1;\n  }\n\n  .content {\n    padding: var(--private--dockit-layout-spacer);\n  }\n\n  @media screen and (min-width: ${unsafeCSS(breakpoints.lg)}) {\n    :host([data-has-navigation]) .content {\n      padding-left: var(--private--dockit-layout-navigation-width);\n    }\n\n    :host([data-has-navigation]) .content > slot {\n      display: block;\n      padding-left: calc(2 * var(--private--dockit-layout-spacer));\n    }\n  }\n`"
         }
       ],
       "exports": [
@@ -1427,6 +1662,15 @@
               "type": {
                 "text": "Context | undefined"
               }
+            },
+            {
+              "kind": "field",
+              "name": "disableSpeedyLinks",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "disable-speedy-links"
             },
             {
               "kind": "field",
@@ -1460,6 +1704,11 @@
               "type": {
                 "text": "ColorScheme"
               },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "locationPathname",
               "privacy": "private"
             },
             {
@@ -1604,6 +1853,14 @@
           ],
           "attributes": [
             {
+              "name": "disable-speedy-links",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "disableSpeedyLinks"
+            },
+            {
               "name": "disable-color-scheme-change",
               "type": {
                 "text": "boolean"
@@ -1664,12 +1921,286 @@
     },
     {
       "kind": "javascript-module",
+      "path": "showcases/src/Showcases.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Showcases",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dockit-showcases",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Showcases",
+          "declaration": {
+            "name": "Showcases",
+            "module": "showcases/src/Showcases.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "showcases/src/caption-helper.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "getCaption",
+          "parameters": [
+            {
+              "name": "showcaseClass",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "showcaseStyle",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getValue",
+          "parameters": [
+            {
+              "name": "style",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "getCaption",
+          "declaration": {
+            "name": "getCaption",
+            "module": "showcases/src/caption-helper.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getValue",
+          "declaration": {
+            "name": "getValue",
+            "module": "showcases/src/caption-helper.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "showcases/src/captioned-box.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "renderCaptionedBox",
+          "parameters": [
+            {
+              "name": "{\n  showcaseClass,\n  showcaseStyle,\n  captionWidth,\n  componentClass,\n  hasCheckeredBackground = false,\n}",
+              "type": {
+                "text": "{\n  showcaseClass?: string;\n  showcaseStyle?: string;\n  captionWidth?: string;\n  componentClass?: string;\n  hasCheckeredBackground: boolean;\n}"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "renderCaptionedBox",
+          "declaration": {
+            "name": "renderCaptionedBox",
+            "module": "showcases/src/captioned-box.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "showcases/src/captioned-text.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "renderCaptionedText",
+          "parameters": [
+            {
+              "name": "{\n  showcaseClass,\n  showcaseStyle,\n  captionWidth,\n  hasLongText = false,\n}",
+              "type": {
+                "text": "{\n  showcaseClass?: string;\n  showcaseStyle?: string;\n  captionWidth?: string;\n  hasLongText: boolean;\n}"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "renderCaptionedText",
+          "declaration": {
+            "name": "renderCaptionedText",
+            "module": "showcases/src/captioned-text.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "showcases/stories/showcases.stories.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "opacity_classes"
+        },
+        {
+          "kind": "function",
+          "name": "font_size_classes"
+        },
+        {
+          "kind": "function",
+          "name": "opacity_styles"
+        },
+        {
+          "kind": "function",
+          "name": "font_size_styles"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "opacity_classes",
+          "declaration": {
+            "name": "opacity_classes",
+            "module": "showcases/stories/showcases.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "font_size_classes",
+          "declaration": {
+            "name": "font_size_classes",
+            "module": "showcases/stories/showcases.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "opacity_styles",
+          "declaration": {
+            "name": "opacity_styles",
+            "module": "showcases/stories/showcases.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "font_size_styles",
+          "declaration": {
+            "name": "font_size_styles",
+            "module": "showcases/stories/showcases.stories.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "space/src/Space.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Space",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scale",
+              "type": {
+                "text": "(number | string)[] | Record<string, number | string>"
+              },
+              "default": "[]"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dockit-space",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Space",
+          "declaration": {
+            "name": "Space",
+            "module": "space/src/Space.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "space/stories/space.stories.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "space_numbers_array_scale"
+        },
+        {
+          "kind": "function",
+          "name": "space_rem_scale"
+        },
+        {
+          "kind": "function",
+          "name": "space_literal"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "space_numbers_array_scale",
+          "declaration": {
+            "name": "space_numbers_array_scale",
+            "module": "space/stories/space.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "space_rem_scale",
+          "declaration": {
+            "name": "space_rem_scale",
+            "module": "space/stories/space.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "space_literal",
+          "declaration": {
+            "name": "space_literal",
+            "module": "space/stories/space.stories.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "search/src/Search.styles.ts",
       "declarations": [
         {
           "kind": "variable",
           "name": "SearchStyles",
-          "default": "css`\n:host {\n  position: relative;\n  flex-grow: 1;\n  margin: 0 4rem 0 1rem;\n}\n\n@media only screen and (max-width: 1024px) :host {\n  margin: 0px;\n}\n\nform {\n  z-index: 11;\n  display: flex;\n  align-items: center;\n}\n\nform label {\n  position: relative;\n  width: 100%;\n}\n\nform label:before {\n  content: '';\n  z-index: 12;s\n  position: absolute;\n  left: 10px;\n  top: 0;\n  bottom: 0;\n  width: 20px;\n  background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 20 20' fill-rule='evenodd'%3E%3Cpath d='M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z' stroke='gray' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round' %3E%3C/path%3E%3C/svg%3E\")\n    center / contain no-repeat;\n}\n  \nform input[type='search'] {\n  border: 1px solid var(--dockit-layout-header-border-color);\n  border-radius: 0.5rem;\n  padding: 0.5rem;\n  padding-left: 2.5rem;\n  width: 100%;\n  z-index: 11;\n  position: relative;\n  background: var(--dockit-layout-bg);\n  font-size: large;\n  color: inherit;\n}\n\nform input[type='search']:focus {\n  outline: 1px solid var(--dockit-layout-accent);\n}\n\n.overlay {\n  display: none;\n  position: fixed;\n  z-index: 10;\n  background-color: #1f1f1f0f;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.hits {\n  display: none;\n  position: absolute;\n  right: 0;\n  left: 0;\n  list-style: none;\n  overflow: auto;\n  max-height: 70vh;\n  border: 1px solid var(--dockit-layout-header-border-color);\n  background: var(--dockit-layout-bg);\n  z-index: 11;\n  border-radius: 0.5rem;\n  padding: 0.5rem;\n}\n@media only screen and (max-width: 768px) hits{\n  position: fixed;\n}\n\n.hits a {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: inherit;\n  text-decoration: none;\n  display: block;\n  border-radius: 0.25rem;\n  padding: 0.5rem 0.25rem;\n  border: 1px solid transparent;\n}\n\n.hits a:hover {\n  border-color: var(--dockit-layout-accent);\n}\n\n.hits li {\n  border-bottom: 1px solid var(--dockit-layout-header-border-color);\n  margin: 0.25rem 0;\n}\n\n.hits header {\n  font-weight: 600;\n}\n\n.hits header .tags {\n  font-size: small;\n  opacity: 0.7;\n  float: right;\n}\n\n.hits header .tags > * {\n  background: #80808040;\n  padding: 0.25rem 0.5rem;\n  border-radius: 0.25rem;\n}\n.hits .content {\n  font-size: 80%;\n  font-family: sans-serif !important;\n}\n\n.hits .highlight {\n  color: var(--dockit-layout-accent);\n}`"
+          "default": "css`\n  :host {\n    position: relative;\n    flex-grow: 1;\n  }\n\n  form {\n    z-index: 11;\n    display: flex;\n    align-items: center;\n  }\n\n  form label {\n    position: relative;\n    width: 100%;\n  }\n\n  form label:before {\n    content: '';\n    z-index: 12;\n    position: absolute;\n    left: 10px;\n    top: 0;\n    bottom: 0;\n    width: 20px;\n    background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 20 20' fill-rule='evenodd'%3E%3Cpath d='M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z' stroke='gray' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round' %3E%3C/path%3E%3C/svg%3E\")\n      center / contain no-repeat;\n  }\n\n  form input[type='search'] {\n    border: 1px solid var(--dockit-layout-header-border-color);\n    border-radius: 0.5rem;\n    padding: 0.5rem;\n    padding-left: 2.5rem;\n    width: 100%;\n    z-index: 11;\n    position: relative;\n    background: var(--dockit-layout-bg);\n    font-size: large;\n    color: inherit;\n  }\n\n  form input[type='search']:focus {\n    outline: 1px solid var(--dockit-layout-accent);\n  }\n\n  .overlay {\n    display: none;\n    position: fixed;\n    z-index: 10;\n    background-color: #1f1f1f0f;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n  }\n\n  .hits {\n    display: none;\n    position: absolute;\n    right: 0;\n    left: 0;\n    list-style: none;\n    overflow: auto;\n    max-height: 70vh;\n    border: 1px solid var(--dockit-layout-header-border-color);\n    background: var(--dockit-layout-bg);\n    z-index: 11;\n    border-radius: 0.5rem;\n    padding: 0.5rem;\n  }\n\n  @media only screen and (max-width: ${unsafeCSS(breakpoints.md)}) {\n    .hits {\n      position: fixed;\n    }\n  }\n\n  .hits a {\n    overflow: hidden;\n    text-overflow: ellipsis;\n    color: inherit;\n    text-decoration: none;\n    display: block;\n    border-radius: 0.25rem;\n    padding: 0.5rem 0.25rem;\n    border: 1px solid transparent;\n  }\n\n  .hits a:hover {\n    border-color: var(--dockit-layout-accent);\n  }\n\n  .hits li {\n    border-bottom: 1px solid var(--dockit-layout-header-border-color);\n    margin: 0.25rem 0;\n  }\n\n  .hits header {\n    font-weight: 600;\n  }\n\n  .hits header .tags {\n    font-size: small;\n    opacity: 0.7;\n    float: right;\n  }\n\n  .hits header .tags > * {\n    background: #80808040;\n    padding: 0.25rem 0.5rem;\n    border-radius: 0.25rem;\n  }\n  .hits .content {\n    font-size: 80%;\n    font-family: sans-serif !important;\n  }\n\n  .hits .highlight {\n    color: var(--dockit-layout-accent);\n  }\n`"
         }
       ],
       "exports": [
@@ -1696,16 +2227,14 @@
               "kind": "field",
               "name": "search",
               "type": {
-                "text": "null"
-              },
-              "privacy": "public",
-              "default": "null"
+                "text": "(query: string) => Promise<SearchResult[]>"
+              }
             },
             {
               "kind": "field",
               "name": "hits",
               "type": {
-                "text": "null"
+                "text": "null | SearchResult[]"
               },
               "privacy": "private",
               "default": "null"
@@ -1714,10 +2243,9 @@
               "kind": "field",
               "name": "keydownListener",
               "type": {
-                "text": "null"
+                "text": "(e: KeyboardEvent) => void | undefined"
               },
-              "privacy": "private",
-              "default": "null"
+              "privacy": "private"
             },
             {
               "kind": "method",
@@ -1749,7 +2277,10 @@
               "privacy": "private",
               "parameters": [
                 {
-                  "name": "hit"
+                  "name": "hit",
+                  "type": {
+                    "text": "SearchResult"
+                  }
                 }
               ]
             },
@@ -1837,7 +2368,7 @@
             {
               "name": "{ pages, base }",
               "type": {
-                "text": "BuildContext"
+                "text": "Context"
               }
             }
           ]
@@ -1856,297 +2387,177 @@
     },
     {
       "kind": "javascript-module",
-      "path": "showcases/src/Showcases.js",
+      "path": "note/src/Note.styles.ts",
       "declarations": [
         {
-          "kind": "class",
-          "description": "",
-          "name": "Showcases",
-          "superclass": {
-            "name": "HTMLElement"
+          "kind": "variable",
+          "name": "colors",
+          "type": {
+            "text": "object"
           },
-          "tagName": "dockit-showcases",
-          "customElement": true
+          "default": "{\n  info: css`#54AEFF66`,\n  warning: css`#ECE81A66`,\n  error: css`#FF818266`,\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "NoteStyles",
+          "default": "css`\n  [part='container'] {\n    padding: 1rem;\n    margin-bottom: 1rem;\n    border-radius: 0.25rem;\n    border-left: 0.25rem solid var(--dockit-note-color);\n    background-color: var(--dockit-note-color);\n  }\n`"
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Showcases",
+          "name": "colors",
           "declaration": {
-            "name": "Showcases",
-            "module": "showcases/src/Showcases.js"
+            "name": "colors",
+            "module": "note/src/Note.styles.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "NoteStyles",
+          "declaration": {
+            "name": "NoteStyles",
+            "module": "note/src/Note.styles.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "showcases/src/caption-helper.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "getCaption",
-          "parameters": [
-            {
-              "name": "showcaseClass"
-            },
-            {
-              "name": "showcaseStyle"
-            }
-          ]
-        },
-        {
-          "kind": "function",
-          "name": "getValue",
-          "parameters": [
-            {
-              "name": "style"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "getCaption",
-          "declaration": {
-            "name": "getCaption",
-            "module": "showcases/src/caption-helper.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "getValue",
-          "declaration": {
-            "name": "getValue",
-            "module": "showcases/src/caption-helper.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "showcases/src/captioned-box.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "renderCaptionedBox",
-          "parameters": [
-            {
-              "name": "{\n  showcaseClass,\n  showcaseStyle,\n  captionWidth,\n  componentClass,\n  hasCheckeredBackground,\n}"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "renderCaptionedBox",
-          "declaration": {
-            "name": "renderCaptionedBox",
-            "module": "showcases/src/captioned-box.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "showcases/src/captioned-text.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "renderCaptionedText",
-          "parameters": [
-            {
-              "name": "{\n  showcaseClass,\n  showcaseStyle,\n  captionWidth,\n  hasLongText,\n}"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "renderCaptionedText",
-          "declaration": {
-            "name": "renderCaptionedText",
-            "module": "showcases/src/captioned-text.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "showcases/stories/showcases.stories.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "opacity_classes"
-        },
-        {
-          "kind": "function",
-          "name": "font_size_classes"
-        },
-        {
-          "kind": "function",
-          "name": "opacity_styles"
-        },
-        {
-          "kind": "function",
-          "name": "font_size_styles"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "opacity_classes",
-          "declaration": {
-            "name": "opacity_classes",
-            "module": "showcases/stories/showcases.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "font_size_classes",
-          "declaration": {
-            "name": "font_size_classes",
-            "module": "showcases/stories/showcases.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "opacity_styles",
-          "declaration": {
-            "name": "opacity_styles",
-            "module": "showcases/stories/showcases.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "font_size_styles",
-          "declaration": {
-            "name": "font_size_styles",
-            "module": "showcases/stories/showcases.stories.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "space/src/Space.js",
+      "path": "note/src/Note.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
-          "name": "Space",
+          "description": "Component used to call out information in documentation pages.",
+          "name": "Note",
           "members": [
             {
               "kind": "field",
-              "name": "scale",
+              "name": "variant",
               "type": {
-                "text": "array"
+                "text": "string"
               },
-              "default": "[]"
+              "attribute": "variant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "variant"
             }
           ],
           "superclass": {
-            "name": "HTMLElement"
+            "name": "LitElement",
+            "package": "lit"
           },
-          "tagName": "dockit-space",
+          "tagName": "dockit-note",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Space",
+          "name": "Note",
           "declaration": {
-            "name": "Space",
-            "module": "space/src/Space.js"
+            "name": "Note",
+            "module": "note/src/Note.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "space/stories/space.stories.js",
+      "path": "note/stories/index.stories.js",
       "declarations": [
         {
           "kind": "function",
-          "name": "space_numbers_array_scale"
+          "name": "note"
         },
         {
           "kind": "function",
-          "name": "space_rem_scale"
+          "name": "note_info_variant"
         },
         {
           "kind": "function",
-          "name": "space_literal"
+          "name": "note_warning_variant"
+        },
+        {
+          "kind": "function",
+          "name": "note_error_variant"
+        },
+        {
+          "kind": "function",
+          "name": "note_custom_color"
+        },
+        {
+          "kind": "function",
+          "name": "note_themed"
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "space_numbers_array_scale",
+          "name": "default",
           "declaration": {
-            "name": "space_numbers_array_scale",
-            "module": "space/stories/space.stories.js"
+            "module": "note/stories/index.stories.js"
           }
         },
         {
           "kind": "js",
-          "name": "space_rem_scale",
+          "name": "note",
           "declaration": {
-            "name": "space_rem_scale",
-            "module": "space/stories/space.stories.js"
+            "name": "note",
+            "module": "note/stories/index.stories.js"
           }
         },
         {
           "kind": "js",
-          "name": "space_literal",
+          "name": "note_info_variant",
           "declaration": {
-            "name": "space_literal",
-            "module": "space/stories/space.stories.js"
+            "name": "note_info_variant",
+            "module": "note/stories/index.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "note_warning_variant",
+          "declaration": {
+            "name": "note_warning_variant",
+            "module": "note/stories/index.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "note_error_variant",
+          "declaration": {
+            "name": "note_error_variant",
+            "module": "note/stories/index.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "note_custom_color",
+          "declaration": {
+            "name": "note_custom_color",
+            "module": "note/stories/index.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "note_themed",
+          "declaration": {
+            "name": "note_themed",
+            "module": "note/stories/index.stories.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "speedy-links/src/speedy-links.ts",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "setupSpeedyLinks",
-          "return": {
-            "type": {
-              "text": "void"
-            }
-          },
-          "parameters": [
-            {
-              "name": "options",
-              "type": {
-                "text": "ActivateLinksOptions"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "setupSpeedyLinks",
-          "declaration": {
-            "name": "setupSpeedyLinks",
-            "module": "speedy-links/src/speedy-links.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "tailwind-showcases/src/TailwindShowcases.js",
+      "path": "tailwind-showcases/src/TailwindShowcases.ts",
       "declarations": [
         {
           "kind": "class",
@@ -2157,7 +2568,7 @@
               "kind": "field",
               "name": "theme",
               "type": {
-                "text": "object"
+                "text": "TailwindTheme"
               },
               "default": "{}"
             }
@@ -2175,7 +2586,7 @@
           "name": "TailwindShowcases",
           "declaration": {
             "name": "TailwindShowcases",
-            "module": "tailwind-showcases/src/TailwindShowcases.js"
+            "module": "tailwind-showcases/src/TailwindShowcases.ts"
           }
         }
       ]
@@ -2436,7 +2847,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "text/src/Text.js",
+      "path": "text/src/Text.ts",
       "declarations": [
         {
           "kind": "class",
@@ -2455,7 +2866,7 @@
           "name": "Text",
           "declaration": {
             "name": "Text",
-            "module": "text/src/Text.js"
+            "module": "text/src/Text.ts"
           }
         }
       ]
@@ -2495,6 +2906,191 @@
           "declaration": {
             "name": "long_text",
             "module": "text/stories/text.stories.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "version-selector/src/VersionSelector.styles.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "VersionSelectorStyles",
+          "default": "css`\n  select {\n    border: 1px solid var(--dockit-layout-header-border-color);\n    border-radius: 0.5rem;\n    padding: 0.5rem;\n    width: 100%;\n    z-index: 11;\n    position: relative;\n    background: var(--dockit-layout-bg);\n    font-size: large;\n    color: inherit;\n  }\n`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "VersionSelectorStyles",
+          "declaration": {
+            "name": "VersionSelectorStyles",
+            "module": "version-selector/src/VersionSelector.styles.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "version-selector/src/VersionSelector.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Version selector for documentation site layout.",
+          "name": "VersionSelector",
+          "members": [
+            {
+              "kind": "field",
+              "name": "versions",
+              "type": {
+                "text": "string[]"
+              },
+              "default": "[]",
+              "attribute": "versions"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "selected"
+            },
+            {
+              "kind": "field",
+              "name": "latestLabel",
+              "type": {
+                "text": "string | ((version: string) => string)"
+              },
+              "attribute": "latest-label"
+            },
+            {
+              "kind": "field",
+              "name": "sortedVersions",
+              "type": {
+                "text": "string[]"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "latest",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "getLatestLabel",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onVersionSelect",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "select",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "versions",
+              "type": {
+                "text": "string[]"
+              },
+              "default": "[]",
+              "fieldName": "versions"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "selected"
+            },
+            {
+              "name": "latest-label",
+              "type": {
+                "text": "string | ((version: string) => string)"
+              },
+              "fieldName": "latestLabel"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "dockit-version-selector",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "VersionSelector",
+          "declaration": {
+            "name": "VersionSelector",
+            "module": "version-selector/src/VersionSelector.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "speedy-links/src/speedy-links.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "setupSpeedyLinks",
+          "return": {
+            "type": {
+              "text": "VoidFunction"
+            }
+          },
+          "parameters": [
+            {
+              "name": "options",
+              "type": {
+                "text": "SpeedyLinksOptions"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "setupSpeedyLinks",
+          "declaration": {
+            "name": "setupSpeedyLinks",
+            "module": "speedy-links/src/speedy-links.ts"
           }
         }
       ]

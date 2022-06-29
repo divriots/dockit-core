@@ -157,6 +157,13 @@ export const LayoutStyles = css`
       margin-right: var(--private--dockit-layout-spacer);
       padding: var(--private--dockit-layout-spacer) 0;
     }
+
+    :host([data-has-color-schema-toggle]) .topbar-container {
+      padding-right: calc(
+        var(--private--dockit-layout-spacer) +
+          var(--private--dockit-layout-header-content-height)
+      );
+    }
   }
 
   .buttons-container {
